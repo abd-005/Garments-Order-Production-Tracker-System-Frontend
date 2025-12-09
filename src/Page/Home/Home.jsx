@@ -1,9 +1,20 @@
 import React from 'react';
+import Banner from './Banner/Banner';
+import Choose from '../Choose/Choose';
 
 const Home = () => {
     return (
-        <div className='min-h-dvh'>
-            This is Home
+        <div>
+            {/* Banner section */}
+            <div className='max-w-11/12 mx-auto px-2'>
+            <Banner />
+
+        </div>
+            {/* Choose section */}
+            <div>
+
+            <Choose/>
+            </div>
         </div>
     );
 };
