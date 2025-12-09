@@ -1,41 +1,42 @@
-import { Link, useLocation, useNavigate } from 'react-router'
+import { Link, Navigate, useLocation, useNavigate } from 'react-router'
 import { FcGoogle } from 'react-icons/fc'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
-import { TbFidgetSpinner } from 'react-icons/tb'
-// import { imageUpload, saveOrUpdateUser } from '../../utils'
 import useAuth from '../../../hooks/useAuth'
 import { imageUpload, saveOrUpdateUser } from '../../../utils'
 import Logo from '../../../Components/Logo/Logo'
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
+import { TbFidgetSpinner } from 'react-icons/tb'
 
 const Register = () => {
-    // React Hook Form
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm()
-
-  const { createUser, updateUserProfile, signInWithGoogle, loading } = useAuth()
+  const { createUser, updateUserProfile, signInWithGoogle, loading, user } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state || '/'
 
-    if (loading) return <LoadingSpinner />
+  // React Hook Form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+
+  if (user) return <Navigate to={from} replace={true} />
 
   // console.log(watch("name")); // watch input value by passing the name of it
   console.log(errors)
   const onSubmit = async (data) => {
-    const { name, image, email, password } = data;
+    const { name, image, email, password , role } = data;
     const imageFile = image[0];
-    console.log(imageFile);
-
+    console.log("data: ", data);
+    
     try {
       //1. Upload Image to imgbb
-      const imageURL = imageUpload(imageFile);
+      const imageURL = await imageUpload(imageFile);
+      console.log(imageURL)
       //2. User Registration
-      const result = await createUser(email, password)
+      const result = await createUser(email, password , role)
 
       await saveOrUpdateUser({
         name,
@@ -83,9 +84,9 @@ const Register = () => {
   }
   return (
     <div className='flex justify-end items-center min-h-screen w-10/12 mx-auto py-10'>
-        <div className='mx-auto w-5/12 flex items-center gap-2'>
-            <h2 className='font-bold text-2xl text-primary'>Register to</h2> <Logo></Logo>
-        </div>
+      <div className='mx-auto w-5/12 flex items-center gap-2'>
+        <h2 className='font-bold text-2xl text-primary'>Register to</h2> <Logo></Logo>
+      </div>
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-white text-gray-900'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Register</h1>
@@ -171,7 +172,7 @@ const Register = () => {
               {/* choose role */}
               <label className="label text-gray-700">Choose role</label>
               <select
-                defaultValue="Pick a color"
+                defaultValue="Pick Role"
                 className="select w-full outline-0 mt-2 border border-gray-300 p-2 rounded"
                 {...register("role", { required: "Role is required" })}
               >
@@ -185,7 +186,7 @@ const Register = () => {
                 </p>
               )}
             </div>
-            
+
             <div>
               <div className='flex justify-between'>
                 <label htmlFor='password' className='text-sm mb-2'>
@@ -225,8 +226,9 @@ const Register = () => {
             >
               {loading ? (
                 <TbFidgetSpinner className='animate-spin m-auto' />
-              ) : (
-                'Continue'
+              ) : 
+              (
+                'Register'
               )}
             </button>
           </div>
@@ -249,7 +251,7 @@ const Register = () => {
         <p className='px-6 text-sm text-center text-gray-400'>
           Already have an account?{' '}
           <Link
-            to='/login'
+            to='auth/login'
             className='hover:underline hover:text-primary/60 text-gray-600'
           >
             Login

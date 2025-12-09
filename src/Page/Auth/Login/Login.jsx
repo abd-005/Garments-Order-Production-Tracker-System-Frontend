@@ -1,24 +1,30 @@
 // src/pages/Login.jsx
-import { Link, useLocation, useNavigate } from 'react-router';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router';
 import { FcGoogle } from 'react-icons/fc';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-hot-toast';
+import { toast, ToastBar } from 'react-hot-toast';
 import { TbFidgetSpinner } from 'react-icons/tb';
 import useAuth from '../../../hooks/useAuth';
 import { saveOrUpdateUser } from '../../../utils';
 import Logo from '../../../Components/Logo/Logo';
+import LoadingSpinner from '../../../components/Shared/LoadingSpinner';
 
 const Login = () => {
-  const { signIn, signInWithGoogle, loading } = useAuth();
+  const { signIn, signInWithGoogle, user ,loading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state || '/';
 
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  
+
+  if (loading) return <LoadingSpinner />
+  if (user) return <Navigate to={from} replace={true} />
 
   const onSubmit = async (data) => {
     const { email, password } = data;
@@ -53,13 +59,12 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-light flex items-center justify-center px-4 py-10">
+    <div className="flex justify-end items-center min-h-screen w-10/12 mx-auto py-10">
+      <div className='mx-auto w-5/12 flex items-center gap-2'>
+            <h2 className='font-bold text-2xl text-primary'>Login to</h2> <Logo></Logo>
+        </div>
       <div className="w-full max-w-lg bg-white shadow-xl rounded-lg p-8">
         <div className="text-center mb-8">
-          <div className="flex justify-center items-center gap-2 mb-4">
-            <h2 className="text-2xl font-bold text-primary">Login to</h2>
-            <Logo />
-          </div>
           <h1 className="text-3xl font-bold text-primary">Login</h1>
           <p className="text-sm text-gray-500 mt-2">Welcome back to TailorFlow</p>
         </div>
@@ -113,7 +118,7 @@ const Login = () => {
         </button>
         <p className="text-center text-sm text-gray-500 mt-6">
           Don't have an account?{' '}
-          <Link to="/register" className="text-primary hover:underline">Register</Link>
+          <Link to="auth/register" className="text-primary hover:underline">Register</Link>
         </p>
       </div>
     </div>
