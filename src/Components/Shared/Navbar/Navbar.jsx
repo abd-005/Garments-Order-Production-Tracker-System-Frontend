@@ -40,7 +40,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="flex gap-2 items-center">
-            <Logo/>
+          <Logo />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

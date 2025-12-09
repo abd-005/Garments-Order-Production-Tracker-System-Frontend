@@ -17,10 +17,7 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
 }
-.btnPrimary{
-  color: #4c4452;
-}
-.btnPrimary{
+.btn-primary{
   background-color: #4c4452;
   color: #fff;
 }

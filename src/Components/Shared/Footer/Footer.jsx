@@ -91,7 +91,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className='py-6 text-sm text-center text-gray-200'>
               <hr className="mb-3"/>
-        Copyright © {new Date().getFullYear()} PlantNet Inc. All rights reserved.
+        Copyright © {new Date().getFullYear()} TailorFlow Inc. All rights reserved.
       </div>
       </div>
     </footer>
