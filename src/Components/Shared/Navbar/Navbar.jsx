@@ -15,7 +15,7 @@ const Navbar = () => {
   const linkBeforeLogin = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/">He</NavLink>
       </li>
       <li>
         <NavLink to="/all-products">All-Products</NavLink>
@@ -46,12 +46,13 @@ const Navbar = () => {
       <li>
         <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
-      <li>
+      <li className="lg:ml-10 ml-2.5">
         <img
           className='rounded-full w-8 h-8 p-0'
-                      referrerPolicy='no-referrer'
-                      src={user && user.photoURL ? user.photoURL : avatarImg}
-                      alt='profile'
+          referrerPolicy='no-referrer'
+          src={user && user.photoURL ? user.photoURL : avatarImg}
+          
+          alt='profile'
         />
       </li>
       <li>
@@ -61,7 +62,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar shadow-sm glass text-white px-2 md:px-5 lg:px-15 bg-primary/70">
+    <div className="navbar flex justify-between items-center shadow-sm glass text-white px-2 md:px-5 lg:px-15 bg-primary/70">
       <div className="navbar-start">
         <Link to="/" className="flex gap-2 items-center">
           <Logo />
@@ -77,7 +78,7 @@ const Navbar = () => {
           <TiThMenu />
         </div>
         {isOpen && (
-          <ul className="menu menu-sm dropdown-content bg-[#3e4653] rounded-box z-1 mt-3 w-52 p-2 shadow">
+          <ul className="menu menu-sm dropdown-content bg-[#3e4653] rounded-box z-1 mt-3 w-40 p-2 shadow">
             {user ? linkAfterLogin : linkBeforeLogin}
           </ul>
         )}

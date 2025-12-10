@@ -1,0 +1,40 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9f7fc;
+}
+
+.dashboard-body {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.sidebar {
+  width: 250px;
+}
+
+.content {
+  flex: 1 1 auto;
+  padding: 1.5rem;
+  margin-left: 250px; /* space for fixed sidebar */
+  margin-top: 64px; /* space for sticky header */
+}
+
+.sidebar.closed + .content,
+.sidebar.closed ~ .content {
+  margin-left: 80px;
+}
+
+.dashboard-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+/* Theme styling for dashboard */
+.dashboard-container {
+  --primary: #4c4452;
+  --secondary: #dcd3e4;
+  --background: #f9f7fc;
+}
