@@ -8,96 +8,120 @@ import svg6 from '../../../assets/svg/06.png'
 
 const Choose = () => {
   return (
-    <div className='border-gray-700 bg-secondary  p-10'>
-
-      <div className='text-center mb-5'>
-        <h2>Why Choose US</h2>
-        <p className='text-2xl'>Where craftsmanship meets conscience</p>
-      </div>
-
-      <div className='grid md:grid-cols-2 gap-5 '>
-        {/* Left Card */}
-        <div className="card card-border bg-base-100">
-          <div className="card-body">
-            {/* component 1 */}
-            <div className='flex gap-3  my-5'>
-              <figure className=''>
-                <img src={svg1} alt="banner" className='w-20' />
-              </figure>
-
-              <div>
-                <h2 className="card-title">Collaborative Approach</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-            <hr className='text-gray-400' />
-            {/* component 2 */}
-            <div className='flex gap-3   my-5'>
-              <figure className=''>
-                <img src={svg2} alt="banner" className='w-20' />
-              </figure>
-
-              <div className=''>
-                <h2 className="card-title">Refined Quality</h2>
-                <p className=''>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-            <hr className='text-gray-400' />
-            {/* component 3 */}
-            <div className='flex gap-3   my-5'>
-              <figure className=''>
-                <img src={svg3} alt="banner" className='w-20' />
-              </figure>
-
-              <div>
-                <h2 className="card-title">Sustainable Process</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-          </div>
-
+    <div className='bg-secondary py-12 sm:py-16 px-4 sm:px-6 lg:px-8'>
+      <div className='max-w-7xl mx-auto'>
+        {/* Header */}
+        <div className='text-center mb-12 sm:mb-16'>
+          <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold mb-3' style={{ color: '#4c4452' }}>
+            Why Choose Us
+          </h2>
+          <p className='text-base sm:text-lg text-gray-600 max-w-2xl mx-auto'>
+            Where craftsmanship meets conscience
+          </p>
+          <div className='w-16 h-1 bg-linear-to-r from-[#4c4452] to-[#dcd3e4] mx-auto mt-4'></div>
         </div>
-        {/* right Card */}
-        <div className="card card-border bg-base-100">
-          <div className="card-body">
+
+        {/* Cards Grid */}
+        <div className='grid md:grid-cols-2 gap-6 sm:gap-8'>
+          {/* Left Card */}
+          <div className='bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 p-6 sm:p-8 border border-gray-100'>
             {/* component 1 */}
-            <div className='flex gap-3  my-5'>
-              <figure className=''>
-                <img src={svg6} alt="banner" className='w-20' />
-              </figure>
-
-              <div>
-                <h2 className="card-title">
-                  Artisanal Craft</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div className='flex gap-4 mb-6'>
+              <div className='shrink-0'>
+                <img src={svg1} alt="icon" className='w-16 h-16 sm:w-20 sm:h-20' />
+              </div>
+              <div className='flex-1'>
+                <h3 className='text-lg sm:text-xl font-semibold mb-2' style={{ color: '#4c4452' }}>
+                  Collaborative Approach
+                </h3>
+                <p className='text-sm sm:text-base text-gray-600'>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
               </div>
             </div>
-            <hr className='text-gray-400' />
+            <hr className='border-gray-200 my-6' />
+
             {/* component 2 */}
-            <div className='flex gap-3  my-5'>
-              <figure className=''>
-                <img src={svg4} alt="banner" className='h-20 ml-4 mr-4' />
-              </figure>
-
-              <div>
-                <h2 className="card-title">Timeless Design</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div className='flex gap-4 mb-6'>
+              <div className='shrink-0'>
+                <img src={svg2} alt="icon" className='w-16 h-16 sm:w-20 sm:h-20' />
+              </div>
+              <div className='flex-1'>
+                <h3 className='text-lg sm:text-xl font-semibold mb-2' style={{ color: '#4c4452' }}>
+                  Refined Quality
+                </h3>
+                <p className='text-sm sm:text-base text-gray-600'>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
               </div>
             </div>
-            <hr className='text-gray-400' />
-            {/* component 3 */}
-            <div className='flex gap-3   my-5'>
-              <figure className=''>
-                <img src={svg5} alt="banner" className='w-20' />
-              </figure>
+            <hr className='border-gray-200 my-6' />
 
-              <div>
-                <h2 className="card-title">Innovative Touch</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            {/* component 3 */}
+            <div className='flex gap-4'>
+              <div className='shrink-0'>
+                <img src={svg3} alt="icon" className='w-16 h-16 sm:w-20 sm:h-20' />
+              </div>
+              <div className='flex-1'>
+                <h3 className='text-lg sm:text-xl font-semibold mb-2' style={{ color: '#4c4452' }}>
+                  Sustainable Process
+                </h3>
+                <p className='text-sm sm:text-base text-gray-600'>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
               </div>
             </div>
           </div>
 
+          {/* Right Card */}
+          <div className='bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 p-6 sm:p-8 border border-gray-100'>
+            {/* component 1 */}
+            <div className='flex gap-4 mb-6'>
+              <div className='shrink-0'>
+                <img src={svg6} alt="icon" className='w-16 h-16 sm:w-20 sm:h-20' />
+              </div>
+              <div className='flex-1'>
+                <h3 className='text-lg sm:text-xl font-semibold mb-2' style={{ color: '#4c4452' }}>
+                  Artisanal Craft
+                </h3>
+                <p className='text-sm sm:text-base text-gray-600'>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+              </div>
+            </div>
+            <hr className='border-gray-200 my-6' />
+
+            {/* component 2 */}
+            <div className='flex gap-4 mb-6'>
+              <div className='shrink-0'>
+                <img src={svg4} alt="icon" className='w-16 h-16 sm:w-20 sm:h-20' />
+              </div>
+              <div className='flex-1'>
+                <h3 className='text-lg sm:text-xl font-semibold mb-2' style={{ color: '#4c4452' }}>
+                  Timeless Design
+                </h3>
+                <p className='text-sm sm:text-base text-gray-600'>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+              </div>
+            </div>
+            <hr className='border-gray-200 my-6' />
+
+            {/* component 3 */}
+            <div className='flex gap-4'>
+              <div className='shrink-0'>
+                <img src={svg5} alt="icon" className='w-16 h-16 sm:w-20 sm:h-20' />
+              </div>
+              <div className='flex-1'>
+                <h3 className='text-lg sm:text-xl font-semibold mb-2' style={{ color: '#4c4452' }}>
+                  Innovative Touch
+                </h3>
+                <p className='text-sm sm:text-base text-gray-600'>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

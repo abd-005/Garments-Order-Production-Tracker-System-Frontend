@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router'
-import { Menu, X, Users, Package, ShoppingCart, LayoutDashboard, Home } from 'lucide-react'
+import { Menu, X, Users, Package, ShoppingCart, LayoutDashboard, Home, SquarePlus } from 'lucide-react'
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(true)
@@ -9,14 +9,15 @@ const Sidebar = () => {
     const adminRoutes = [
         { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
         { path: '/dashboard/manage-users', label: 'Manage Users', icon: Users },
-        { path: '/dashboard/all-products', label: 'All Products', icon: Package },
+        { path: '/dashboard/add-product', label: 'Add Product', icon: SquarePlus },
+        { path: '/dashboard/all-orders', label: 'All Products', icon: ShoppingCart },
         { path: '/dashboard/all-orders', label: 'All Orders', icon: ShoppingCart },
     ]
 
     const isActive = path => location.pathname === path
 
     return (
-        <div className={`${isOpen ? 'w-64' : ''} min-h-screen transition-all duration-300 fixed left-0 top-18 z-40 bg-secondary glass flex flex-col rounded-2xl pb-16`}>
+        <div className={`${isOpen ? 'w-64' : ''} transition-all duration-300 fixed left-0 top-18 z-40 bg-secondary glass flex flex-col rounded-2xl`}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="p-4 w-full text-left hover:opacity-80 transition-opacity"
@@ -41,7 +42,7 @@ const Sidebar = () => {
                 ))}
             </nav>
 
-            <div className="p-4 space-y-2 ">
+            <div className="p-4 space-y-2">
                 <Link
                     to="/"
                     className={`flex items-center rounded transition-opacity opacity-75 hover:opacity-100 ${isOpen ? 'gap-4 px-4 py-3 justify-start' : 'justify-center py-3'}`}

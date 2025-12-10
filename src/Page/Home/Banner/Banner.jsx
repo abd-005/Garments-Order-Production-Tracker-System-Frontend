@@ -18,36 +18,37 @@ import banner3 from '../../../assets/img/Image-2.jpg'
 import banner4 from '../../../assets/img/Image-4.jpg'
 import banner5 from '../../../assets/img/Image-1.jpg'
 
-const banners = [banner1, banner2, banner3,banner4, banner5];
+const banners = [banner1, banner2, banner3, banner4, banner5];
 
 const Banner = () => {
 
     return (
 
         
-            <div className='overflow-hidden rounded-2xl my-5 '>
-                <Swiper className="mySwiper"
-            spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        <div className='overflow-hidden rounded-3xl my-6 shadow-2xl'>
+            <Swiper className="mySwiper"
+                spaceBetween={30}
+                centeredSlides={true}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+                pagination={{
+                    clickable: true,
+                }}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
             >
                 {
-                banners.map((img, index) => <SwiperSlide key={index}>
-                    <figure className='max-h-[70dvh] relative '>
-                        <img src={img} alt="banner" className=' w-full'/>
-                    </figure>
-                </SwiperSlide>)
-            }
+                    banners.map((img, index) => <SwiperSlide key={index}>
+                        <figure className='max-h-[60vh] relative overflow-hidden '>
+                            <img src={img} alt="banner" className='w-full h-full object-cover' />
+                            <div className='absolute inset-0 bg-black/60'></div>
+                        </figure>
+                    </SwiperSlide>)
+                }
             </Swiper>
-            </div>
+        </div>
         
 
     );
