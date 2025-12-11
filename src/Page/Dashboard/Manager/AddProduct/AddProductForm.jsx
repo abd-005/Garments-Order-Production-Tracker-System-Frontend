@@ -48,7 +48,7 @@ const AddProductForm = () => {
             if (error) console.log('Error occurred from onSettled:', error);
         },
 
-        retry: 3, //retry 3 times to request in backend
+        retry: 1, //retry 3 times to request in backend
     });
 
 

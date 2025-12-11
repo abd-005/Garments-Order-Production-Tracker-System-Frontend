@@ -1,11 +1,11 @@
 import React from 'react';
-import AddPlantForm from './AddProductForm';
+import AddProductForm from './AddProductForm';
 
 const AddProduct = () => {
     return (
         <div>
             {/* Form */}
-            <AddPlantForm />
+            <AddProductForm />
         </div>
     );
 };

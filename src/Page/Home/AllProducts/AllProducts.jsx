@@ -16,10 +16,13 @@ const AllProducts = () => {
   if (isLoading) return <LoadingSpinner />
 
   return (
-    <div className='bg-secondary/40'>
+    <div className='bg-secondary/30'>
       <Container>
+      <div className='text-center pt-12'>
+        <h2>All Products</h2>
+      </div>
       {products && products.length > 0 ? (
-        <div className=" py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {products.map(product => (
             <Card key={product._id} product={product} />
           ))}

@@ -11,6 +11,7 @@ import ManageUsers from "../Page/Dashboard/ManageUsers";
 import AllOrders from "../Page/Dashboard/Admin/AllOrders";
 import AddProduct from "../Page/Dashboard/Manager/AddProduct/AddProduct";
 import AllProducts from "../Page/Home/AllProducts/AllProducts";
+import ProductDetails from "../Page/Dashboard/Buyer/ProductDetails";
 
 export const router = createBrowserRouter([
     {
@@ -23,8 +24,12 @@ export const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: 'all-products',
+                path: 'products',
                 element: <AllProducts />
+            },
+            {
+                path: 'product/:id',
+                element: <ProductDetails />,
             },
         ]
     },
@@ -46,7 +51,7 @@ export const router = createBrowserRouter([
                         <Login></Login>
                     </div>,
             },
-            
+
         ]
     }
     ,
@@ -66,7 +71,7 @@ export const router = createBrowserRouter([
                 path: 'add-product',
                 element: <AddProduct />
             },
-            
+
             {
                 path: 'all-orders',
                 element: <AllOrders />

@@ -18,15 +18,21 @@ const Card = ({ product }) => {
         <div className="p-4 flex-1 flex flex-col justify-between">
           <div>
             <div className="text-lg font-semibold text-gray-900">{title}</div>
-            <div className="text-sm text-gray-600 mt-1">Category: <span className="font-medium text-gray-800">{category}</span></div>
-            <div className="text-sm text-gray-600 mt-1">Available: <span className="font-medium text-gray-800">{quantity}</span></div>
+            <div className="text-sm text-gray-600 mt-1">
+              Category: <span className="font-medium text-gray-800">{category}</span>
+            </div>
+            <div className="text-sm text-gray-600 mt-1">
+              Available: <span className="font-medium text-gray-800">{quantity}</span>
+            </div>
           </div>
 
           <div className="mt-4 flex items-center justify-between">
-            <div className="text-lg font-semibold text-gray-900">Price: <span className="text-primary font-bold">{price}$</span></div>
+            <div className="text-lg font-semibold text-gray-900">
+              Price: <span className="text-primary font-bold">{price}$</span>
+            </div>
             <Link
               to={`/product/${_id}`}
-              className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-white text-sm hover:bg-secondary transition"
+              className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-white text-sm hover:bg-primary/60 transition"
             >
               View Details
             </Link>

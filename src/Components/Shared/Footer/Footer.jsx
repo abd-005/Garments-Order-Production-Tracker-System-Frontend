@@ -21,7 +21,7 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4 text-secondary">Useful Links</h3>
           <ul className="space-y-3 opacity-90">
             <li><Link to="/" className="hover:text-primary transition-colors duration-200">Home</Link></li>
-            <li><Link to="/all-products" className="hover:text-primary transition-colors duration-200">All Products</Link></li>
+            <li><Link to="/products" className="hover:text-primary transition-colors duration-200">All Products</Link></li>
             <li><Link to="/about" className="hover:text-primary transition-colors duration-200">About Us</Link></li>
             <li><Link to="/contact" className="hover:text-primary transition-colors duration-200">Contact</Link></li>
           </ul>

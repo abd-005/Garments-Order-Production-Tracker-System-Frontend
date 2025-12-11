@@ -32,7 +32,7 @@ const Navbar = () => {
             <NavLink to="/" className="hover:opacity-80 transition-opacity">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/all-products" className="hover:opacity-80 transition-opacity">All Products</NavLink>
+            <NavLink to="/products" className="hover:opacity-80 transition-opacity">All Products</NavLink>
           </li>
           <li>
             <NavLink to="/about" className="hover:opacity-80 transition-opacity">About Us</NavLink>
@@ -93,7 +93,7 @@ const Navbar = () => {
               </NavLink>
 
               <NavLink
-                to="/all-products"
+                to="/products"
                 onClick={() => setIsOpen(false)}
                 className="flex items-center gap-3 px-4 py-3 rounded-lg hover:opacity-80 transition-opacity"
                 style={{ color: '#4c4452' }}
