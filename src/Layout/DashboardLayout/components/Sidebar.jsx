@@ -1,58 +1,81 @@
-import React, { useState } from 'react'
-import { Link, useLocation } from 'react-router'
-import { Menu, X, Users, Package, ShoppingCart, LayoutDashboard, Home, SquarePlus } from 'lucide-react'
+import React from 'react';
+import { Link, useLocation } from 'react-router';
+import {
+  X,
+  Users,
+  ShoppingCart,
+  LayoutDashboard,
+  Home,
+  SquarePlus,
+} from 'lucide-react';
 
-const Sidebar = () => {
-    const [isOpen, setIsOpen] = useState(true)
-    const location = useLocation()
+const Sidebar = ({ isOpen = true }) => {
+  const location = useLocation();
 
-    const adminRoutes = [
-        { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-        { path: '/dashboard/manage-users', label: 'Manage Users', icon: Users },
-        { path: '/dashboard/add-product', label: 'Add Product', icon: SquarePlus },
-        { path: '/dashboard/all-orders', label: 'All Products', icon: ShoppingCart },
-        { path: '/dashboard/all-orders', label: 'All Orders', icon: ShoppingCart },
-    ]
+  const adminRoutes = [
+    { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { path: '/dashboard/manage-users', label: 'Manage Users', icon: Users },
+    { path: '/dashboard/add-product', label: 'Add Product', icon: SquarePlus },
+    { path: '/dashboard/all-products', label: 'All Products', icon: ShoppingCart },
+    { path: '/dashboard/all-orders', label: 'All Orders', icon: ShoppingCart },
+  ];
 
-    const isActive = path => location.pathname === path
+  const isActive = (path) => location.pathname === path;
 
-    return (
-        <div className={`${isOpen ? 'w-64' : ''} transition-all duration-300 fixed left-0 top-18 z-40 bg-secondary glass flex flex-col rounded-2xl`}>
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-4 w-full text-left hover:opacity-80 transition-opacity"
-            >
-                {isOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-
-            <nav className="mt-8 space-y-2 flex-1">
-                {adminRoutes.map(({ path, label, icon: Icon }) => (
-                    <Link
-                        key={path}
-                        to={path}
-                        className={`flex items-center gap-4 px-4 py-3 ${isActive(path)
-                            ? 'border-l-4 opacity-100'
-                            : 'opacity-75 hover:opacity-100'
-                            }`}
-                        style={isActive(path) ? { borderLeftColor: '#dcd3e4' } : {}}
-                    >
-                        <Icon size={18} />
-                        {isOpen && <span className="text-sm font-medium">{label}</span>}
-                    </Link>
-                ))}
-            </nav>
-
-            <div className="p-4 space-y-2">
-                <Link
-                    to="/"
-                    className={`flex items-center rounded transition-opacity opacity-75 hover:opacity-100 ${isOpen ? 'gap-4 px-4 py-3 justify-start' : 'justify-center py-3'}`}
-                >
-                    <Home size={18} />
-                    {isOpen && <span className="text-sm font-medium">Back to Home</span>}
-                </Link>
+  return (
+    <div
+      className={`${
+        isOpen ? 'w-64' : 'w-16'
+      } h-[calc(100vh-64px)] sm:h-screen transition-all duration-300 fixed sm:relative left-4 top-20 sm:top-0 z-40`}
+    >
+      <div
+        className={`h-full flex flex-col justify-between rounded-2xl p-3 shadow-lg bg-secondary/80 backdrop-blur-md border border-secondary/20`}
+      >
+        <div>
+          <div className="flex items-center justify-between px-2">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-white font-bold">
+                TF
+              </div>
+              {isOpen && <div className="text-sm font-semibold">TailorFlow</div>}
             </div>
-        </div>
-    )
-}
+            <div className="sm:hidden">
+              <button className="p-2 rounded hover:bg-primary/10">
+                <X size={18} />
+              </button>
+            </div>
+          </div>
 
-export default Sidebar
+          <nav className="mt-6 flex flex-col gap-1">
+            {adminRoutes.map(({ path, label, icon: Icon }) => (
+              <Link
+                key={path}
+                to={path}
+                className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
+                  isActive(path)
+                    ? 'bg-primary/10 border-l-4 border-primary/60 text-primary'
+                    : 'text-primary/80 hover:bg-primary/5'
+                }`}
+              >
+                <Icon size={18} />
+                {isOpen && <span className="text-sm font-medium">{label}</span>}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        <div className="mt-4">
+          <Link
+            to="/"
+            className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors text-primary/80 hover:bg-primary/5`}
+          >
+            <Home size={18} />
+            {isOpen && <span className="text-sm font-medium">Back to Home</span>}
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Sidebar;

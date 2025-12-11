@@ -1,33 +1,44 @@
-import React from 'react'
-import { User } from 'lucide-react'
+import React from 'react';
+import { Menu } from 'lucide-react';
 import useAuth from '../../../hooks/useAuth';
-import avatarImg from "../../../assets/img/User-Avatar.png";
+import avatarImg from '../../../assets/img/User-Avatar.png';
 
+const Header = ({ onMenuToggle }) => {
+  const { user } = useAuth();
+  console.log(user)
 
-const Header = () => {
-    const { user } = useAuth();
+  return (
+    <header className="sticky top-0 z-30 bg-primary/95 backdrop-blur-sm border-b border-primary/20">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="h-16 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <button
+              onClick={onMenuToggle}
+              className="p-2 rounded-md hover:bg-primary/20 transition-colors"
+              aria-label="Toggle menu"
+            >
+              <Menu size={20} className="text-white" />
+            </button>
 
-    return (
-        <header className="dashboard-header shadow-sm p-4 flex items-center justify-between" style={{ backgroundColor: '#4c4452' }}>
-            <div className="flex items-center gap-4">
-                
-                <h1 className="text-xl font-semibold" style={{ color: '#fff' }}>Dashboard</h1>
-            </div>
+            <h1 className="text-white text-lg font-semibold tracking-tight">Dashboard</h1>
+          </div>
 
-            <div className="flex items-center gap-3" style={{ color: '#dcd3e4' }}>
-                <div className="hidden sm:block text-sm">Welcome back</div>
-                <button className="p-1 rounded-full hover:opacity-80 transition-opacity" >
-                    <img
-                        className='rounded-full w-8 h-8 p-0'
-                        referrerPolicy='no-referrer'
-                        src={user && user.photoURL ? user.photoURL : avatarImg}
+          <div className="flex items-center gap-4">
+            <div className="hidden sm:block text-sm text-primary/30">Welcome back</div>
 
-                        alt='profile'
-                    />
-                </button>
-            </div>
-        </header>
-    )
-}
+            <button className="flex items-center gap-2 p-1 rounded-full hover:opacity-90 transition-opacity">
+              <img
+                className="rounded-full w-9 h-9 object-cover"
+                referrerPolicy="no-referrer"
+                src={user && user.photoURL ? user.photoURL : avatarImg}
+                alt="profile"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};
 
-export default Header
+export default Header;

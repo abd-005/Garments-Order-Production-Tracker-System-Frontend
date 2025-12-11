@@ -8,9 +8,9 @@ import ErrorPage from "../Page/ErrorPage";
 import DashboardLayout from "../Layout/DashboardLayout/DashboardLayout";
 import DashboardHome from "../Page/Dashboard/Common/DashboardHome";
 import ManageUsers from "../Page/Dashboard/ManageUsers";
-import AllProducts from "../Page/Dashboard/Admin/AllProducts";
 import AllOrders from "../Page/Dashboard/Admin/AllOrders";
 import AddProduct from "../Page/Dashboard/Manager/AddProduct/AddProduct";
+import AllProducts from "../Page/Home/AllProducts/AllProducts";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +21,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home />
+            },
+            {
+                path: 'all-products',
+                element: <AllProducts />
             },
         ]
     },
@@ -42,6 +46,7 @@ export const router = createBrowserRouter([
                         <Login></Login>
                     </div>,
             },
+            
         ]
     }
     ,
@@ -61,10 +66,7 @@ export const router = createBrowserRouter([
                 path: 'add-product',
                 element: <AddProduct />
             },
-            {
-                path: 'all-products',
-                element: <AllProducts />
-            },
+            
             {
                 path: 'all-orders',
                 element: <AllOrders />

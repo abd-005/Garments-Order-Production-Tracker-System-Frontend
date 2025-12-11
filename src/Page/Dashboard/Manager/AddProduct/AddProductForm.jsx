@@ -3,14 +3,62 @@ import axios from 'axios';
 import useAuth from '../../../../hooks/useAuth';
 import { imageUpload } from '../../../../utils';
 import toast from 'react-hot-toast';
+import { useMutation } from '@tanstack/react-query';
+import LoadingSpinner from '../../../../components/Shared/LoadingSpinner';
+import ErrorPage from '../../../ErrorPage';
 
 const AddProductForm = () => {
     const { user } = useAuth();
 
+    // useMutation hook useCase (POST || PUT || PATCH || DELETE)
+    const {
+        isPending,
+        isError,
+        mutateAsync,
+        reset: mutationReset,
+    } = useMutation({
+        mutationFn: async payload =>
+            await axios.post(`${import.meta.env.VITE_API_URL}/products`, payload),
+
+        onSuccess: data => {
+            console.log('Product added successfully:', data);
+
+            // show success notification or perform other actions
+            toast.success('Product added successfully');
+
+            // navigate to my inventory page
+
+
+            mutationReset(); // resets mutation to initial state
+
+            // Query key invalidate can be done here if needed
+        },
+
+        onError: error => {
+            console.error('Error adding product:', error);
+            toast.error('Failed to add product');
+        },
+
+        onMutate: payload => {
+            console.log(`I'll post this data---> `, payload);
+        },
+
+        onSettled: (data, error) => {
+            if (data) console.log(`I'm from onSettled---> `, data);
+            if (error) console.log('Error occurred from onSettled:', error);
+        },
+
+        retry: 3, //retry 3 times to request in backend
+    });
+
+
+    // React Hook Form
     const {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
+
     } = useForm();
 
     const onSubmit = async (data) => {
@@ -18,7 +66,7 @@ const AddProductForm = () => {
             // Upload multiple images
             const imageUrls = await Promise.all(
                 [...data.images].map((file) => imageUpload(file))
-            );            
+            );
             const productData = {
                 title: data.title,
                 description: data.description,
@@ -37,23 +85,32 @@ const AddProductForm = () => {
                 },
             };
 
-            const res = await axios.post(`${import.meta.env.VITE_API_URL}/products`, productData);
-            if (res.data) {
-                console.table(res.data)
-                toast.success("✅ Product created successfully!");
-            }
+            // const res = await axios.post(`${import.meta.env.VITE_API_URL}/products`, productData);
+
+            // *****
+            await mutateAsync(productData); // call mutation func
+            // *****
+
+            // if (res.data) {
+            //     console.table(res.data)
+            //     toast.success("Product created successfully!");
+            // }
+            reset(); // resets from data
+
         } catch (err) {
             console.error(err);
-            toast.success("❌ Failed to create product");
+            toast.error("Failed to create product");
         }
     };
 
+    if (isPending) return <LoadingSpinner />;
+    if (isError) return <ErrorPage />;
     return (
         <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-secondary p-6">
             <h2>
                 Add Product
             </h2>
-            
+
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-2 gap-6 bg-white p-6 rounded-lg shadow-md"
@@ -192,7 +249,13 @@ const AddProductForm = () => {
                         type="submit"
                         className="w-full py-3 bg-primary text-white rounded-md shadow-md hover:bg-secondary transition cursor-pointer"
                     >
-                        Create Product
+                        {isPending ? (
+                            <TbFidgetSpinner className='animate-spin m-auto' />
+                        ) :
+                            (
+                                'Create Product'
+                            )}
+
                     </button>
                 </div>
             </form>
