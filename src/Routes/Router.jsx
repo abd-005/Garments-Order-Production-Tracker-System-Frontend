@@ -10,9 +10,10 @@ import DashboardHome from "../Page/Dashboard/Common/DashboardHome";
 import AllOrders from "../Page/Dashboard/Admin/AllOrders";
 import AddProduct from "../Page/Dashboard/Manager/AddProduct/AddProduct";
 import AllProducts from "../Page/Home/AllProducts/AllProducts";
-import ProductDetails from "../Page/Dashboard/Buyer/ProductDetails";
+import ProductDetails from "../Page/Dashboard/Common/ProductDetails";
 import ManageUsers from "../Page/Dashboard/Admin/ManageUsers";
 import MyOrders from "../Page/Dashboard/User/MyOrders";
+import PaymentSuccess from "../Page/Dashboard/Buyer/PaymentSuccess";
 
 export const router = createBrowserRouter([
     {
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
             {
                 path: 'all-products',
                 element: <AllProducts />
+            },
+            {
+                path: 'payment-success',
+                element: <PaymentSuccess/>
             },
             {
                 path: 'my-orders',

@@ -76,7 +76,7 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
             category,
             images,
             unitPrice: Number(price),
-            orderQuantity,
+            orderQuantity: Number(orderQuantity),
             totalPrice: orderPrice,
             description,
             minimum: Number(moq),

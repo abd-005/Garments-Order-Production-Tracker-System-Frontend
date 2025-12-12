@@ -18,11 +18,15 @@ import 'swiper/css/thumbs';
 const ProductDetails = () => {
     const [isOpen, setIsOpen] = useState(false)
     const { id } = useParams()
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
 
-    const { data: product = {}, isLoading, refetch } = useQuery({
+    const { 
+        data: product = {},
+        isLoading,
+        // refetch
+    } = useQuery({
         queryKey: ['product', id],
         queryFn: async () => {
             const result = await axios(`${import.meta.env.VITE_API_URL}/product/${id}`)
@@ -45,7 +49,7 @@ const ProductDetails = () => {
         quantity,
         price,
         moq,
-        manager,
+        // manager,
         paymentOption,
         features,
     } = product
@@ -151,7 +155,7 @@ const ProductDetails = () => {
                                     <b>Details:</b> {description}
                                 </div>
 
- 
+
                             </div>
                         </div>
                     </div>
