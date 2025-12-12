@@ -29,7 +29,6 @@ const ProductDetails = () => {
             return result.data
         },
     })
-    console.log(product)
 
     const closeModal = () => {
         setIsOpen(false)
@@ -46,8 +45,8 @@ const ProductDetails = () => {
         quantity,
         price,
         moq,
-        paymentOption,
         manager,
+        paymentOption,
         features,
     } = product
 
@@ -126,11 +125,12 @@ const ProductDetails = () => {
 
                             <div className="space-y-4 lg:pt-30">
                                 <h1 className="text-2xl font-semibold text-gray-900">{title}</h1>
-                                <div className="text-sm text-gray-600">{category}</div>
+                                <div className="text-sm text-gray-600"><b>Category: </b>{category}</div>
                                 <div className="text-lg font-bold text-gray-900">Price: <span className="text-primary">{price}$</span></div>
-                                <div className="text-sm text-gray-600">Available Quantity: <span className="font-medium text-gray-800">{quantity}</span></div>
-                                <div className="text-sm text-gray-600">Minimum Order: <span className="font-medium text-gray-800">{moq}</span></div>
-                                <div className="text-sm text-gray-600">Payment Options: <span className="font-medium text-gray-800">{paymentOption}</span></div>
+                                <div className="text-sm text-gray-600"><b>Available Quantity: </b><span className="font-medium text-gray-800">{quantity}</span></div>
+                                <div className="text-sm text-gray-600">
+                                    <b>Minimum Order: </b><span className="font-medium text-gray-800">{moq}</span></div>
+                                <div className="text-sm text-gray-600"><b>Payment Options: </b><span className="font-medium text-gray-800">{paymentOption}</span></div>
 
                                 <div className="pt-4">
                                     <Button onClick={() => setIsOpen(true)} label="Order" />
@@ -148,17 +148,14 @@ const ProductDetails = () => {
                                 )}
 
                                 <div className="mt-6 text-gray-700">
-                                    {description}
+                                    <b>Details:</b> {description}
                                 </div>
 
-                                <div className="mt-6 text-sm text-gray-500">
-                                    Manager: {manager?.name}
-                                </div>
+ 
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <PurchaseModal
                     product={product}
                     closeModal={closeModal}

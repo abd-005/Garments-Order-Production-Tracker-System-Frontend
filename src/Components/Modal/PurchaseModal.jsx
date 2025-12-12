@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router'
 import { TbFidgetSpinner } from 'react-icons/tb'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
+import Swal from 'sweetalert2'
 import 'swiper/css'
 
 const PurchaseModal = ({ closeModal, isOpen, product }) => {
@@ -16,14 +17,14 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
     const {
         _id,
         title,
-        category,
-        price,
         description,
-        images = [],
+        price,
+        category,
         quantity: availableQuantity,
         moq,
         paymentOption,
-        demoVideo,
+        images,
+        manager,
     } = product || {}
 
     const {
@@ -33,8 +34,9 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
         formState: { errors },
     } = useForm({
         defaultValues: {
+            description,
             email: user?.email || '',
-            productTitle: title || '',
+            name: title || '',
             unitPrice: price || 0,
             orderQuantity: moq || 1,
             firstName: user?.displayName?.split(' ')?.[0] || '',
@@ -44,12 +46,12 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
             notes: '',
         },
     })
-
+    console.log(user)
     const orderQuantity = Number(watch('orderQuantity') || 0)
     const orderPrice = Number((orderQuantity * (price || 0)).toFixed(2))
 
     const bookingMutation = useMutation({
-        mutationFn: async (payload) => await axios.post(`${import.meta.env.VITE_API_URL}/bookings`, payload),
+        mutationFn: async (payload) => await axios.post(`${import.meta.env.VITE_API_URL}/create-checkout-session`, payload),
         onSuccess: () => {
             toast.success('Booking saved')
         },
@@ -70,10 +72,16 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
 
         const bookingPayload = {
             productId: _id,
-            productTitle: title,
-            unitPrice: price,
+            name: title,
+            category,
+            images,
+            unitPrice: Number(price),
             orderQuantity,
             totalPrice: orderPrice,
+            description,
+            minimum: Number(moq),
+            maximum: Number(availableQuantity),
+            manager,
             customer: {
                 email: data.email,
                 firstName: data.firstName,
@@ -83,11 +91,10 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
                 notes: data.notes,
                 image: user?.photoURL || null,
             },
-            paymentOption: paymentOption || 'Cash on Delivery',
+            paymentOption,
             status: 'Pending',
             createdAt: new Date().toISOString(),
         }
-
         try {
             if (paymentOption === 'PayFirst') {
                 const { data } = await axios.post(
@@ -97,7 +104,8 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
                         returnUrl: `${window.location.origin}/dashboard/my-orders`,
                     }
                 )
-                window.location.href = data.url
+                console.log(data.url)
+                window.location.href = data.url // redirect user to respected url window
                 return
             }
 
@@ -105,6 +113,7 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
             closeModal()
             navigate('/dashboard/my-orders')
         } catch (err) {
+            console.log(err)
             toast.error('Something went wrong')
         }
     }
@@ -117,7 +126,7 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
             onClose={closeModal}
         >
             <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                <div className="flex scale-80 items-center justify-center p-4">
+                <div className="flex scale-80 items-center justify-center p-4 my-12">
                     <DialogPanel className="w-full max-w-2xl bg-white p-6 duration-300 shadow-xl rounded-2xl">
                         <DialogTitle as="h3" className="text-lg font-medium text-gray-900 text-center">
                             Order
@@ -137,10 +146,10 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm text-gray-700">Product Title</label>
+                                    <label className="block text-sm text-gray-700">Product Name</label>
                                     <input
                                         readOnly
-                                        {...register('productTitle')}
+                                        {...register('name')}
                                         className="w-full px-3 py-2 border rounded-md bg-gray-100"
                                     />
                                 </div>

@@ -7,11 +7,12 @@ import Login from "../Page/Auth/Login/Login";
 import ErrorPage from "../Page/ErrorPage";
 import DashboardLayout from "../Layout/DashboardLayout/DashboardLayout";
 import DashboardHome from "../Page/Dashboard/Common/DashboardHome";
-import ManageUsers from "../Page/Dashboard/ManageUsers";
 import AllOrders from "../Page/Dashboard/Admin/AllOrders";
 import AddProduct from "../Page/Dashboard/Manager/AddProduct/AddProduct";
 import AllProducts from "../Page/Home/AllProducts/AllProducts";
 import ProductDetails from "../Page/Dashboard/Buyer/ProductDetails";
+import ManageUsers from "../Page/Dashboard/Admin/ManageUsers";
+import MyOrders from "../Page/Dashboard/User/MyOrders";
 
 export const router = createBrowserRouter([
     {
@@ -75,6 +76,14 @@ export const router = createBrowserRouter([
             {
                 path: 'all-orders',
                 element: <AllOrders />
+            },
+            {
+                path: 'all-products',
+                element: <AllProducts />
+            },
+            {
+                path: 'my-orders',
+                element: <MyOrders/>
             },
         ]
     }

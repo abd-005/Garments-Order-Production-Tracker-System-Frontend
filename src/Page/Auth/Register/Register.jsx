@@ -38,12 +38,12 @@ const Register = () => {
       //2. User Registration
       const result = await createUser(email, password , role)
 
-      await saveOrUpdateUser({
-        name,
-        email,
-        // role: 'customer',
-        image: await imageURL
-      });
+      // await saveOrUpdateUser({
+      //   name,
+      //   email,
+      //   // role: 'customer',
+      //   image: await imageURL
+      // });
 
       //3. Save username & profile photo
       await updateUserProfile(

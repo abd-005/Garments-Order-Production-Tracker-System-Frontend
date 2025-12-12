@@ -51,6 +51,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async currentUser => {
       console.log('CurrentUser-->', currentUser?.email)
       setUser(currentUser)
+      console.log(user)
       setLoading(false)
     })
     return () => {
@@ -69,6 +70,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     updateUserProfile,
   }
+  console.log(user)
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

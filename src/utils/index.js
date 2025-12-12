@@ -14,19 +14,19 @@ export const imageUpload = async (imgFile) => {
 
 // upload image using cloudinary
 
-export const imageUploadCloudinary = async (imgFile) => {
-  const formData = new FormData();
-  formData.append("file", imgFile);
-  formData.append(
-    "upload_preset",
-    import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
-  );
+// export const videoUploadCloudinary = async (videoFile) => {
+//   const formData = new FormData();
+//   formData.append("file", videoFile);
+//   formData.append(
+//     "upload_preset",
+//     import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
+//   );
 
-  const {data} = await axios.post(`https://api.cloudinary.com/v1_1/${
-    import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
-  }/image/upload`, formData)
-  return data;
-};
+//   const {data} = await axios.post(`https://api.cloudinary.com/v1_1/${
+//     import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
+//   }/video/upload`, formData)
+//   return data;
+// };
 
 // example post endpoint: https://api.cloudinary.com/v1_1/<cloud name>/<resource_type>/upload
 // resource_type is the type of file to upload. Valid values: image, raw, video and auto to automatically detect the file type.

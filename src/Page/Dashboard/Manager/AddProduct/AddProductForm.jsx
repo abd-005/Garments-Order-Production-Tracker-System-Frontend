@@ -9,7 +9,6 @@ import ErrorPage from '../../../ErrorPage';
 
 const AddProductForm = () => {
     const { user } = useAuth();
-
     // useMutation hook useCase (POST || PUT || PATCH || DELETE)
     const {
         isPending,
@@ -67,6 +66,10 @@ const AddProductForm = () => {
             const imageUrls = await Promise.all(
                 [...data.images].map((file) => imageUpload(file))
             );
+            //         const cloudinaryVideoUrl = await imageUploadCloudinary(videoFile)
+
+            //   console.log("Cloudinary Response--->", cloudinaryVideoUrl)
+            //   return;
             const productData = {
                 title: data.title,
                 description: data.description,
@@ -106,7 +109,7 @@ const AddProductForm = () => {
     if (isPending) return <LoadingSpinner />;
     if (isError) return <ErrorPage />;
     return (
-        <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-secondary p-6">
+        <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center bg-secondary p-6">
             <h2>
                 Add Product
             </h2>
