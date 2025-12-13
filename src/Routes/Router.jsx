@@ -14,8 +14,8 @@ import ProductDetails from "../Page/Dashboard/Common/ProductDetails";
 import ManageUsers from "../Page/Dashboard/Admin/ManageUsers";
 import MyOrders from "../Page/Dashboard/User/MyOrders";
 import PaymentSuccess from "../Page/Dashboard/User/PaymentSuccess";
-import ManageProducts from "../Page/Dashboard/Manager/ManageProducts";
-import PendingOrders from "../Page/Dashboard/Manager/PendingOrders";
+import ManageProducts from "../Page/Dashboard/Manager/ManageProducts/ManageProducts";
+import PendingOrders from "../Page/Dashboard/Manager/PendingOrders/PendingOrders";
 import ApproveOrders from "../Page/Dashboard/Manager/ApproveOrders";
 import MyProfile from "../Page/Dashboard/Common/MyProfile";
 
@@ -97,7 +97,7 @@ export const router = createBrowserRouter([
                 path: 'approve-orders',
                 element: <ApproveOrders />,
             },
-            
+
             {
                 path: 'payment-success',
                 element: <PaymentSuccess />

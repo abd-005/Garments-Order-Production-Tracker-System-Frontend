@@ -47,7 +47,7 @@ const AddProductForm = () => {
             if (error) console.log('Error occurred from onSettled:', error);
         },
 
-        retry: 1, //retry 3 times to request in backend
+        retry: 3, //retry 3 times to request in backend
     });
 
 
@@ -109,7 +109,7 @@ const AddProductForm = () => {
     if (isPending) return <LoadingSpinner />;
     if (isError) return <ErrorPage />;
     return (
-        <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center bg-secondary p-6">
+        <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center bg-secondary/50 p-6">
             <h2>
                 Add Product
             </h2>

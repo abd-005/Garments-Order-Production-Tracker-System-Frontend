@@ -1,11 +1,11 @@
 import React from 'react';
 
 const PendingOrders = () => {
-    return (
-        <div>
-            PendingOrders
-        </div>
-    );
+  return (
+    <div>
+      Pending Orders
+    </div>
+  );
 };
 
 export default PendingOrders;
