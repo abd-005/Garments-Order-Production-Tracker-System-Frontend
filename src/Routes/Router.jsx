@@ -13,7 +13,11 @@ import AllProducts from "../Page/Home/AllProducts/AllProducts";
 import ProductDetails from "../Page/Dashboard/Common/ProductDetails";
 import ManageUsers from "../Page/Dashboard/Admin/ManageUsers";
 import MyOrders from "../Page/Dashboard/User/MyOrders";
-import PaymentSuccess from "../Page/Dashboard/Buyer/PaymentSuccess";
+import PaymentSuccess from "../Page/Dashboard/User/PaymentSuccess";
+import ManageProducts from "../Page/Dashboard/Manager/ManageProducts";
+import PendingOrders from "../Page/Dashboard/Manager/PendingOrders";
+import ApproveOrders from "../Page/Dashboard/Manager/ApproveOrders";
+import MyProfile from "../Page/Dashboard/Common/MyProfile";
 
 export const router = createBrowserRouter([
     {
@@ -70,11 +74,6 @@ export const router = createBrowserRouter([
                 element: <ManageUsers />
             },
             {
-                path: 'add-product',
-                element: <AddProduct />
-            },
-
-            {
                 path: 'all-orders',
                 element: <AllOrders />
             },
@@ -83,12 +82,33 @@ export const router = createBrowserRouter([
                 element: <AllProducts />
             },
             {
+                path: 'add-product',
+                element: <AddProduct />
+            },
+            {
+                path: 'manage-products',
+                element: <ManageProducts />,
+            },
+            {
+                path: 'pending-orders',
+                element: <PendingOrders />,
+            },
+            {
+                path: 'approve-orders',
+                element: <ApproveOrders />,
+            },
+            
+            {
                 path: 'payment-success',
-                element: <PaymentSuccess/>
+                element: <PaymentSuccess />
             },
             {
                 path: 'my-orders',
-                element: <MyOrders/>
+                element: <MyOrders />
+            },
+            {
+                path: 'profile',
+                element: <MyProfile />
             },
         ]
     }

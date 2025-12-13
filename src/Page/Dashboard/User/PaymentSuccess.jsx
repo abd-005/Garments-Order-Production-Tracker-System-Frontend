@@ -15,6 +15,8 @@ const PaymentSuccess = () => {
     if (sessionId) {
       axios.post(`${import.meta.env.VITE_API_URL}/payment-success`, {
         sessionId,
+      }).then( res => {
+        console.log(res.data)
       })
     }
   }, [sessionId])
