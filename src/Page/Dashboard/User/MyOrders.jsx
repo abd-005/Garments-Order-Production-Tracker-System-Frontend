@@ -42,11 +42,9 @@ const MyOrders = () => {
                     <th scope="col" className="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">Actions</th>
                   </tr>
                 </thead>
-                <tbody>
                   {orders.map(order => (
                     <CustomerOrderDataRow key={order._id} order={order} refetchOrders={refetch} />
                   ))}
-                </tbody>
               </table>
               {orders.length === 0 && (
                 <div className="p-6 text-center text-gray-600">You have no orders yet.</div>
