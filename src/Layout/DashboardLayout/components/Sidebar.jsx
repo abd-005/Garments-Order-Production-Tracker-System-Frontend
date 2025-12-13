@@ -25,7 +25,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     { path: '/dashboard/manage-products', label: 'Manage Products', icon: Package },
     { path: '/dashboard/all-products', label: 'All Products', icon: Store },
     { path: '/dashboard/pending-orders', label: 'Pending Orders', icon: ListChecks },
-    { path: '/dashboard/approve-orders', label: 'Approve Orders', icon: CheckCircle },
+    { path: '/dashboard/approved-orders', label: 'Approved Orders', icon: CheckCircle },
     { path: '/dashboard/all-orders', label: 'All Orders', icon: ClipboardList },
     { path: '/dashboard/my-orders', label: 'My Orders', icon: ShoppingCart },
     { path: '/dashboard/profile', label: 'My Profile', icon: User },

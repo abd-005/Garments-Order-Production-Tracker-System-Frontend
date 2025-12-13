@@ -9,7 +9,7 @@ import PendingOrderDataRow from './PendingOrderDataRow'
 
 const PendingOrders = () => {
   const { user } = useAuth()
-  console.log(user)
+
   const { data: orders = [], isLoading, refetch } = useQuery({
     queryKey: ['pending orders', user?.email],
     queryFn: async () => {
