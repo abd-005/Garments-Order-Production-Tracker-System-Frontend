@@ -2,7 +2,7 @@ import React from 'react'
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import { useForm } from 'react-hook-form'
 
-const RoleModal = ({ isOpen, closeModal, userData, onSave }) => {
+const RoleModal = ({ isOpen, closeModal, userData, onSave, user }) => {
     const { register, handleSubmit } = useForm({
         defaultValues: { role: userData?.role || 'user' },
     })
@@ -18,10 +18,15 @@ const RoleModal = ({ isOpen, closeModal, userData, onSave }) => {
                 <DialogPanel className="w-full max-w-md bg-white rounded-2xl p-6 shadow-lg">
                     <DialogTitle className="text-lg font-semibold text-gray-900">Update Role</DialogTitle>
 
+                    <div className="flex justify-end gap-3 mt-4">
+                        <p type="text" className="py-2">Applied for</p>
+                        <p type="text" className="px-2 py-2 rounded-md bg-secondary">{user?.appliedRole}</p>
+                    </div>
+
                     <form onSubmit={handleSubmit(submit)} className="mt-4 space-y-4">
                         <div>
                             <label className="block text-sm text-gray-700">Role</label>
-                            <select {...register('role')} className="w-full px-3 py-2 border rounded-md">
+                            <select {...register('role')} className="w-full px-3 py-2 border rounded-md cursor-pointer *:cursor-pointer" defaultValue={user?.appliedRole}>
                                 <option value="buyer">Buyer</option>
                                 <option value="manager">Manager</option>
                                 <option value="admin">Admin</option>
@@ -29,8 +34,8 @@ const RoleModal = ({ isOpen, closeModal, userData, onSave }) => {
                         </div>
 
                         <div className="flex justify-end gap-3 mt-4">
-                            <button type="button" onClick={closeModal} className="px-4 py-2 rounded-md border">Cancel</button>
-                            <button type="submit" className="px-4 py-2 rounded-md bg-primary text-white">Save</button>
+                            <button type="button" onClick={closeModal} className="px-4 py-2 rounded-md border cursor-pointer">Cancel</button>
+                            <button type="submit" className="px-4 py-2 rounded-md bg-primary text-white cursor-pointer">Save</button>
                         </div>
                     </form>
                 </DialogPanel>

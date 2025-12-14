@@ -18,6 +18,10 @@ import ManageProducts from "../Page/Dashboard/Manager/ManageProducts/ManageProdu
 import PendingOrders from "../Page/Dashboard/Manager/PendingOrders/PendingOrders";
 import ApproveOrders from "../Page/Dashboard/Manager/ApprovedOrders/ApprovedOrders";
 import MyProfile from "../Page/Dashboard/Common/MyProfile";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+import ManagerRoute from "./ManagerRoute";
+import BuyerRoute from "./BuyerRoute";
 
 export const router = createBrowserRouter([
     {
@@ -35,7 +39,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'product/:id',
-                element: <ProductDetails />,
+                element: <PrivateRoute>
+                    <ProductDetails />
+                </PrivateRoute>
             },
         ]
     },
@@ -63,52 +69,105 @@ export const router = createBrowserRouter([
     ,
     {
         path: "/dashboard",
-        element: <DashboardLayout></DashboardLayout>,
+        element:
+            <PrivateRoute>
+                <DashboardLayout />
+            </PrivateRoute>,
         children: [
             {
                 index: true,
-                element: <DashboardHome />
+                element: <PrivateRoute>
+                    <DashboardHome />
+                </PrivateRoute>
             },
             {
                 path: 'manage-users',
-                element: <ManageUsers />
+                element:
+                    <PrivateRoute>
+                        <AdminRoute>
+                            <ManageUsers />
+                        </AdminRoute>
+                    </PrivateRoute>
             },
             {
                 path: 'all-orders',
-                element: <AllOrders />
+                element:
+                    <PrivateRoute>
+                        <AdminRoute>
+                            <AllOrders />
+                        </AdminRoute>
+                    </PrivateRoute>
             },
             {
                 path: 'all-products',
-                element: <AllProducts />
+                element:
+                    <PrivateRoute>
+                        <AdminRoute>
+                            <AllProducts />
+                        </AdminRoute>
+                    </PrivateRoute>
             },
             {
                 path: 'add-product',
-                element: <AddProduct />
+                element:
+                    <PrivateRoute>
+                        <ManagerRoute>
+                            <AddProduct />
+                        </ManagerRoute>
+                    </PrivateRoute>
             },
             {
                 path: 'manage-products',
-                element: <ManageProducts />,
+                element:
+                    <PrivateRoute>
+                        <ManagerRoute>
+                            <ManageProducts />
+                        </ManagerRoute>
+                    </PrivateRoute>
             },
             {
                 path: 'pending-orders',
-                element: <PendingOrders />,
+                element:
+                    <PrivateRoute>
+                        <ManagerRoute>
+                            <PendingOrders />
+                        </ManagerRoute>
+                    </PrivateRoute>
             },
             {
                 path: 'approved-orders',
-                element: <ApproveOrders />,
+                element:
+                    <PrivateRoute>
+                        <ManagerRoute>
+                            <ApproveOrders />
+                        </ManagerRoute>
+                    </PrivateRoute>
             },
 
             {
                 path: 'payment-success',
-                element: <PaymentSuccess />
+                element:
+                    <PrivateRoute>
+                        <BuyerRoute>
+                            <PaymentSuccess />
+                        </BuyerRoute>
+                    </PrivateRoute>
             },
             {
                 path: 'my-orders',
-                element: <MyOrders />
+                element:
+                    <PrivateRoute>
+                        <BuyerRoute>
+                            <MyOrders />
+                        </BuyerRoute>
+                    </PrivateRoute>
             },
             {
                 path: 'profile',
-                element: <MyProfile />
+                element:
+                    <PrivateRoute>
+                        <MyProfile />
+                    </PrivateRoute>
             },
         ]
     }

@@ -72,7 +72,7 @@ const UserRow = ({ user, refetch }) => {
 
         <td className="px-5 py-5 border-b bg-white text-sm">
           <span className="inline-flex items-center px-2 py-1 rounded text-sm bg-gray-100 text-gray-800">
-            {user.role || 'buyer'}
+            {user.role || 'user'}
           </span>
         </td>
 
@@ -91,14 +91,14 @@ const UserRow = ({ user, refetch }) => {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setRoleOpen(true)}
-              className="px-3 py-1 bg-primary text-white rounded-md text-sm"
+              className="px-3 py-1 bg-primary text-white rounded-md text-sm cursor-pointer"
             >
               Update Role
             </button>
 
             <button
               onClick={() => setSuspendOpen(true)}
-              className={`px-3 py-1 rounded-md text-sm ${user.suspended?.status ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-700'}`}
+              className={`px-3 py-1 rounded-md text-sm cursor-pointer ${user.suspended?.status ? 'bg-yellow-100 text-yellow-800 "' : 'bg-red-100 text-red-700'}`}
             >
               {user.suspended?.status ? 'Edit Suspension' : 'Suspend'}
             </button>

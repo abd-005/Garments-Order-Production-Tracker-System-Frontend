@@ -27,22 +27,24 @@ const Register = () => {
   // console.log(watch("name")); // watch input value by passing the name of it
   console.log(errors)
   const onSubmit = async (data) => {
-    const { name, image, email, password , role } = data;
+    const { name, image, email, password, role } = data;
     const imageFile = image[0];
     console.log("data: ", data);
-    
+
     try {
       //1. Upload Image to imgbb
       const imageURL = await imageUpload(imageFile);
       console.log(imageURL)
       //2. User Registration
-      const result = await createUser(email, password , role)
+      const result = await createUser(email, password, role)
 
       await saveOrUpdateUser({
         name,
         email,
         appliedRole: role,
-        image: await imageURL
+        image: await imageURL,
+        isSuspended: false,
+
       });
 
       //3. Save username & profile photo
@@ -73,8 +75,9 @@ const Register = () => {
         name: user?.displayName,
         email: user?.email,
         image: await user?.photoURL,
-        appliedRole: "Buyer",
-        status : 'pending',
+        appliedRole: "buyer",
+        status: 'pending',
+        isSuspended: false,
       });
 
       navigate(from, { replace: true })
@@ -174,7 +177,7 @@ const Register = () => {
               {/* choose role */}
               <label className="label text-gray-700">Choose role</label>
               <select
-                defaultValue="Pick Role"
+                defaultValue="buyer"
                 className="select w-full outline-0 mt-2 border border-gray-300 p-2 rounded"
                 {...register("role", { required: "Role is required" })}
               >
@@ -228,10 +231,10 @@ const Register = () => {
             >
               {loading ? (
                 <TbFidgetSpinner className='animate-spin m-auto' />
-              ) : 
-              (
-                'Register'
-              )}
+              ) :
+                (
+                  'Register'
+                )}
             </button>
           </div>
         </form>
