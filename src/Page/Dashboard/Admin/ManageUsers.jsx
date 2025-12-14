@@ -40,8 +40,8 @@ const ManageUsers = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {users.map(u => (
-                                <UserRow key={u._id} userData={u} refetch={refetch} />
+                            {users.map(user => (
+                                <UserRow key={user._id} user={user} refetch={refetch} />
                             ))}
                         </tbody>
                     </table>

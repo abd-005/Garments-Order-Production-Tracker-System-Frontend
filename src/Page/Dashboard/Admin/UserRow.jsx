@@ -4,14 +4,18 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import RoleModal from './RoleModal'
 import SuspendModal from './SuspendModal'
+import useAxiosSecure from '../../../hooks/useAxiosSecure'
 
-const UserRow = ({ userData, refetch }) => {
+const UserRow = ({ user, refetch }) => {
   const [roleOpen, setRoleOpen] = useState(false)
   const [suspendOpen, setSuspendOpen] = useState(false)
+  const [role, setRole] = useState()
+  const axiosSecure = useAxiosSecure()
 
+  // update role by email
   const updateRoleMutation = useMutation({
-    mutationFn: async ({ id, role }) =>
-      await axios.patch(`${import.meta.env.VITE_API_URL}/users/role/${id}`, { role }),
+    mutationFn: async ({ role, email }) =>
+      await axiosSecure.patch(`${import.meta.env.VITE_API_URL}/update-role`, { role, email }),
     onSuccess: () => {
       toast.success('Role updated')
       refetch?.()
@@ -20,9 +24,10 @@ const UserRow = ({ userData, refetch }) => {
     onError: () => toast.error('Failed to update role'),
   })
 
+  // suspend/unsuspend by email
   const suspendMutation = useMutation({
-    mutationFn: async ({ id, suspended, payload }) =>
-      await axios.patch(`${import.meta.env.VITE_API_URL}/users/suspend/${id}`, { suspended, ...payload }),
+    mutationFn: async ({ email, suspended, payload }) =>
+      await axios.patch(`${import.meta.env.VITE_API_URL}/suspend-user`, { email, suspended, ...payload }),
     onSuccess: () => {
       toast.success('User suspension updated')
       refetch?.()
@@ -32,12 +37,19 @@ const UserRow = ({ userData, refetch }) => {
   })
 
   const handleRoleSave = (newRole) => {
-    updateRoleMutation.mutate({ id: userData._id, role: newRole })
+    if (!user?.email) {
+      toast.error('User email not available')
+      return
+    }
+    updateRoleMutation.mutate({ email: user.email, role: newRole })
   }
 
   const handleSuspend = (payload) => {
-    // payload: { suspended: true/false, reason, feedback }
-    suspendMutation.mutate({ id: userData._id, suspended: payload.suspended, payload })
+    if (!user?.email) {
+      toast.error('User email not available')
+      return
+    }
+    suspendMutation.mutate({ email: user.email, suspended: payload.suspended, payload })
   }
 
   return (
@@ -46,29 +58,29 @@ const UserRow = ({ userData, refetch }) => {
         <td className="px-5 py-5 border-b bg-white text-sm">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full overflow-hidden">
-              <img src={userData.image || '/avatar-placeholder.png'} alt={userData.name} className="w-full h-full object-cover" />
+              <img src={user.image || '/avatar-placeholder.png'} alt={user.name} className="w-full h-full object-cover" />
             </div>
             <div>
-              <p className="text-gray-900 font-medium">{userData.name || '—'}</p>
+              <p className="text-gray-900 font-medium">{user.name || '—'}</p>
             </div>
           </div>
         </td>
 
         <td className="px-5 py-5 border-b bg-white text-sm">
-          <p className="text-gray-900 break-all">{userData.email}</p>
+          <p className="text-gray-900 break-all">{user.email}</p>
         </td>
 
         <td className="px-5 py-5 border-b bg-white text-sm">
           <span className="inline-flex items-center px-2 py-1 rounded text-sm bg-gray-100 text-gray-800">
-            {userData.role || 'buyer'}
+            {user.role || 'buyer'}
           </span>
         </td>
 
         <td className="px-5 py-5 border-b bg-white text-sm">
-          {userData.suspended?.status ? (
+          {user.suspended?.status ? (
             <div>
               <div className="text-sm text-red-600 font-medium">Suspended</div>
-              <div className="text-xs text-gray-500 mt-1">By admin: {new Date(userData.suspended?.suspendedAt).toLocaleString()}</div>
+              <div className="text-xs text-gray-500 mt-1">By admin: {user.suspended?.suspendedAt ? new Date(user.suspended.suspendedAt).toLocaleString() : '—'}</div>
             </div>
           ) : (
             <div className="text-sm text-green-600 font-medium">Active</div>
@@ -86,9 +98,9 @@ const UserRow = ({ userData, refetch }) => {
 
             <button
               onClick={() => setSuspendOpen(true)}
-              className={`px-3 py-1 rounded-md text-sm ${userData.suspended?.status ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-700'}`}
+              className={`px-3 py-1 rounded-md text-sm ${user.suspended?.status ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-700'}`}
             >
-              {userData.suspended?.status ? 'Edit Suspension' : 'Suspend'}
+              {user.suspended?.status ? 'Edit Suspension' : 'Suspend'}
             </button>
           </div>
         </td>
@@ -97,14 +109,16 @@ const UserRow = ({ userData, refetch }) => {
       <RoleModal
         isOpen={roleOpen}
         closeModal={() => setRoleOpen(false)}
-        userData={userData}
+        user={user}
         onSave={handleRoleSave}
+        role={role}
+        setRole={setRole}
       />
 
       <SuspendModal
         isOpen={suspendOpen}
         closeModal={() => setSuspendOpen(false)}
-        userData={userData}
+        user={user}
         onSave={handleSuspend}
       />
     </>
