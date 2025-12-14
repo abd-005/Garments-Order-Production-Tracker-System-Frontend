@@ -13,7 +13,7 @@ const PendingOrders = () => {
   const { data: orders = [], isLoading, refetch } = useQuery({
     queryKey: ['pending orders', user?.email],
     queryFn: async () => {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/pending-orders/${user?.email}`)
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/pending-orders`)
       return res.data
     },
     enabled: !!user?.email,

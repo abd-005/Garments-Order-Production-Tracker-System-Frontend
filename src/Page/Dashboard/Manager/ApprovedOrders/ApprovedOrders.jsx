@@ -1,19 +1,19 @@
 import React from 'react'
-import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
 
 import Container from '../../../../Components/Shared/Container'
 import useAuth from '../../../../hooks/useAuth'
 import ApprovedOrderRowData from './ApprovedOrderRowData'
 import LoadingSpinner from '../../../../components/Shared/LoadingSpinner'
+import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 
 const ApprovedOrders = () => {
   const { user } = useAuth()
-
+  const axiosSecure = useAxiosSecure();
   const { data: orders = [], isLoading, refetch } = useQuery({
     queryKey: ['approved-orders', user?.email],
     queryFn: async () => {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/approved-orders/${user?.email}`)
+      const res = await axiosSecure(`${import.meta.env.VITE_API_URL}/approved-orders`)
       return res.data
     },
     enabled: !!user?.email,

@@ -5,15 +5,18 @@ import useAuth from '../../../../hooks/useAuth'
 import LoadingSpinner from '../../../../components/Shared/LoadingSpinner'
 import Container from '../../../../Components/Shared/Container'
 import ManagerProductsDataRow from './ManagerProductsDataRow'
+import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 
 const ManageProducts = () => {
   const { user } = useAuth()
   const [query, setQuery] = useState('')
+    const axiosSecure = useAxiosSecure();
+
 
   const { data: products = [], isLoading, refetch } = useQuery({
     queryKey: ['manager-products', user?.email],
     queryFn: async () => {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/manage-products/${user?.email}`)
+      const res = await axiosSecure(`${import.meta.env.VITE_API_URL}/manage-products`)
       return res.data
     },
     enabled: !!user?.email,
