@@ -30,7 +30,12 @@ const Login = () => {
     const { email, password } = data;
 
     try {
-      await signIn(email, password);
+      const {user} = await signIn(email, password);
+      await saveOrUpdateUser({
+        name: user?.displayName,
+        email: user?.email,
+        image: user?.photoURL,
+      })
       navigate(from, { replace: true });
       toast.success('Login Successful');
     } catch (err) {
@@ -46,8 +51,6 @@ const Login = () => {
       await saveOrUpdateUser({
         name: user?.displayName,
         email: user?.email,
-        role: 'buyer',
-        status: 'pending',
         image: user?.photoURL,
       });
 

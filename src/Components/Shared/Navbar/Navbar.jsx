@@ -12,7 +12,6 @@ import avatarImg from "../../../assets/img/User-Avatar.png";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-
   const handleLogout = () => {
     logOut();
     setIsOpen(false);

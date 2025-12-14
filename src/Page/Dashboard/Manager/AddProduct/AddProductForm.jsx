@@ -109,7 +109,7 @@ const AddProductForm = () => {
     if (isPending) return <LoadingSpinner />;
     if (isError) return <ErrorPage />;
     return (
-        <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center bg-secondary/50 p-6">
+        <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center p-6">
             <h2>
                 Add Product
             </h2>
