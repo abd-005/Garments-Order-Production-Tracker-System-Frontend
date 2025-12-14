@@ -5,9 +5,10 @@ import useAuth from '../../../hooks/useAuth'
 import avatarImg from '../../../assets/img/User-Avatar.png'
 import useRole from '../../../hooks/useRole'
 import useStatus from '../../../hooks/useStatus'
+import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
 
 const MyProfile = () => {
-    const { user,logOut } = useAuth()
+    const { user, logOut } = useAuth()
     const navigate = useNavigate()
     const [role, isRoleLoading] = useRole();
     const [status, isStatusLoading] = useStatus();
@@ -15,6 +16,7 @@ const MyProfile = () => {
         await logOut()
         navigate('/auth/login')
     }
+    if(isRoleLoading) return <LoadingSpinner />
 
     return (
         <div className="flex justify-center items-center py-10">
@@ -22,7 +24,7 @@ const MyProfile = () => {
             </div>
             {/* Profile Content */}
             <div className="mt-16 px-6 pb-8 text-center">
-                
+
                 {/* Profile Image */}
                 <div className="flex items-center justify-center">
                     <img
@@ -33,14 +35,14 @@ const MyProfile = () => {
                 </div>
                 <div className='flex items-center justify-center my-3'>
                     {/* Role Badge */}
-                <span className="inline-block bg-primary text-white px-4 py-1 rounded-full text-xs font-medium">
-                    {role}
-                </span>
-                {/* Status Badge */}
-                <span className={status === "pending"&&`inline-block bg-warning text-white px-4 py-1 rounded-full text-xs font-medium ml-3`}>
-                    {status === "pending" && `Status: ${status}`}
-                </span>
-                {/* Name + Email */}
+                    <span className="inline-block bg-primary text-white px-4 py-1 rounded-full text-xs font-medium">
+                        {role}
+                    </span>
+                    {/* Status Badge */}
+                    <span className={status === "pending" && `inline-block bg-warning text-white px-4 py-1 rounded-full text-xs font-medium ml-3`}>
+                        {status === "pending" && `Status: ${status}`}
+                    </span>
+                    {/* Name + Email */}
                 </div>
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
                     <div className="bg-secondary p-4 rounded-lg border">
