@@ -1,4 +1,3 @@
-// src/pages/Login.jsx
 import { Link, Navigate, useLocation, useNavigate } from 'react-router';
 import { FcGoogle } from 'react-icons/fc';
 import { useForm } from 'react-hook-form';
