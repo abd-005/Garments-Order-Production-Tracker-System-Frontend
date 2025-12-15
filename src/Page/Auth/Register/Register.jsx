@@ -117,8 +117,8 @@ const Register = () => {
                 {...register('name', {
                   required: 'Name is required',
                   maxLength: {
-                    value: 20,
-                    message: 'Name must be less than 20 characters'
+                    value: 30,
+                    message: 'Name must be less than 30 characters'
                   }
                 })}
               />

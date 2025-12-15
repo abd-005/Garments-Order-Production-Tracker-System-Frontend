@@ -1,13 +1,13 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import UserRow from './UserRow'
-import useAxiosSecure from '../../../hooks/useAxiosSecure'
-import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
-import useAuth from '../../../hooks/useAuth'
+import useAxiosSecure from '../../../../hooks/useAxiosSecure'
+import LoadingSpinner from '../../../../components/Shared/LoadingSpinner'
+import useAuth from '../../../../hooks/useAuth'
 
 const ManageUsers = () => {
     const { user } = useAuth()
-    const axiosSecure  = useAxiosSecure();
+    const axiosSecure = useAxiosSecure();
     const { data: users = [], isLoading, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {

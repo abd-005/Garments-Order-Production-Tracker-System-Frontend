@@ -4,7 +4,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import RoleModal from './RoleModal'
 import SuspendModal from './SuspendModal'
-import useAxiosSecure from '../../../hooks/useAxiosSecure'
+import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 
 const UserRow = ({ user, refetch }) => {
   const [roleOpen, setRoleOpen] = useState(false)

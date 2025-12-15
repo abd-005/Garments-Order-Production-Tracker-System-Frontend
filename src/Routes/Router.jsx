@@ -11,7 +11,6 @@ import AllOrders from "../Page/Dashboard/Admin/AllOrders";
 import AddProduct from "../Page/Dashboard/Manager/AddProduct/AddProduct";
 import AllProducts from "../Page/Home/AllProducts/AllProducts";
 import ProductDetails from "../Page/Dashboard/Common/ProductDetails";
-import ManageUsers from "../Page/Dashboard/Admin/ManageUsers";
 import MyOrders from "../Page/Dashboard/User/MyOrders";
 import PaymentSuccess from "../Page/Dashboard/User/PaymentSuccess";
 import ManageProducts from "../Page/Dashboard/Manager/ManageProducts/ManageProducts";
@@ -22,6 +21,8 @@ import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import ManagerRoute from "./ManagerRoute";
 import BuyerRoute from "./BuyerRoute";
+import AllAdminProducts from "../Page/Dashboard/Admin/AllAdminProducts/AllAdminProducts";
+import ManageUsers from "../Page/Dashboard/Admin/ManageUsers/ManageUsers";
 
 export const router = createBrowserRouter([
     {
@@ -103,7 +104,7 @@ export const router = createBrowserRouter([
                 element:
                     <PrivateRoute>
                         <AdminRoute>
-                            <AllProducts />
+                            <AllAdminProducts />
                         </AdminRoute>
                     </PrivateRoute>
             },
