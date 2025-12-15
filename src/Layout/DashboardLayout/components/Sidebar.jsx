@@ -65,9 +65,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   }, [role, status, user, isRoleLoading, isStatusLoading])
 
   const isActive = (path) => location.pathname === path
-  if(isRoleLoading) return <LoadingSpinner></LoadingSpinner>
+  if (isRoleLoading) return <LoadingSpinner></LoadingSpinner>
   return (
-    <ul className="menu w-full grow"> 
+    <ul className="menu w-full grow">
       <X onClick={() => setSidebarOpen(!sidebarOpen)} className="ml-2 lg:hidden text-red-400" />
       <Link
         to="/"
@@ -81,11 +81,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         <li key={path}>
           <Link
             to={path}
-            className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
-              isActive(path)
+            className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${isActive(path)
                 ? 'bg-primary/10 border-l-4 border-primary/60 text-primary'
                 : 'text-primary/80 hover:bg-primary/5'
-            }`}
+              }`}
           >
             <Icon size={18} />
             {sidebarOpen && <span className="text-sm font-medium">{label}</span>}

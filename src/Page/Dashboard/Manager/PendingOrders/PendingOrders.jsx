@@ -5,15 +5,18 @@ import useAuth from '../../../../hooks/useAuth'
 import LoadingSpinner from '../../../../components/Shared/LoadingSpinner'
 import Container from '../../../../Components/Shared/Container'
 import PendingOrderDataRow from './PendingOrderDataRow'
+import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 
 
 const PendingOrders = () => {
   const { user } = useAuth()
+    const AxiosSecure = useAxiosSecure()
+  
 
   const { data: orders = [], isLoading, refetch } = useQuery({
     queryKey: ['pending orders', user?.email],
     queryFn: async () => {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/pending-orders`)
+      const res = await AxiosSecure.get(`${import.meta.env.VITE_API_URL}/pending-orders`)
       return res.data
     },
     enabled: !!user?.email,

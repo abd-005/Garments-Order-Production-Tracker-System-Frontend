@@ -4,14 +4,16 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import OrderDetailsModal from '../../User/OrderDetailsModal'
 import ConfirmModal from '../../User/ConfirmModal'
+import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 
 const PendingOrderDataRow = ({ order, refetch }) => {
   const [detailsOpen, setDetailsOpen] = useState(false)
   const [confirmOpen, setConfirmOpen] = useState(false)
-  const [confirmAction, setConfirmAction] = useState(null) // 'approve' | 'reject'
+  const [confirmAction, setConfirmAction] = useState(null) 
+    const AxiosSecure = useAxiosSecure()
 
   const approveMutation = useMutation({
-    mutationFn: async (id) => await axios.patch(`${import.meta.env.VITE_API_URL}/orders/approve/${id}`),
+    mutationFn: async (id) => await AxiosSecure.patch(`${import.meta.env.VITE_API_URL}/orders/approve/${id}`),
     onSuccess: () => {
       toast.success('Order approved')
       refetch?.()
@@ -20,7 +22,7 @@ const PendingOrderDataRow = ({ order, refetch }) => {
   })
 
   const rejectMutation = useMutation({
-    mutationFn: async (id) => await axios.patch(`${import.meta.env.VITE_API_URL}/orders/reject/${id}`),
+    mutationFn: async (id) => await AxiosSecure.patch(`${import.meta.env.VITE_API_URL}/orders/reject/${id}`),
     onSuccess: () => {
       toast.success('Order rejected')
       refetch?.()

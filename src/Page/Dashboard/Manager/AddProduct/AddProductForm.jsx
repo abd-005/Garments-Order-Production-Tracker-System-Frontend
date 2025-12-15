@@ -7,9 +7,12 @@ import { useMutation } from '@tanstack/react-query';
 import LoadingSpinner from '../../../../components/Shared/LoadingSpinner';
 import ErrorPage from '../../../ErrorPage';
 import Container from '../../../../Components/Shared/Container';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 
 const AddProductForm = () => {
     const { user } = useAuth();
+      const AxiosSecure = useAxiosSecure()
+
     // useMutation hook useCase (POST || PUT || PATCH || DELETE)
     const {
         isPending,
@@ -18,7 +21,7 @@ const AddProductForm = () => {
         reset: mutationReset,
     } = useMutation({
         mutationFn: async payload =>
-            await axios.post(`${import.meta.env.VITE_API_URL}/products`, payload),
+            await AxiosSecure.post(`${import.meta.env.VITE_API_URL}/products`, payload),
 
         onSuccess: data => {
             console.log('Product added successfully:', data);

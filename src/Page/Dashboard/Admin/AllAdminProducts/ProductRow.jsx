@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router'
 import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
 import toast from 'react-hot-toast'
 import ConfirmDeleteModal from './ConfirmDeleteModal'
+import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 
 const ProductRow = ({ product, refetch }) => {
   const [deleteOpen, setDeleteOpen] = useState(false)
+    const AxiosSecure = useAxiosSecure()
+
 
   const toggleHomeMutation = useMutation({
     mutationFn: async ({ id, value }) =>
-      await axios.patch(`${import.meta.env.VITE_API_URL}/product/show-home/${id}`, { showOnHome: value }),
+      await AxiosSecure.patch(`${import.meta.env.VITE_API_URL}/product/show-home/${id}`, { showOnHome: value }),
     onSuccess: () => {
       toast.success('Updated Home Page visibility')
       refetch?.()
@@ -20,7 +22,7 @@ const ProductRow = ({ product, refetch }) => {
 
   const deleteMutation = useMutation({
     mutationFn: async (id) =>
-      await axios.delete(`${import.meta.env.VITE_API_URL}/product/${id}`),
+      await AxiosSecure.delete(`${import.meta.env.VITE_API_URL}/product/${id}`),
     onSuccess: () => {
       toast.success('Product deleted')
       refetch?.()

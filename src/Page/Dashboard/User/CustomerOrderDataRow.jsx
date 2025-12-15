@@ -5,13 +5,16 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import OrderDetailsModal from './OrderDetailsModal'
 import ConfirmModal from './ConfirmModal'
+import useAxiosSecure from '../../../hooks/useAxiosSecure'
 
 const CustomerOrderDataRow = ({ order, refetchOrders }) => {
   const [detailsOpen, setDetailsOpen] = useState(false)
   const [confirmOpen, setConfirmOpen] = useState(false)
+    const AxiosSecure = useAxiosSecure()
+  
 
   const cancelMutation = useMutation({
-    mutationFn: async (orderId) => await axios.patch(`${import.meta.env.VITE_API_URL}/orders/cancel/${orderId}`),
+    mutationFn: async (orderId) => await AxiosSecure.patch(`${import.meta.env.VITE_API_URL}/orders/cancel/${orderId}`),
     onSuccess: () => {
       toast.success('Order cancelled')
       refetchOrders?.()

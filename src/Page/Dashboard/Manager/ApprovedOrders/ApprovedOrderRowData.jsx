@@ -5,15 +5,18 @@ import toast from 'react-hot-toast'
 import TrackingModal from './TrackingModal'
 import TrackingTimelineModal from './TrackingTimelineModal'
 import ConfirmModal from '../../User/ConfirmModal'
+import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 
 const ApprovedOrderRowData = ({ order, refetch }) => {
   const [addOpen, setAddOpen] = useState(false)
   const [timelineOpen, setTimelineOpen] = useState(false)
   const [confirmOpen, setConfirmOpen] = useState(false)
+    const AxiosSecure = useAxiosSecure()
+
 
   const addTrackingMutation = useMutation({
     mutationFn: async ({ orderId, entry }) =>
-      await axios.post(`${import.meta.env.VITE_API_URL}/orders/${orderId}/tracking`, entry),
+      await AxiosSecure.post(`${import.meta.env.VITE_API_URL}/orders/${orderId}/tracking`, entry),
     onSuccess: () => {
       toast.success('Tracking update added')
       refetch?.()
@@ -90,13 +93,13 @@ const ApprovedOrderRowData = ({ order, refetch }) => {
         description="Mark this order as delivered? This will set final tracking status to 'Out for Delivery' and close the order."
         onConfirm={async () => {
           try {
-            await axios.patch(`${import.meta.env.VITE_API_URL}/orders/${order._id}/tracking`, {
+            await AxiosSecure.patch(`${import.meta.env.VITE_API_URL}/orders/${order._id}/tracking`, {
               status: 'Out for Delivery',
               note: 'Marked delivered by manager',
               location: 'N/A',
               timestamp: new Date().toISOString(),
             })
-            await axios.patch(`${import.meta.env.VITE_API_URL}/orders/close/${order._id}`)
+            await AxiosSecure.patch(`${import.meta.env.VITE_API_URL}/orders/close/${order._id}`)
             toast.success('Order marked delivered')
             refetch?.()
             setConfirmOpen(false)

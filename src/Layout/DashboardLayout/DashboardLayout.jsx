@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import Header from './components/Header'
-import Sidebar from './components/Sidebar'
 import Footer from './components/Footer'
 import { Outlet } from 'react-router'
-import Container from '../../Components/Shared/Container'
+import Sidebar from './components/Sidebar'
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);

@@ -27,7 +27,7 @@ const UserRow = ({ user, refetch }) => {
   // suspend/unsuspend by email
   const suspendMutation = useMutation({
     mutationFn: async ({ email, suspended, payload }) =>
-      await axios.patch(`${import.meta.env.VITE_API_URL}/suspend-user`, { email, suspended, ...payload }),
+      await axiosSecure.patch(`${import.meta.env.VITE_API_URL}/suspend-user`, { email, suspended, ...payload }),
     onSuccess: () => {
       toast.success('User suspension updated')
       refetch?.()

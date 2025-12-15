@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router'
 import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
 import PurchaseModal from '../../../Components/Modal/PurchaseModal'
 import Container from '../../../Components/Shared/Container'
@@ -14,22 +13,25 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+import useAxiosSecure from '../../../hooks/useAxiosSecure'
 
 const ProductDetails = () => {
     const [isOpen, setIsOpen] = useState(false)
     const { id } = useParams()
     // const navigate = useNavigate()
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    const AxiosSecure = useAxiosSecure()
 
 
-    const { 
+
+    const {
         data: product = {},
         isLoading,
         // refetch
     } = useQuery({
         queryKey: ['product', id],
         queryFn: async () => {
-            const result = await axios(`${import.meta.env.VITE_API_URL}/product/${id}`)
+            const result = await AxiosSecure(`${import.meta.env.VITE_API_URL}/product/${id}`)
             return result.data
         },
     })

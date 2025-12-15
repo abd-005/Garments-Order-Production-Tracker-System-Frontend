@@ -1,6 +1,5 @@
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import { useForm } from 'react-hook-form'
-import axios from 'axios'
 import useAuth from '../../hooks/useAuth'
 import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
@@ -10,9 +9,13 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 import Swal from 'sweetalert2'
 import 'swiper/css'
+import useAxiosSecure from '../../hooks/useAxiosSecure'
 
 const PurchaseModal = ({ closeModal, isOpen, product }) => {
     const { user } = useAuth()
+    const AxiosSecure = useAxiosSecure()
+
+
     const navigate = useNavigate()
     const {
         _id,
@@ -51,7 +54,7 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
     const orderPrice = Number((orderQuantity * (price || 0)).toFixed(2))
 
     const bookingMutation = useMutation({
-        mutationFn: async (payload) => await axios.post(`${import.meta.env.VITE_API_URL}/create-checkout-session`, payload),
+        mutationFn: async (payload) => await AxiosSecure.post(`${import.meta.env.VITE_API_URL}/create-checkout-session`, payload),
         onSuccess: () => {
             toast.success('Booking saved')
         },
@@ -97,7 +100,7 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
         }
         try {
             if (paymentOption === 'PayFirst') {
-                const { data } = await axios.post(
+                const { data } = await AxiosSecure.post(
                     `${import.meta.env.VITE_API_URL}/create-checkout-session`,
                     {
                         ...bookingPayload,

@@ -4,12 +4,15 @@ import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import ConfirmModal from '../../User/ConfirmModal'
+import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 
 const ManagerProductsDataRow = ({ product, refetchProducts }) => {
   const [confirmOpen, setConfirmOpen] = useState(false)
+    const AxiosSecure = useAxiosSecure()
+  
 
   const deleteMutation = useMutation({
-    mutationFn: async (id) => await axios.delete(`${import.meta.env.VITE_API_URL}/products/${id}`),
+    mutationFn: async (id) => await AxiosSecure.delete(`${import.meta.env.VITE_API_URL}/products/${id}`),
     onSuccess: () => {
       toast.success('Product deleted')
       refetchProducts?.()

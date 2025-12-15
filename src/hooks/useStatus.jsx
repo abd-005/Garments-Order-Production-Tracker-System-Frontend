@@ -10,7 +10,7 @@ const useStatus = () => {
     enabled: !loading && !!user?.email,
     queryKey: ['status', user?.email],
     queryFn: async () => {
-      const result = await axiosSecure(`/user/role`)
+      const result = await axiosSecure(`user/role`)
       console.log(result)
       return result.data.status
     },
