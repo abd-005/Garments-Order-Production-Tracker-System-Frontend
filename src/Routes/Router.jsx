@@ -7,7 +7,7 @@ import Login from "../Page/Auth/Login/Login";
 import ErrorPage from "../Page/ErrorPage";
 import DashboardLayout from "../Layout/DashboardLayout/DashboardLayout";
 import DashboardHome from "../Page/Dashboard/Common/DashboardHome";
-import AllOrders from "../Page/Dashboard/Admin/AllOrders";
+import AllOrders from "../Page/Dashboard/Admin/AllOrders/AllOrders";
 import AddProduct from "../Page/Dashboard/Manager/AddProduct/AddProduct";
 import AllProducts from "../Page/Home/AllProducts/AllProducts";
 import ProductDetails from "../Page/Dashboard/Common/ProductDetails";
