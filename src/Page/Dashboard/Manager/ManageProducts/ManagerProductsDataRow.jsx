@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import ConfirmModal from '../../User/ConfirmModal'
+import ConfirmModal from '../../Buyer/ConfirmModal'
 import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 
 const ManagerProductsDataRow = ({ product, refetchProducts }) => {

@@ -22,7 +22,6 @@ const Login = () => {
   } = useForm();
   
 
-  if (loading) return <LoadingSpinner />
   if (user) return <Navigate to={from} replace={true} />
 
   const onSubmit = async (data) => {

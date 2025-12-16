@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import OrderDetailsModal from '../../User/OrderDetailsModal'
-import ConfirmModal from '../../User/ConfirmModal'
+import OrderDetailsModal from '../../Buyer/OrderDetailsModal'
+import ConfirmModal from '../../Buyer/ConfirmModal'
 import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 
 const PendingOrderDataRow = ({ order, refetch }) => {

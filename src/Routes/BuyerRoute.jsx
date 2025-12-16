@@ -8,7 +8,7 @@ const BuyerRoute = ({ children }) => {
     const [status, isStatusLoading] = useStatus()
     
 
-    if (isRoleLoading) return <LoadingSpinner />
+    if (isRoleLoading || isStatusLoading) return <LoadingSpinner />
     if (role === 'buyer' && status === "approved") return children
     return <Navigate to='/' replace='true' />
 }

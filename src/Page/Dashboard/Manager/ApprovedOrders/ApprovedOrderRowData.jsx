@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
 import toast from 'react-hot-toast'
 import TrackingModal from './TrackingModal'
 import TrackingTimelineModal from './TrackingTimelineModal'
-import ConfirmModal from '../../User/ConfirmModal'
+import ConfirmModal from '../../Buyer/ConfirmModal'
 import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 
 const ApprovedOrderRowData = ({ order, refetch }) => {

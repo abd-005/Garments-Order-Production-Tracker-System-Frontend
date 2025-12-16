@@ -5,10 +5,6 @@ import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router'
 import { TbFidgetSpinner } from 'react-icons/tb'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay } from 'swiper/modules'
-import Swal from 'sweetalert2'
-import 'swiper/css'
 import useAxiosSecure from '../../hooks/useAxiosSecure'
 
 const PurchaseModal = ({ closeModal, isOpen, product }) => {
@@ -108,13 +104,20 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
                     }
                 )
                 console.log(data.url)
-                window.location.href = data.url // redirect user to respected url window
+                window.location.href = data.url
                 return
             }
+            if (paymentOption === 'Cash on Delivery') {
+                const { data } = await AxiosSecure.post(
+                    `${import.meta.env.VITE_API_URL}/cod-order`,
+                    bookingPayload
+                )
 
-            await bookingMutation.mutateAsync(bookingPayload)
-            closeModal()
-            navigate('/dashboard/my-orders')
+                toast.success("Order placed successfully")
+                closeModal()
+                navigate('/dashboard/my-orders')
+                return
+            }
         } catch (err) {
             console.log(err)
             toast.error('Something went wrong')

@@ -8,7 +8,7 @@ const ManagerRoute = ({ children }) => {
     const [status, isStatusLoading] = useStatus()
     
 
-    if (isRoleLoading) return <LoadingSpinner />
+    if (isRoleLoading || isStatusLoading) return <LoadingSpinner />
     if (role === 'manager' && status === "approved") return children
     return <Navigate to='/' replace='true' />
 }

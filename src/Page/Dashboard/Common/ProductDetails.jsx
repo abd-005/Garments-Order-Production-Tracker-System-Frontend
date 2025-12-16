@@ -55,6 +55,7 @@ const ProductDetails = () => {
         paymentOption,
         features,
     } = product
+    console.log(product)
 
     return (
         <div className='bg-secondary/30'>

@@ -11,8 +11,8 @@ import AllOrders from "../Page/Dashboard/Admin/AllOrders/AllOrders";
 import AddProduct from "../Page/Dashboard/Manager/AddProduct/AddProduct";
 import AllProducts from "../Page/Home/AllProducts/AllProducts";
 import ProductDetails from "../Page/Dashboard/Common/ProductDetails";
-import MyOrders from "../Page/Dashboard/User/MyOrders";
-import PaymentSuccess from "../Page/Dashboard/User/PaymentSuccess";
+import MyOrders from "../Page/Dashboard/Buyer/MyOrders";
+import PaymentSuccess from "../Page/Dashboard/Buyer/PaymentSuccess";
 import ManageProducts from "../Page/Dashboard/Manager/ManageProducts/ManageProducts";
 import PendingOrders from "../Page/Dashboard/Manager/PendingOrders/PendingOrders";
 import ApproveOrders from "../Page/Dashboard/Manager/ApprovedOrders/ApprovedOrders";
@@ -23,6 +23,7 @@ import ManagerRoute from "./ManagerRoute";
 import BuyerRoute from "./BuyerRoute";
 import AllAdminProducts from "../Page/Dashboard/Admin/AllAdminProducts/AllAdminProducts";
 import ManageUsers from "../Page/Dashboard/Admin/ManageUsers/ManageUsers";
+import TrackOrder from "../Page/Dashboard/Buyer/TrackOrder";
 
 export const router = createBrowserRouter([
     {
@@ -151,9 +152,7 @@ export const router = createBrowserRouter([
                 path: 'payment-success',
                 element:
                     <PrivateRoute>
-                        <BuyerRoute>
                             <PaymentSuccess />
-                        </BuyerRoute>
                     </PrivateRoute>
             },
             {
@@ -162,6 +161,15 @@ export const router = createBrowserRouter([
                     <PrivateRoute>
                         <BuyerRoute>
                             <MyOrders />
+                        </BuyerRoute>
+                    </PrivateRoute>
+            },
+            {
+                path: 'track-order',
+                element:
+                    <PrivateRoute>
+                        <BuyerRoute>
+                            <TrackOrder />
                         </BuyerRoute>
                     </PrivateRoute>
             },
