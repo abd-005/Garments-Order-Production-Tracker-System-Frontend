@@ -14,7 +14,7 @@ const AllAdminProducts = () => {
     const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['all-products'],
         queryFn: async () => {
-            const res = await AxiosSecure(`${import.meta.env.VITE_API_URL}/all-products`)
+            const res = await AxiosSecure.patch(`${import.meta.env.VITE_API_URL}/all-products`)
             return res.data
         },
         enabled: role === 'admin',

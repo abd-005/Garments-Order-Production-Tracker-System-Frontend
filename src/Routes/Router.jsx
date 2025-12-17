@@ -165,7 +165,7 @@ export const router = createBrowserRouter([
                     </PrivateRoute>
             },
             {
-                path: 'track-order',
+                path: 'track-order/:orderId',
                 element:
                     <PrivateRoute>
                         <BuyerRoute>

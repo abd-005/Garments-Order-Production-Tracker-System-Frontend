@@ -91,6 +91,12 @@ const CustomerOrderDataRow = ({ order, refetchOrders }) => {
             >
               Product
             </Link>
+            <Link
+              to={`/dashboard/track-order/${_id}`}
+              className="px-3 py-1 border rounded-md text-sm text-gray-700 hover:bg-gray-50"
+            >
+              Track Order
+            </Link>
           </div>
         </td>
       </tr>

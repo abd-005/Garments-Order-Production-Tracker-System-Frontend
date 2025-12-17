@@ -1,4 +1,3 @@
-// src/components/Shared/Navbar/Navbar.jsx
 import React, { useState } from "react";
 import { TiThMenu } from "react-icons/ti";
 import { Link, NavLink } from "react-router";
