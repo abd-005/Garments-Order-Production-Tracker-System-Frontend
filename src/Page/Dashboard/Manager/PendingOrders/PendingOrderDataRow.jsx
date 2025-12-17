@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
 import toast from 'react-hot-toast'
 import OrderDetailsModal from '../../Buyer/OrderDetailsModal'
 import ConfirmModal from '../../Buyer/ConfirmModal'
@@ -9,34 +8,34 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 const PendingOrderDataRow = ({ order, refetch }) => {
   const [detailsOpen, setDetailsOpen] = useState(false)
   const [confirmOpen, setConfirmOpen] = useState(false)
-  const [confirmAction, setConfirmAction] = useState(null) 
-    const AxiosSecure = useAxiosSecure()
+  const [confirmAction, setConfirmAction] = useState(null)
+  const axiosSecure = useAxiosSecure()
 
-  const approveMutation = useMutation({
-    mutationFn: async (id) => await AxiosSecure.patch(`${import.meta.env.VITE_API_URL}/orders/approve/${id}`),
-    onSuccess: () => {
-      toast.success('Order approved')
+  const updateStatusMutation = useMutation({
+    mutationFn: async ({ id, status }) => {
+      return await axiosSecure.patch(`${import.meta.env.VITE_API_URL}/order/${id}/status`, { status })
+    },
+    onSuccess: (_, variables) => {
+      const verb = variables.status === 'approved' ? 'approved' : 'rejected'
+      toast.success(`Order ${verb}`)
       refetch?.()
     },
-    onError: () => toast.error('Failed to approve order'),
-  })
-
-  const rejectMutation = useMutation({
-    mutationFn: async (id) => await AxiosSecure.patch(`${import.meta.env.VITE_API_URL}/orders/reject/${id}`),
-    onSuccess: () => {
-      toast.success('Order rejected')
-      refetch?.()
+    onError: (err) => {
+      console.error(err)
+      toast.error('Failed to update order status')
     },
-    onError: () => toast.error('Failed to reject order'),
   })
 
   const handleConfirm = async () => {
-    if (confirmAction === 'approve') {
-      await approveMutation.mutateAsync(order._id)
-    } else if (confirmAction === 'reject') {
-      await rejectMutation.mutateAsync(order._id)
+    if (!confirmAction) return
+    const status = confirmAction === 'approve' ? 'approved' : 'rejected'
+    try {
+      await updateStatusMutation.mutateAsync({ id: order._id, status })
+    } catch (err) {
+      // error handled in onError
+    } finally {
+      setConfirmOpen(false)
     }
-    setConfirmOpen(false)
   }
 
   return (
@@ -72,7 +71,9 @@ const PendingOrderDataRow = ({ order, refetch }) => {
         </td>
 
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <p className="text-gray-900">{new Date(order.createdAt || order._id?.slice(0,8) ? undefined : Date.now()).toLocaleString()}</p>
+          <p className="text-gray-900">
+            {order.createdAt ? new Date(order.createdAt).toLocaleString() : new Date().toLocaleString()}
+          </p>
         </td>
 
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
