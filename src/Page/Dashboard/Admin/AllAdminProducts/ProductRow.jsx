@@ -1,4 +1,3 @@
-// src/Page/Dashboard/AllProducts/ProductRow.jsx
 import React, { useState } from 'react'
 import { Link } from 'react-router'
 import { useMutation } from '@tanstack/react-query'
