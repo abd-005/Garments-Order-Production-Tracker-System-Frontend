@@ -24,6 +24,7 @@ import BuyerRoute from "./BuyerRoute";
 import AllAdminProducts from "../Page/Dashboard/Admin/AllAdminProducts/AllAdminProducts";
 import ManageUsers from "../Page/Dashboard/Admin/ManageUsers/ManageUsers";
 import TrackOrder from "../Page/Dashboard/Buyer/TrackOrder";
+import TrackOrderList from "../Page/Dashboard/Buyer/TrackOrderList";
 
 export const router = createBrowserRouter([
     {
@@ -42,9 +43,7 @@ export const router = createBrowserRouter([
             {
                 path: 'product/:id',
                 element: <PrivateRoute>
-                    <BuyerRoute>
                     <ProductDetails />
-                    </BuyerRoute>
                 </PrivateRoute>
             },
         ]
@@ -161,6 +160,15 @@ export const router = createBrowserRouter([
                     <PrivateRoute>
                         <BuyerRoute>
                             <MyOrders />
+                        </BuyerRoute>
+                    </PrivateRoute>
+            },
+            {
+                path: 'track-order',
+                element:
+                    <PrivateRoute>
+                        <BuyerRoute>
+                            <TrackOrderList />
                         </BuyerRoute>
                     </PrivateRoute>
             },

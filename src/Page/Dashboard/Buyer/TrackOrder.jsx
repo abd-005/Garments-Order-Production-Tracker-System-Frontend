@@ -11,7 +11,7 @@ const TrackOrder = () => {
   const { data: order = null, isLoading, isError } = useQuery({
     queryKey: ['track-order', orderId],
     queryFn: async () => {
-      const res = await axiosSecure.get(`${import.meta.env.VITE_API_URL}/track-order/${orderId}`)
+      const res = await axiosSecure.get(`${import.meta.env.VITE_API_URL}/orders/${orderId}`)
       return res.data
     },
     enabled: !!orderId,
@@ -150,29 +150,6 @@ const TrackOrder = () => {
             </ul>
           )}
         </div>
-
-        {/* Map / Summary */}
-        <aside className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-lg font-semibold mb-4">Current Location</h3>
-
-          <div className="w-full h-64 bg-gray-100 rounded flex items-center justify-center text-gray-500">
-            Map placeholder — integrate Leaflet or Google Maps here and feed it the latest location
-          </div>
-
-          <div className="mt-6">
-            <h4 className="text-sm font-medium">Latest Update</h4>
-            {latest ? (
-              <div className="mt-2 text-sm text-gray-700">
-                <div className="font-medium">{latest.status}</div>
-                <div className="text-xs text-gray-500">{new Date(latest.timestamp).toLocaleString()}</div>
-                {latest.location && <div className="text-xs text-gray-600 mt-1">Location: {latest.location}</div>}
-                {latest.note && <div className="text-xs text-gray-600 mt-1">Note: {latest.note}</div>}
-              </div>
-            ) : (
-              <div className="text-sm text-gray-500">No updates yet.</div>
-            )}
-          </div>
-        </aside>
       </div>
     </div>
   )

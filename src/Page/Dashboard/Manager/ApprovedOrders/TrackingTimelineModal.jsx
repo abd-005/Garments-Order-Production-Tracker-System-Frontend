@@ -1,45 +1,65 @@
-import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import React from 'react'
+import { Dialog } from '@headlessui/react'
+import { useQuery } from '@tanstack/react-query'
+import useAxiosSecure from '../../../../hooks/useAxiosSecure'
+
+const TimelineItem = ({ log }) => (
+  <div className="mb-4">
+    <div className="flex items-start gap-3">
+      <div className="w-2 h-2 rounded-full bg-primary mt-2" />
+      <div>
+        <div className="text-sm font-medium">{log.status}</div>
+        <div className="text-xs text-gray-500">{log.location || '—'}</div>
+        <div className="text-sm">{log.note || ''}</div>
+        <div className="text-xs text-gray-400 mt-1">{new Date(log.timestamp || log.createdAt).toLocaleString()}</div>
+      </div>
+    </div>
+  </div>
+)
 
 const TrackingTimelineModal = ({ isOpen, closeModal, order }) => {
-  const tracking = Array.isArray(order.tracking) ? order.tracking : []
+  const axiosSecure = useAxiosSecure()
+  const orderId = order?._id
 
-  const sorted = [...tracking].sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
+  const { data, isLoading } = useQuery({
+    queryKey: ['order-tracking', orderId],
+    queryFn: async () => {
+      if (!orderId) return { logs: [] }
+      const res = await axiosSecure.get(`${import.meta.env.VITE_API_URL}/orders/${orderId}/tracking`)
+      return res.data
+    },
+    enabled: !!orderId && isOpen,
+  })
+
+  const logs = (data?.logs || []).slice().sort((a, b) => new Date(a.timestamp || a.createdAt) - new Date(b.timestamp || b.createdAt))
 
   return (
-    <Dialog open={isOpen} as="div" className="relative z-20" onClose={closeModal}>
+    <Dialog open={isOpen} onClose={closeModal} className="relative z-20">
       <div className="fixed inset-0 bg-black/30" />
       <div className="fixed inset-0 flex items-center justify-center p-4">
-        <DialogPanel className="w-full max-w-2xl bg-white rounded-2xl p-6 shadow-lg">
-          <DialogTitle className="text-lg font-semibold text-gray-900 text-center">Tracking Timeline</DialogTitle>
+        <Dialog.Panel className="w-full max-w-xl bg-white rounded-2xl p-6 shadow-lg">
+          <Dialog.Title className="text-lg font-semibold text-gray-900 text-center">Tracking Timeline</Dialog.Title>
 
-          <div className="mt-4 space-y-4">
-            {sorted.length === 0 && <div className="text-sm text-gray-500">No tracking updates yet.</div>}
+          <div className="mt-4 max-h-96 overflow-y-auto">
+            {isLoading && <div className="p-4 text-center text-gray-500">Loading...</div>}
 
-            <ol className="space-y-4">
-              {sorted.map((t, idx) => (
-                <li key={idx} className="flex gap-4">
-                  <div className="w-2">
-                    <div className="w-3 h-3 rounded-full bg-primary mt-2" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <div className="font-medium text-gray-800">{t.status}</div>
-                      <div className="text-xs text-gray-500">{new Date(t.timestamp).toLocaleString()}</div>
-                    </div>
-                    {t.location && <div className="text-sm text-gray-600">Location: {t.location}</div>}
-                    {t.note && <div className="text-sm text-gray-600 mt-1">Note: {t.note}</div>}
-                    <div className="text-xs text-gray-400 mt-1">By: {t.addedBy || 'manager'}</div>
-                  </div>
-                </li>
-              ))}
-            </ol>
+            {!isLoading && logs.length === 0 && (
+              <div className="p-4 text-center text-gray-500">No tracking updates yet.</div>
+            )}
+
+            {!isLoading && logs.length > 0 && (
+              <div className="space-y-2">
+                {logs.map((log) => (
+                  <TimelineItem key={log._id || `${log.timestamp}-${log.status}`} log={log} />
+                ))}
+              </div>
+            )}
           </div>
 
-          <div className="mt-6 flex justify-end">
-            <button onClick={closeModal} className="px-4 py-2 rounded-md border text-gray-700">Close</button>
+          <div className="flex justify-end mt-4">
+            <button onClick={closeModal} className="px-4 py-2 rounded border">Close</button>
           </div>
-        </DialogPanel>
+        </Dialog.Panel>
       </div>
     </Dialog>
   )

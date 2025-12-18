@@ -56,7 +56,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       return [
         { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
         { path: '/dashboard/my-orders', label: 'My Orders', icon: ShoppingCart },
-        { path: '/dashboard/track-order/:orderId', label: 'Track Order', icon: MapPin },
+        { path: '/dashboard/track-order', label: 'Track Order', icon: MapPin },
         { path: '/dashboard/profile', label: 'My Profile', icon: User },
       ]
     }
