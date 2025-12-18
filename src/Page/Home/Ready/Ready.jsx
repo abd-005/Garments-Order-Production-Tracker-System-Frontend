@@ -14,7 +14,7 @@ const Ready = () => {
         className="bg-white rounded-2xl p-8 shadow flex flex-col md:flex-row items-center justify-between gap-6"
       >
         <div>
-          <h3 className="text-2xl font-bold" style={{ color: '#4c4452' }}>Ready to get measured?</h3>
+          <h3 className="text-2xl font-bold" text-primary>Ready to get measured?</h3>
           <p className="text-gray-600 mt-1">Book a product or request a custom fitting — we’ll guide you through.</p>
         </div>
         <div>

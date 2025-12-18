@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TiThMenu } from "react-icons/ti";
 import { Link, NavLink } from "react-router";
-import { Home, Package, Info, Mail, LogIn, UserPlus, LayoutDashboard, LogOut, Menu, X } from "lucide-react";
+import { Home, Package, Info, Mail, LogIn, UserPlus, LayoutDashboard, LogOut, Menu, X, Moon, Sun } from "lucide-react";
 
 import "./Navbar.css";
 import Logo from "../../Logo/Logo";
@@ -11,6 +11,31 @@ import avatarImg from "../../../assets/img/User-Avatar.png";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const applyTheme = (isDark) => {
+    const html = document.documentElement;
+    if (isDark) {
+      html.setAttribute('data-theme', 'dark');
+    } else {
+      html.removeAttribute('data-theme');
+    }
+  };
+
+  // Initialize theme from localStorage
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const isDark = savedTheme === 'dark';
+    applyTheme(isDark);
+  }, []);
+
+  const toggleTheme = () => {
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+    localStorage.setItem('theme', newDarkMode ? 'dark' : 'light');
+    applyTheme(newDarkMode);
+  };
+
   const handleLogout = () => {
     logOut();
     setIsOpen(false);
@@ -37,7 +62,7 @@ const Navbar = () => {
           <li>
             <NavLink to="/contact" className="hover:opacity-80 transition-opacity">Contact</NavLink>
           </li>
-          
+
           {!user && (
             <>
               <li>
@@ -66,16 +91,25 @@ const Navbar = () => {
               </li>
             </>
           )}
+          <li>
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg hover:opacity-80 transition-opacity"
+              title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            >
+              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+          </li>
         </ul>
       </div>
       <div className="navbar-end lg:hidden">
         <div onClick={() => setIsOpen(!isOpen)} className="p-2 cursor-pointer hover:opacity-80 transition-opacity">
           <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-4 w-full text-left hover:opacity-80 transition-opacity"
-            >
-                {isOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-4 w-full text-left hover:opacity-80 transition-opacity"
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
         {isOpen && (
           <div className="fixed right-0 top-16 z-50 w-56 rounded-xl shadow-2xl transition-all duration-300 bg-secondary">
@@ -83,8 +117,8 @@ const Navbar = () => {
               <NavLink
                 to="/"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 rounded-lg hover:opacity-80 transition-opacity"
-                style={{ color: '#4c4452' }}
+                className="flex items-center gap-3 px-4 py-3 rounded-lg hover:opacity-80 transition-opacity text-primary"
+                
               >
                 <Home size={18} />
                 <span className="text-sm font-medium">Home</span>
@@ -93,8 +127,8 @@ const Navbar = () => {
               <NavLink
                 to="/products"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 rounded-lg hover:opacity-80 transition-opacity"
-                style={{ color: '#4c4452' }}
+                className="flex items-center gap-3 px-4 py-3 rounded-lg hover:opacity-80 transition-opacity text-primary"
+                
               >
                 <Package size={18} />
                 <span className="text-sm font-medium">All Products</span>
@@ -103,8 +137,8 @@ const Navbar = () => {
               <NavLink
                 to="/about"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 rounded-lg hover:opacity-80 transition-opacity"
-                style={{ color: '#4c4452' }}
+                className="flex items-center gap-3 px-4 py-3 rounded-lg hover:opacity-80 transition-opacity text-primary"
+                
               >
                 <Info size={18} />
                 <span className="text-sm font-medium">About Us</span>
@@ -113,8 +147,8 @@ const Navbar = () => {
               <NavLink
                 to="/contact"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 rounded-lg hover:opacity-80 transition-opacity"
-                style={{ color: '#4c4452' }}
+                className="flex items-center gap-3 px-4 py-3 rounded-lg hover:opacity-80 transition-opacity text-primary"
+                
               >
                 <Mail size={18} />
                 <span className="text-sm font-medium">Contact</span>
@@ -128,7 +162,7 @@ const Navbar = () => {
                     to="/auth/login"
                     onClick={() => setIsOpen(false)}
                     className="flex items-center gap-3 px-4 py-3 rounded-lg hover:opacity-80 transition-opacity"
-                    style={{ color: '#4c4452' }}
+   text-primary                  
                   >
                     <LogIn size={18} />
                     <span className="text-sm font-medium">Login</span>
@@ -138,7 +172,7 @@ const Navbar = () => {
                     to="/auth/register"
                     onClick={() => setIsOpen(false)}
                     className="flex items-center gap-3 px-4 py-3 rounded-lg hover:opacity-80 transition-opacity"
-                    style={{ color: '#4c4452' }}
+   text-primary                  
                   >
                     <UserPlus size={18} />
                     <span className="text-sm font-medium">Register</span>
@@ -152,13 +186,13 @@ const Navbar = () => {
                     to="/dashboard"
                     onClick={() => setIsOpen(false)}
                     className="flex items-center gap-3 px-4 py-3 rounded-lg hover:opacity-80 transition-opacity"
-                    style={{ color: '#4c4452' }}
+   text-primary                  
                   >
                     <LayoutDashboard size={18} />
                     <span className="text-sm font-medium">Dashboard</span>
                   </NavLink>
 
-                  <div className="flex items-center gap-3 px-4 py-3" style={{ color: '#4c4452' }}>
+                  <div className="flex items-center text-primary gap-3 px-4 py-3" >
                     <img
                       className='rounded-full w-6 h-6 p-0'
                       referrerPolicy='no-referrer'
@@ -177,6 +211,18 @@ const Navbar = () => {
                   </button>
                 </>
               )}
+
+              <hr className="my-2" style={{ borderColor: '#4c4452', opacity: 0.2 }} />
+
+              <button
+                onClick={toggleTheme}
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:opacity-80 transition-opacity text-primary"
+                
+                title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              >
+                {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+                <span className="text-sm font-medium">{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
+              </button>
             </nav>
           </div>
         )}

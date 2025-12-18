@@ -12,7 +12,7 @@ const Choose = () => {
       <div className='max-w-7xl mx-auto'>
         {/* Header */}
         <div className='text-center mb-12 sm:mb-16'>
-          <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold mb-3' style={{ color: '#4c4452' }}>
+          <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold mb-3' text-primary>
             Why Choose Us
           </h2>
           <p className='text-base sm:text-lg text-gray-600 max-w-2xl mx-auto'>
@@ -31,7 +31,7 @@ const Choose = () => {
                 <img src={svg1} alt="icon" className='w-16 h-16 sm:w-20 sm:h-20' />
               </div>
               <div className='flex-1'>
-                <h3 className='text-lg sm:text-xl font-semibold mb-2' style={{ color: '#4c4452' }}>
+                <h3 className='text-lg sm:text-xl font-semibold mb-2' text-primary>
                   Collaborative Approach
                 </h3>
                 <p className='text-sm sm:text-base text-gray-600'>
@@ -47,7 +47,7 @@ const Choose = () => {
                 <img src={svg2} alt="icon" className='w-16 h-16 sm:w-20 sm:h-20' />
               </div>
               <div className='flex-1'>
-                <h3 className='text-lg sm:text-xl font-semibold mb-2' style={{ color: '#4c4452' }}>
+                <h3 className='text-lg sm:text-xl font-semibold mb-2' text-primary>
                   Refined Quality
                 </h3>
                 <p className='text-sm sm:text-base text-gray-600'>
@@ -63,7 +63,7 @@ const Choose = () => {
                 <img src={svg3} alt="icon" className='w-16 h-16 sm:w-20 sm:h-20' />
               </div>
               <div className='flex-1'>
-                <h3 className='text-lg sm:text-xl font-semibold mb-2' style={{ color: '#4c4452' }}>
+                <h3 className='text-lg sm:text-xl font-semibold mb-2' text-primary>
                   Sustainable Process
                 </h3>
                 <p className='text-sm sm:text-base text-gray-600'>
@@ -81,7 +81,7 @@ const Choose = () => {
                 <img src={svg6} alt="icon" className='w-16 h-16 sm:w-20 sm:h-20' />
               </div>
               <div className='flex-1'>
-                <h3 className='text-lg sm:text-xl font-semibold mb-2' style={{ color: '#4c4452' }}>
+                <h3 className='text-lg sm:text-xl font-semibold mb-2' text-primary>
                   Artisanal Craft
                 </h3>
                 <p className='text-sm sm:text-base text-gray-600'>
@@ -97,7 +97,7 @@ const Choose = () => {
                 <img src={svg4} alt="icon" className='w-16 h-16 sm:w-20 sm:h-20' />
               </div>
               <div className='flex-1'>
-                <h3 className='text-lg sm:text-xl font-semibold mb-2' style={{ color: '#4c4452' }}>
+                <h3 className='text-lg sm:text-xl font-semibold mb-2' text-primary>
                   Timeless Design
                 </h3>
                 <p className='text-sm sm:text-base text-gray-600'>
@@ -113,7 +113,7 @@ const Choose = () => {
                 <img src={svg5} alt="icon" className='w-16 h-16 sm:w-20 sm:h-20' />
               </div>
               <div className='flex-1'>
-                <h3 className='text-lg sm:text-xl font-semibold mb-2' style={{ color: '#4c4452' }}>
+                <h3 className='text-lg sm:text-xl font-semibold mb-2' text-primary>
                   Innovative Touch
                 </h3>
                 <p className='text-sm sm:text-base text-gray-600'>

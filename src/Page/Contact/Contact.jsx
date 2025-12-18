@@ -12,7 +12,7 @@ const Contact = () => {
           </div>
 
           <div className="text-center md:text-left">
-            <h1 className="text-3xl sm:text-4xl font-bold" style={{ color: '#4c4452' }}>
+            <h1 className="text-3xl sm:text-4xl font-bold text-primary">
               Get in touch
             </h1>
             <p className="mt-3 text-base sm:text-lg text-gray-600 max-w-2xl">
@@ -26,7 +26,7 @@ const Contact = () => {
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="bg-white rounded-2xl p-6 shadow border border-gray-100">
-            <h3 className="text-xl font-semibold mb-4" style={{ color: '#4c4452' }}>Contact Information</h3>
+            <h3 className="text-xl font-semibold mb-4 text-primary">Contact Information</h3>
 
             <div className="space-y-4 text-sm text-gray-700">
               <div>
@@ -68,7 +68,7 @@ const Contact = () => {
 
       <section className="py-12 bg-secondary/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 className="text-2xl font-bold" style={{ color: '#4c4452' }}>Visit our studio</h3>
+          <h3 className="text-2xl font-bold text-primary">Visit our studio</h3>
           <p className="text-gray-600 mt-2">We welcome visits by appointment. Please contact us to schedule a fitting.</p>
         </div>
       </section>

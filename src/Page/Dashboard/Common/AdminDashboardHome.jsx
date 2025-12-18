@@ -4,7 +4,7 @@ import { PieChart, Pie, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, Responsive
 const KPI = ({ title, value, hint }) => (
   <div className="bg-white rounded-2xl p-6 shadow border border-gray-100">
     <div className="text-sm text-gray-500">{title}</div>
-    <div className="text-2xl font-semibold mt-2" style={{ color: '#4c4452' }}>{value}</div>
+    <div className="text-2xl font-semibold mt-2 text-primary">{value}</div>
     {hint && <div className="text-xs text-gray-400 mt-1">{hint}</div>}
   </div>
 )
