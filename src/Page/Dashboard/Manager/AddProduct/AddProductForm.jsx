@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form'
-import axios from 'axios';
 import useAuth from '../../../../hooks/useAuth';
 import { imageUpload } from '../../../../utils';
 import toast from 'react-hot-toast';
@@ -13,7 +12,6 @@ const AddProductForm = () => {
     const { user } = useAuth();
       const AxiosSecure = useAxiosSecure()
 
-    // useMutation hook useCase (POST || PUT || PATCH || DELETE)
     const {
         isPending,
         isError,
@@ -26,7 +24,6 @@ const AddProductForm = () => {
         onSuccess: data => {
             console.log('Product added successfully:', data);
             toast.success('Product added successfully');
-            // navigate to my inventory page
             mutationReset();
         },
         onError: error => {

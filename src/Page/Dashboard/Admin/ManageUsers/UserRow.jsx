@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
 import toast from 'react-hot-toast'
 import RoleModal from './RoleModal'
 import SuspendModal from './SuspendModal'
@@ -9,13 +8,12 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 const UserRow = ({ user, refetch }) => {
   const [roleOpen, setRoleOpen] = useState(false)
   const [suspendOpen, setSuspendOpen] = useState(false)
-  const [role, setRole] = useState()
   const axiosSecure = useAxiosSecure()
 
-  // update role by email
   const updateRoleMutation = useMutation({
-    mutationFn: async ({ role, email }) =>
-      await axiosSecure.patch(`${import.meta.env.VITE_API_URL}/update-role`, { role, email }),
+    mutationFn: async ({ email, role }) => {
+      return await axiosSecure.patch(`${import.meta.env.VITE_API_URL}/update-role`, { email, role })
+    },
     onSuccess: () => {
       toast.success('Role updated')
       refetch?.()
@@ -24,10 +22,16 @@ const UserRow = ({ user, refetch }) => {
     onError: () => toast.error('Failed to update role'),
   })
 
-  // suspend/unsuspend by email
   const suspendMutation = useMutation({
-    mutationFn: async ({ email, suspended, payload }) =>
-      await axiosSecure.patch(`${import.meta.env.VITE_API_URL}/suspend-user`, { email, suspended, ...payload }),
+    mutationFn: async ({ email, suspended, reason, feedback }) => {
+      return await axiosSecure.patch(`${import.meta.env.VITE_API_URL}/suspend-user`, {
+        email,
+        suspended,
+        suspendedAt: suspended ? new Date().toISOString() : null,
+        reason,
+        feedback,
+      })
+    },
     onSuccess: () => {
       toast.success('User suspension updated')
       refetch?.()
@@ -37,19 +41,13 @@ const UserRow = ({ user, refetch }) => {
   })
 
   const handleRoleSave = (newRole) => {
-    if (!user?.email) {
-      toast.error('User email not available')
-      return
-    }
+    if (!user?.email) return toast.error('User email not available')
     updateRoleMutation.mutate({ email: user.email, role: newRole })
   }
 
-  const handleSuspend = (payload) => {
-    if (!user?.email) {
-      toast.error('User email not available')
-      return
-    }
-    suspendMutation.mutate({ email: user.email, suspended: payload.suspended, payload })
+  const handleSuspendSave = ({ suspended, reason, feedback }) => {
+    if (!user?.email) return toast.error('User email not available')
+    suspendMutation.mutate({ email: user.email, suspended, reason, feedback })
   }
 
   return (
@@ -89,38 +87,17 @@ const UserRow = ({ user, refetch }) => {
 
         <td className="px-5 py-5 border-b bg-white text-sm">
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => setRoleOpen(true)}
-              className="px-3 py-1 bg-primary text-white rounded-md text-sm cursor-pointer"
-            >
-              Update Role
-            </button>
+            <button onClick={() => setRoleOpen(true)} className="px-3 py-1 bg-primary text-white rounded-md text-sm">Update Role</button>
 
-            <button
-              onClick={() => setSuspendOpen(true)}
-              className={`px-3 py-1 rounded-md text-sm cursor-pointer ${user.suspended?.status ? 'bg-yellow-100 text-yellow-800 "' : 'bg-red-100 text-red-700'}`}
-            >
+            <button onClick={() => setSuspendOpen(true)} className={`px-3 py-1 rounded-md text-sm ${user.suspended?.status ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-700'}`}>
               {user.suspended?.status ? 'Edit Suspension' : 'Suspend'}
             </button>
           </div>
         </td>
       </tr>
 
-      <RoleModal
-        isOpen={roleOpen}
-        closeModal={() => setRoleOpen(false)}
-        user={user}
-        onSave={handleRoleSave}
-        role={role}
-        setRole={setRole}
-      />
-
-      <SuspendModal
-        isOpen={suspendOpen}
-        closeModal={() => setSuspendOpen(false)}
-        user={user}
-        onSave={handleSuspend}
-      />
+      <RoleModal isOpen={roleOpen} closeModal={() => setRoleOpen(false)} user={user} onSave={handleRoleSave} />
+      <SuspendModal isOpen={suspendOpen} closeModal={() => setSuspendOpen(false)} user={user} onSave={handleSuspendSave} />
     </>
   )
 }

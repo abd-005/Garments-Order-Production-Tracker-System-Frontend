@@ -25,6 +25,7 @@ import AllAdminProducts from "../Page/Dashboard/Admin/AllAdminProducts/AllAdminP
 import ManageUsers from "../Page/Dashboard/Admin/ManageUsers/ManageUsers";
 import TrackOrder from "../Page/Dashboard/Buyer/TrackOrder";
 import TrackOrderList from "../Page/Dashboard/Buyer/TrackOrderList";
+import OrderDetails from "../Page/Dashboard/Admin/AllOrders/OrderDetails";
 
 export const router = createBrowserRouter([
     {
@@ -102,6 +103,15 @@ export const router = createBrowserRouter([
                     </PrivateRoute>
             },
             {
+                path: 'order-details/:orderId',
+                element:
+                    <PrivateRoute>
+                        <AdminRoute>
+                            <OrderDetails />
+                        </AdminRoute>
+                    </PrivateRoute>
+            },
+            {
                 path: 'all-products',
                 element:
                     <PrivateRoute>
@@ -151,7 +161,7 @@ export const router = createBrowserRouter([
                 path: 'payment-success',
                 element:
                     <PrivateRoute>
-                            <PaymentSuccess />
+                        <PaymentSuccess />
                     </PrivateRoute>
             },
             {

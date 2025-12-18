@@ -23,10 +23,10 @@ const OrderDetailsModal = ({ isOpen, closeModal, order }) => {
   const logs = Array.isArray(data)
     ? data
     : Array.isArray(data?.logs)
-    ? data.logs
-    : Array.isArray(order?.tracking)
-    ? order.tracking
-    : []
+      ? data.logs
+      : Array.isArray(order?.tracking)
+        ? order.tracking
+        : []
 
   const sorted = [...logs].sort((a, b) => new Date(a.timestamp || a.createdAt) - new Date(b.timestamp || b.createdAt))
   const latest = sorted[sorted.length - 1]

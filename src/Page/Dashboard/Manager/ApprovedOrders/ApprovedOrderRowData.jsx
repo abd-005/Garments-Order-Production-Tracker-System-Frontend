@@ -38,7 +38,7 @@ const ApprovedOrderRowData = ({ order, refetch }) => {
         <td className="px-5 py-5 border-b bg-white text-sm">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full overflow-hidden">
-              <img src={order.manager?.image || '/avatar-placeholder.png'} alt={customer} className="w-full h-full object-cover" />
+              {/* <img src={order.customer?.image || '/avatar-placeholder.png'} alt={customer} className="w-full h-full object-cover" /> */}
             </div>
             <div>
               <p className="text-gray-900">{customer}</p>
