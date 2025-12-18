@@ -37,6 +37,7 @@ const Navbar = () => {
           <li>
             <NavLink to="/contact" className="hover:opacity-80 transition-opacity">Contact</NavLink>
           </li>
+          
           {!user && (
             <>
               <li>

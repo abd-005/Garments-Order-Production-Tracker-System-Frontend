@@ -1,12 +1,4 @@
-// src/pages/Contact/ContactForm.jsx
 import React, { useState } from 'react'
-
-/*
-  Production ready notes
-  - The component accepts an optional `onSubmit` prop to send data to your API.
-  - By default it logs the payload to console. Replace with fetch/axios to your endpoint.
-  - Add server-side validation and spam protection (reCAPTCHA or honeypot) before going live.
-*/
 
 const ContactForm = ({ onSubmit }) => {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
@@ -38,9 +30,7 @@ const ContactForm = ({ onSubmit }) => {
       if (typeof onSubmit === 'function') {
         await onSubmit(payload)
       } else {
-        // default behavior: log to console
-        // replace this with axios/fetch to your contact endpoint
-        // await fetch('/api/contact', { method: 'POST', body: JSON.stringify(payload) })
+  
         console.log('Contact payload', payload)
       }
       setStatus({ loading: false, error: null, success: 'Message sent. We will reply within 1–2 business days.' })

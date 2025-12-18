@@ -1,18 +1,19 @@
 import React from 'react'
-import Container from '../../../Components/Shared/Container'
+import AdminDashboardHome from './AdminDashboardHome'
+import UserDashboardHome from './UserDashboardHome'
+import useRole from '../../../hooks/useRole'
+import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
+import ManagerDashboardHome from './ManagerDashboardHome'
 
 const DashboardHome = () => {
-    return (
-        <div className="container mx-auto px-4 sm:px-8 py-8">
-            <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-semibold">Dashboard Users</h2>
-            </div>
+  const [role, isRoleLoading] = useRole()
+  console.log(role)
 
-            <div className="mb-4 flex flex-col md:flex-row gap-3 items-start md:items-center">
-                welcome to Dashboard
-            </div>
-        </div>
-    )
+  if (isRoleLoading) return <LoadingSpinner />
+
+  if (role === 'admin') return <AdminDashboardHome />
+  if (role === 'manager') return <ManagerDashboardHome />
+  return <UserDashboardHome />
 }
 
 export default DashboardHome
