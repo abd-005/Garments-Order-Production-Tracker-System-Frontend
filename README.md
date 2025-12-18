@@ -1,16 +1,41 @@
-# React + Vite
+# TailorFlow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Purpose**  
+A modern e‑commerce platform for handcrafted garments and curated products. This repository contains the frontend (React + Tailwind + Framer Motion) and backend (Node/Express + MongoDB + Stripe) used to browse, customize, and order products with admin and manager dashboards.
 
-Currently, two official plugins are available:
+**Live URL**  
+[TailorFlow](https://tailorflow-f0731.web.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key features
+- Responsive landing page with animated hero, featured products, testimonials, and CTA sections
+- Product catalog with server-side pagination and product detail pages
+- Secure authentication (Firebase Auth) and role-based access (buyer, manager, admin)
+- Admin dashboard: manage users, suspend accounts, view orders
+- Manager dashboard: create products, approve/reject orders, add tracking
+- Checkout: Stripe Checkout integration and Cash-on-Delivery support
+- Order tracking with generated tracking IDs
+- Theme support: light/dark mode persisted in `localStorage` and applied via `data-theme`
+- Image carousel (Swiper) and subtle Framer Motion animations
+- Production-ready contact form with validation and spam protection hooks
 
-## React Compiler
+## Tech stack & notable packages
+- **Frontend**
+  - React 18
+  - React Router
+  - Tailwind CSS + DaisyUI
+  - Framer Motion
+  - Swiper (carousel)
+  - React Query (@tanstack/react-query)
+  - Axios
+- **Backend**
+  - Node.js + Express
+  - MongoDB (official driver)
+  - Stripe (payments)
+  - Firebase Admin (auth token verification)
+- **Dev / tooling**
+  - Vite
+  - ESLint / Prettier (recommended)
+  - dotenv
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Environment variables
+Create a `.env` file.
