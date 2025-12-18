@@ -35,7 +35,7 @@ const Choose = () => {
                   Collaborative Approach
                 </h3>
                 <p className='text-sm sm:text-base text-gray-600'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  We work closely with you at every step — from design choices to final fittings — ensuring the finished garment reflects your vision and measurements.
                 </p>
               </div>
             </div>
@@ -51,7 +51,7 @@ const Choose = () => {
                   Refined Quality
                 </h3>
                 <p className='text-sm sm:text-base text-gray-600'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  We source premium fabrics and apply rigorous quality checks so every stitch, seam, and finish meets professional standards and lasts.
                 </p>
               </div>
             </div>
@@ -67,7 +67,7 @@ const Choose = () => {
                   Sustainable Process
                 </h3>
                 <p className='text-sm sm:text-base text-gray-600'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  We minimize waste and prioritize eco-friendly materials and local production, so your garment is beautiful and responsibly made.
                 </p>
               </div>
             </div>
@@ -85,7 +85,7 @@ const Choose = () => {
                   Artisanal Craft
                 </h3>
                 <p className='text-sm sm:text-base text-gray-600'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Skilled artisans bring decades of experience to each piece, combining traditional techniques with modern precision for exceptional results.
                 </p>
               </div>
             </div>
@@ -101,7 +101,7 @@ const Choose = () => {
                   Timeless Design
                 </h3>
                 <p className='text-sm sm:text-base text-gray-600'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Our designs focus on enduring style and fit rather than fleeting trends, so your wardrobe investments remain relevant season after season.
                 </p>
               </div>
             </div>
@@ -117,7 +117,7 @@ const Choose = () => {
                   Innovative Touch
                 </h3>
                 <p className='text-sm sm:text-base text-gray-600'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  We blend craftsmanship with thoughtful innovation — from smart fabric choices to precision tailoring — to deliver superior comfort and performance.
                 </p>
               </div>
             </div>

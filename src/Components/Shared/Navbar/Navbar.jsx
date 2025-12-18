@@ -17,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar flex justify-between items-center shadow-lg text-white px-2 md:px-5 lg:px-8 sticky top-0 z-50 bg-primary/70 backdrop-blur-sm">
+    <div className="navbar flex justify-between items-center shadow-lg text-white px-2 md:px-5 lg:px-8 sticky top-0 z-50 bg-primary/50 backdrop-blur-lg">
       <div className="navbar-start">
         <Link to="/" className="flex gap-2 items-center">
           <Logo />

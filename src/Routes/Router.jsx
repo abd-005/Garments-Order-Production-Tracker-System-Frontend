@@ -26,6 +26,8 @@ import ManageUsers from "../Page/Dashboard/Admin/ManageUsers/ManageUsers";
 import TrackOrder from "../Page/Dashboard/Buyer/TrackOrder";
 import TrackOrderList from "../Page/Dashboard/Buyer/TrackOrderList";
 import OrderDetails from "../Page/Dashboard/Admin/AllOrders/OrderDetails";
+import About from "../Page/About/About";
+import Contact from "../Page/Contact/Contact";
 
 export const router = createBrowserRouter([
     {
@@ -40,6 +42,14 @@ export const router = createBrowserRouter([
             {
                 path: 'products',
                 element: <AllProducts />
+            },
+            {
+                path: 'about',
+                element: <About />
+            },
+            {
+                path: 'contact',
+                element: <Contact />
             },
             {
                 path: 'product/:id',

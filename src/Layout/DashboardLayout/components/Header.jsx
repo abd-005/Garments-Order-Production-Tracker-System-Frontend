@@ -15,7 +15,7 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="hidden sm:block text-sm text-secondary/90">Welcome back</div>
+            <div className="hidden sm:block text-sm text-primary/90">Welcome back</div>
 
             <button className="flex items-center gap-2 p-1 rounded-full hover:opacity-90 transition-opacity">
               <img
