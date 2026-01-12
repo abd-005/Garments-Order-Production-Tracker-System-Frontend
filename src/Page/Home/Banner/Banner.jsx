@@ -36,29 +36,35 @@ const Banner = () => {
             >
                 {
                     banners.map((img, index) => <SwiperSlide key={index}>
-                        <figure className='max-h-[60vh] relative overflow-hidden'>
+                        <figure className="max-h-[65vh] relative overflow-hidden">
                             <img
                                 src={img}
                                 alt={`Hero banner ${index + 1}`}
-                                className='w-full h-full object-cover'
+                                className="w-full h-full object-cover"
                                 loading="lazy"
                             />
-                            <div className='absolute inset-0 bg-black/60' aria-hidden="true"></div>
+                            <div className="absolute inset-0 bg-black/60 dark:bg-black/40" aria-hidden="true"></div>
 
                             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-                                <h2 className="text-white text-3xl sm:text-4xl font-bold drop-shadow-md">Tailored Craftsmanship</h2>
-                                <p className="text-white/90 mt-2 max-w-xl">Handmade garments with sustainable materials — book a fitting or view products.</p>
+                                <h1 className="text-white text-3xl sm:text-4xl font-bold drop-shadow-md">
+                                    Tailored Craftsmanship
+                                </h1>
+                                <p className="text-white/90 mt-2 max-w-xl">
+                                    Handmade garments with sustainable materials — book a fitting or view products.
+                                </p>
                                 <div className="mt-4">
                                     <button
                                         type="button"
+                                        aria-label="View products"
                                         onClick={() => navigate('/products')}
-                                        className="px-5 py-2 bg-secondary text-primary rounded-md shadow"
+                                        className="px-5 py-2 bg-primary text-white rounded-md shadow"
                                     >
                                         View Products
                                     </button>
                                 </div>
                             </div>
                         </figure>
+
                     </SwiperSlide>
                     )
                 }

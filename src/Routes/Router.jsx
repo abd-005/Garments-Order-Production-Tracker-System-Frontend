@@ -28,6 +28,9 @@ import TrackOrderList from "../Page/Dashboard/Buyer/TrackOrderList";
 import OrderDetails from "../Page/Dashboard/Admin/AllOrders/OrderDetails";
 import About from "../Page/About/About";
 import Contact from "../Page/Contact/Contact";
+import Help from "../Page/Help/Help";
+import Privacy from "../Page/Privacy/Privacy";
+import Terms from "../Page/Terms/Terms";
 
 export const router = createBrowserRouter([
     {
@@ -56,6 +59,18 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <ProductDetails />
                 </PrivateRoute>
+            },
+            {
+                path: 'help',
+                element: <Help />
+            },
+            {
+                path: 'privacy',
+                element: <Privacy />
+            },
+            {
+                path: 'terms-conditions',
+                element: <Terms />
             },
         ]
     },

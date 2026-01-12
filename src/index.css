@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
+
+/* Color Palette:
+  Primary: #4c4452 (Deep Purple-Brown)
+  Secondary: #dcd3e4 (Light Lavender)
+  Accent: #8B5A8F (Rich Purple) for dark mode
+  Neutral: #1a1a2e, #f5f3f7
+*/
+
 @plugin "daisyui" {
    themes: [light, dark ]--default;
 };
@@ -9,29 +17,123 @@
   default: true;
   --color-primary: #4c4452;
   --color-secondary: #dcd3e4;
-}
-@plugin "daisyui/theme" {
-  name: "dark";
-  --color-primary: #dcd3e4;
-  --color-secondary: #4c4452;
-  --color-gray-600: #9aa0a7;
-  --color-gray-800: #dcd3e4dc;
-  --color-white : #252525;
-  --color-gray-900 : #9f9f9f;
-  --color-shadow : #111;
+  --color-accent: #8B5A8F;
+  --color-neutral: #f5f3f7;
+  --color-base-100: #ffffff;
+  --color-base-200: #f9f7fc;
+  --color-base-300: #ede8f5;
+  --color-text-primary: #2d2d2d;
+  --color-text-secondary: #666666;
+  --color-border: #e0d5ed;
 }
 
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #e8e0f0;
+  --color-secondary: #3a3240;
+  --color-accent: #b39dcc;
+  --color-neutral: #1a1620;
+  --color-base-100: #252025;
+  --color-base-200: #2d262d;
+  --color-base-300: #3a3240;
+  --color-text-primary: #e8e0f0;
+  --color-text-secondary: #a9a0b8;
+  --color-border: #4a4050;
+}
 
 body {
   font-family: "Urbanist", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-.btn-primary{
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+.btn-primary {
   background-color: #4c4452;
   color: #fff;
+  border: none;
+  transition: all 0.3s ease;
 }
-.btn-secondary{
-  background-color: #fff;
+
+.btn-primary:hover {
+  background-color: #3d3642;
+  box-shadow: 0 4px 12px rgba(76, 68, 82, 0.3);
+}
+
+.btn-secondary {
+  background-color: #dcd3e4;
   color: #4c4452;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #cfc3d6;
+  box-shadow: 0 4px 12px rgba(220, 211, 228, 0.3);
+}
+
+/* Dark mode button styles */
+:root[data-theme="dark"] .btn-primary {
+  background-color: #8B5A8F;
+  color: #1a1620;
+}
+
+:root[data-theme="dark"] .btn-primary:hover {
+  background-color: #9d6da3;
+  box-shadow: 0 4px 12px rgba(139, 90, 143, 0.4);
+}
+
+:root[data-theme="dark"] .btn-secondary {
+  background-color: #3a3240;
+  color: #e8e0f0;
+  border: 1px solid #4a4050;
+}
+
+:root[data-theme="dark"] .btn-secondary:hover {
+  background-color: #4a4050;
+  border-color: #5a5060;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(220, 211, 228, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4c4452;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d3642;
+}
+
+:root[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: rgba(139, 90, 143, 0.1);
+}
+
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #8B5A8F;
+}
+
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #9d6da3;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  @apply transition-colors duration-200;
 }

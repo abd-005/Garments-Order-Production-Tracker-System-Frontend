@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router';
 import { FcGoogle } from 'react-icons/fc';
 import { useForm } from 'react-hook-form';
@@ -13,11 +14,13 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state || '/';
+  const [demoLoading, setDemoLoading] = React.useState(false);
 
   
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
   
@@ -40,6 +43,25 @@ const Login = () => {
       console.log(err)
       toast.error('Invalid email or password');
     }
+  };
+
+  const handleDemoLogin = async (role) => {
+    setDemoLoading(true);
+    // Demo credentials for different roles
+    const demoCredentials = {
+      user: { email: 'user@demo.com', password: 'Demo@1234' },
+      admin: { email: 'admin@demo.com', password: 'Demo@1234' },
+      manager: { email: 'manager@demo.com', password: 'Demo@1234' }
+    };
+
+    const credentials = demoCredentials[role] || demoCredentials.user;
+    setValue('email', credentials.email);
+    setValue('password', credentials.password);
+
+    setTimeout(() => {
+      setDemoLoading(false);
+      toast.success(`Demo ${role} credentials filled. Click Login to continue.`);
+    }, 500);
   };
 
   const handleGoogleSignIn = async () => {
@@ -117,6 +139,38 @@ const Login = () => {
           <FcGoogle size={24} />
           <span>Continue with Google</span>
         </button>
+
+        {/* Demo Login Section */}
+        <div className="mt-6 border-t pt-6">
+          <p className="text-sm text-gray-500 mb-3">Quick Demo Access:</p>
+          <div className="grid grid-cols-3 gap-2">
+            <button
+              type="button"
+              onClick={() => handleDemoLogin('user')}
+              disabled={demoLoading}
+              className="px-3 py-2 bg-blue-100 text-blue-700 rounded-lg text-xs font-medium hover:bg-blue-200 transition disabled:opacity-50"
+            >
+              Demo User
+            </button>
+            <button
+              type="button"
+              onClick={() => handleDemoLogin('admin')}
+              disabled={demoLoading}
+              className="px-3 py-2 bg-purple-100 text-purple-700 rounded-lg text-xs font-medium hover:bg-purple-200 transition disabled:opacity-50"
+            >
+              Demo Admin
+            </button>
+            <button
+              type="button"
+              onClick={() => handleDemoLogin('manager')}
+              disabled={demoLoading}
+              className="px-3 py-2 bg-green-100 text-green-700 rounded-lg text-xs font-medium hover:bg-green-200 transition disabled:opacity-50"
+            >
+              Demo Manager
+            </button>
+          </div>
+        </div>
+
         <p className="text-center text-sm text-gray-500 mt-6">
           Don't have an account?{' '}
           <Link to="auth/register" className="text-primary hover:underline">Register</Link>
