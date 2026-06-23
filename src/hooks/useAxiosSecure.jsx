@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 import useAuth from './useAuth'
+import toast from 'react-hot-toast'
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -26,7 +27,14 @@ const useAxiosSecure = () => {
       const responseInterceptor = axiosInstance.interceptors.response.use(
         res => res,
         err => {
-          if (err?.response?.status === 401 || err?.response?.status === 403) {
+          const status = err?.response?.status
+          const errorData = err?.response?.data
+          if (status === 403 && errorData?.isDemoBlock) {
+            toast.error(errorData?.message || 'Action disabled for demo profiles.')
+            return Promise.reject(err)
+          }
+
+          if (status === 401 || status === 403) {
             logOut()
               .then(() => {
                 console.log('Logged out successfully.')

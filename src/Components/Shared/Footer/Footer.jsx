@@ -1,10 +1,11 @@
 import { FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router";
 import Logo from "../../Logo/Logo";
 
 const Footer = () => {
   return (
-    <footer className="text-white py-12 bg-primary dark:bg-slate-900 border-t border-gray-200 dark:border-slate-700">
+    <footer className="text-white py-12 bg-primary dark:bg-gray-900 border-t border-gray-200 dark:border-slate-700">
       <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-4 gap-10">
 
         {/* Brand */}
@@ -40,13 +41,14 @@ const Footer = () => {
         <div className="footer-section">
           <h3 className="text-lg font-semibold mb-4 text-secondary dark:text-blue-300">Follow Us</h3>
           <div className="flex gap-4">
-            <a href="#" className="text-gray-100 dark:text-gray-400 hover:text-secondary dark:hover:text-blue-300 transition-colors" aria-label="Twitter">
-              <FaTwitter size={24} />
+            <a href="https://www.x.com/ab0ahad" className="text-gray-100 dark:text-gray-400 hover:text-secondary dark:hover:text-blue-300 transition-colors" aria-label="Twitter">
+              <FaXTwitter size={24} />
             </a>
-            <a href="#" className="text-gray-100 dark:text-gray-400 hover:text-secondary dark:hover:text-blue-300 transition-colors" aria-label="Facebook">
+            <a href="https://www.facebook.com/ab0ahad
+" className="text-gray-100 dark:text-gray-400 hover:text-secondary dark:hover:text-blue-300 transition-colors" aria-label="Facebook">
               <FaFacebook size={24} />
             </a>
-            <a href="#" className="text-gray-100 dark:text-gray-400 hover:text-secondary dark:hover:text-blue-300 transition-colors" aria-label="Instagram">
+            <a href="https://www.instagram.com/ab0ahad/" className="text-gray-100 dark:text-gray-400 hover:text-secondary dark:hover:text-blue-300 transition-colors" aria-label="Instagram">
               <FaInstagram size={24} />
             </a>
           </div>

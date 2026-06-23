@@ -29,9 +29,9 @@ const Banner = () => {
                     disableOnInteraction: false,
                 }}
                 pagination={{
-                    clickable: true,
+                    clickable: false,
                 }}
-                navigation={true}
+                // navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
             >
                 {

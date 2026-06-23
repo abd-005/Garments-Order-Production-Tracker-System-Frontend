@@ -38,6 +38,7 @@ const Feedback = () => {
         >
           <div className="text-lg text-gray-800 font-medium">{sample[index].text}</div>
           <div className="mt-4 text-sm text-gray-500">— {sample[index].name}</div>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus possimus corrupti odit, iure reiciendis ut autem ex exercitationem corporis ratione magni esse aliquam. Nesciunt molestias reprehenderit atque iste recusandae officia?
         </motion.div>
 
         <div className="mt-4 flex items-center justify-center gap-2">

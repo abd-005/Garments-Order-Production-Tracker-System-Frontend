@@ -1,12 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaUsers, FaTshirt, FaClock, FaStar } from 'react-icons/fa';
 
 const Stats = () => {
   const stats = [
-    { label: 'Happy Customers', value: '10,000+', icon: '👥' },
-    { label: 'Products Created', value: '5,000+', icon: '👔' },
-    { label: 'On-Time Delivery', value: '99%', icon: '✓' },
-    { label: 'Quality Standards', value: '100%', icon: '⭐' },
+    { label: 'Happy Customers', value: '10,000+', icon: <FaUsers /> },
+    { label: 'Products Created', value: '5,000+', icon: <FaTshirt /> },
+    { label: 'On-Time Delivery', value: '99%', icon: <FaClock /> },
+    { label: 'Quality Standards', value: '100%', icon: <FaStar /> },
   ];
 
   return (
@@ -45,7 +46,9 @@ const Stats = () => {
               viewport={{ once: true }}
               className="bg-white/10 backdrop-blur-md rounded-lg p-6 text-center hover:bg-white/20 transition-colors"
             >
-              <div className="text-3xl sm:text-4xl mb-3">{stat.icon}</div>
+              <div className="text-3xl sm:text-4xl mb-3 flex justify-center">
+                {stat.icon}
+              </div>
               <div className="text-2xl sm:text-3xl font-bold mb-2">
                 {stat.value}
               </div>
