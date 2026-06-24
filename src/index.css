@@ -5,83 +5,97 @@
   themes: [light, dark];
 }
 
+/* ==========================================================================
+   Light Theme
+   ========================================================================== */
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #4c4452;    /* Deep Purple-Brown */
-  --color-secondary: #dcd3e4;  /* Light Lavender */
-  --color-white: #fff;  
-  --color-accent: #8B5A8F;     /* Rich Purple */
-  --color-neutral: #1a1a2e;
-  --color-base-100: #ffffff;
-  --color-base-200: #f5f3f7;
-  --color-base-300: #ede8f5;
-  --color-base-content: #4c4452;
+  --color-base-100: #F9F9FB;       /* Soft Fluid Studio Base */
+  --color-base-200: #F1EFF4;       /* Subtle Structure */
+  --color-base-300: #E5E1EA;       /* Deep Borders */
+  --color-base-content: #1E1A22;   /* Obsidian Ink Text */
+  
+  --color-primary: #2D2732;        /* Rich Deep Velvet */
+  --color-primary-content: #FFFFFF;
+  
+  --color-secondary: #EBE5F2;      /* Soft Luxury Lavender Drop */
+  --color-secondary-content: #2D2732;
+  
+  --color-accent: #A855F7;         /* Cyber Neon Violet (For Actions) */
+  --color-accent-content: #FFFFFF;
+  
+  --color-neutral: #111827;
 }
 
+/* ==========================================================================
+   2. Dark theme
+   ========================================================================== */
 @plugin "daisyui/theme" {
   name: "dark";
-  /* Pure Black Background */
-  --color-base-100: #000000; 
-  --color-base-200: #0a0a0a;
-  --color-base-300: #141414;
---color-white: #1d1920;  
-  /* Using your profile: Primary becomes the light tone for visibility */
-  --color-primary: #dcd3e4;    
-  --color-primary-content: #757575;
+  --color-base-100: #000000;       /* Pure Void OLED Black */
+  --color-base-200: #0D0C0F;       /* Deep Monolith Layer */
+  --color-base-300: #19171C;       /* Card / Section Borders */
+  --color-base-content: #EAE5EF;   /* Silver Silk High-Visibility Text */
   
-  /* Secondary becomes the deep tone */
-  --color-secondary: #4c4452;  
-  --color-secondary-content: #959595;
+  --color-primary: #E2DBE9;        /* Luminescent Silver-Lavender */
+  --color-primary-content: #000000;
   
-  --color-accent: #8B5A8F;
-  --color-neutral: #1a1a2e;
-  --color-base-content: #cfcfcf; /* High visibility text */
-  --color-gray-600 : #858387;
-  --color-gray-300 : #f3f5f7;
-  --color-gray-500 : #959799;
-  --color-gray-800 : #676965;
-  --color-gray-900 : #595753;
-  --color-black : #800;
+  --color-secondary: #221C28;      /* Shadow Lavender Container */
+  --color-secondary-content: #E2DBE9;
+  
+  --color-accent: #C084FC;         /* Volatile Neon Glow */
+  --color-accent-content: #000000;
+  
+  --color-neutral: #1F2937;
 }
-.me{
-  color: #800;
-}
+
+/* ==========================================================================
+   3. Base Global Styles & GSAP Overrides
+   ========================================================================== */
 body {
   font-family: "Urbanist", sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden; 
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Button overrides to ensure visibility against #000000 */
-:root[data-theme="dark"] .btn-primary {
-  background-color: #dcd3e4;
-  color: #1a1620;
+body, header, nav, footer, aside {
+  transition: background-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease;
 }
 
-:root[data-theme="dark"] .btn-secondary {
-  background-color: #4c4452;
-  color: #ffffff;
-  border: 1px solid #5a5060;
+.text-vivid-gradient {
+  background: linear-gradient(135deg, #6750A4 0%, #D0BCFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Scrollbar for Pure Black */
+/* ==========================================================================
+   4. High-Performance Scrollbars
+   ========================================================================== */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
-
-:root[data-theme="dark"] ::-webkit-scrollbar-track {
-  background: #000000;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
-
+:root[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: #E2DFE9;
+  border-radius: 20px;
+}
 :root[data-theme="dark"] ::-webkit-scrollbar-thumb {
-  background: #4c4452;
-  border-radius: 4px;
+  background: #313033;
+  border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6750A4;
 }
 
-:root[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-  background: #8B5A8F;
-}
-
-* {
-  @apply transition-colors duration-200;
+/* ==========================================================================
+   5. GSAP Layout Initialization Shield
+   ========================================================================== */
+.gsap-stage-hide {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
 }
