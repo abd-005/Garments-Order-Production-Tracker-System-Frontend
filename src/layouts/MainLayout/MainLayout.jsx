@@ -2,7 +2,6 @@ import React from 'react';
 import { Outlet } from 'react-router';
 import Footer from '../../Components/Shared/Footer/Footer';
 import Navbar from '../../Components/Shared/Navbar/Navbar';
-import { GsapTest } from '../../Components/GsapTest';
 
 const MainLayout = () => {
     return (
