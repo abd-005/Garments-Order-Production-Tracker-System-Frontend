@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { useMutation } from '@tanstack/react-query';
 import LoadingSpinner from '../../../../components/Shared/LoadingSpinner';
 import ErrorPage from '../../../ErrorPage';
-import Container from '../../../../Components/Shared/Container';
+import Container from '../../../../components/Shared/Container';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 
 const AddProductForm = () => {

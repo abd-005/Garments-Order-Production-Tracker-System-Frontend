@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router'
 import { useQuery } from '@tanstack/react-query'
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
-import PurchaseModal from '../../../Components/Modal/PurchaseModal'
-import Container from '../../../Components/Shared/Container'
+import PurchaseModal from '../../../components/Modal/PurchaseModal'
+import Container from '../../../components/Shared/Container'
 import Button from '../../../components/Shared/Button/Button'
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 // Import Swiper React components

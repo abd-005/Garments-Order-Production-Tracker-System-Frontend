@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import useAuth from '../../../../hooks/useAuth'
 import LoadingSpinner from '../../../../components/Shared/LoadingSpinner'
-import Container from '../../../../Components/Shared/Container'
+import Container from '../../../../components/Shared/Container'
 import ManagerProductsDataRow from './ManagerProductsDataRow'
 import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import ContactForm from './ContactForm'
-import Logo from '../../Components/Logo/Logo'
+import Logo from '../../components/Logo/Logo'
 
 const Contact = () => {
   return (

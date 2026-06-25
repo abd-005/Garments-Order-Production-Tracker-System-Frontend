@@ -2,7 +2,7 @@ import React from 'react'
 import useAuth from '../../../hooks/useAuth'
 import { useQuery } from '@tanstack/react-query'
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
-import Container from '../../../Components/Shared/Container'
+import Container from '../../../components/Shared/Container'
 import CustomerOrderDataRow from './CustomerOrderDataRow'
 import useAxiosSecure from '../../../hooks/useAxiosSecure'
 

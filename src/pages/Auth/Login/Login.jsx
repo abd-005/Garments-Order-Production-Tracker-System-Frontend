@@ -6,7 +6,7 @@ import { toast, ToastBar } from 'react-hot-toast';
 import { TbFidgetSpinner } from 'react-icons/tb';
 import useAuth from '../../../hooks/useAuth';
 import { saveOrUpdateUser } from '../../../utils';
-import Logo from '../../../Components/Logo/Logo';
+import Logo from '../../../components/Logo/Logo';
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner';
 
 const Login = () => {

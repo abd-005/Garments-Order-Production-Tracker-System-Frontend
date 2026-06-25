@@ -55,7 +55,7 @@ const Navbar = () => {
     applyTheme(newDarkMode);
   };
 
-  // 🌟 GSAP Master Sliding Engine Logic
+  // GSAP Master Sliding Engine Logic
   useGSAP(() => {
     // Locate the active NavLink child component within the desktop console
     const activeItem = menuContainerRef.current?.querySelector(".nav-item.active");

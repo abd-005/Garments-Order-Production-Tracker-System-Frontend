@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from '../../../Components/Shared/Container';
+import Container from '../../../components/Shared/Container';
 
 const UserDashboardHome = () => {
     return (

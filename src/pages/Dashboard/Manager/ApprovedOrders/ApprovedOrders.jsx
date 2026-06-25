@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 
-import Container from '../../../../Components/Shared/Container'
+import Container from '../../../../components/Shared/Container'
 import useAuth from '../../../../hooks/useAuth'
 import ApprovedOrderRowData from './ApprovedOrderRowData'
 import LoadingSpinner from '../../../../components/Shared/LoadingSpinner'

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
 import useAuth from '../../../hooks/useAuth'
 import { imageUpload, saveOrUpdateUser } from '../../../utils'
-import Logo from '../../../Components/Logo/Logo'
+import Logo from '../../../components/Logo/Logo'
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
 import { TbFidgetSpinner } from 'react-icons/tb'
 

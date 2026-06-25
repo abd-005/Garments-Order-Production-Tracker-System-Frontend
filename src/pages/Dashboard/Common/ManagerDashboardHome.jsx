@@ -1,6 +1,6 @@
 import React from 'react'
 import { PieChart, Pie, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts'
-import Container from '../../../Components/Shared/Container'
+import Container from '../../../components/Shared/Container'
 
 const KPI = ({ title, value, hint }) => (
     <div className="bg-white rounded-2xl p-6 shadow border border-gray-100">

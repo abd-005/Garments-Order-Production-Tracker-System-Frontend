@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import Card from './Card'
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
-import Container from '../../../Components/Shared/Container'
+import Container from '../../../components/Shared/Container'
 import { Search, Sliders, ArrowUpDown } from 'lucide-react'
 
 const AllProducts = () => {

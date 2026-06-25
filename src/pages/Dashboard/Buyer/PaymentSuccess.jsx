@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router';
-import Container from '../../../Components/Shared/Container';
+import Container from '../../../components/Shared/Container';
 import { IoBagCheckOutline } from 'react-icons/io5'
 import { useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
