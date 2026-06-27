@@ -75,7 +75,20 @@ body {
 
 
 :root[data-theme="dark"] {
-  color-scheme: dark;
+
+  --color-primary: #c9a7ff;
+  --color-secondary: #43385a;
+  --color-accent: #d8b4fe;
+
+  --color-neutral: #18151f;
+
+  --color-base-100: #18151f;
+  --color-base-200: #211d2b;
+  --color-base-300: #332d42;
+
+  --color-text-primary: #f8f7ff;
+  --color-text-secondary: #b8b2cc;
+  --color-border: #3f3655;
 }
 
 
