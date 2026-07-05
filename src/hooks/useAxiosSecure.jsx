@@ -30,8 +30,14 @@ const useAxiosSecure = () => {
           const status = err?.response?.status
           const errorData = err?.response?.data
           if (status === 403 && errorData?.isDemoBlock) {
-            toast.error(errorData?.message || 'Action disabled for demo profiles.')
-            return Promise.reject(err)
+            toast.error(
+              errorData?.message || 'Action disabled for demo profiles.'
+            )
+
+            return Promise.reject({
+              ...err,
+              isDemoBlock: true,
+            })
           }
 
           if (status === 401 || status === 403) {

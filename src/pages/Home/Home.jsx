@@ -11,54 +11,27 @@ import FAQ from './FAQ/FAQ'
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-linear-to-br from-white via-[#f9f7fc] to-white">
-      {/* Banner section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Banner />
-      </div>
+    <main className="min-h-screen bg-base-100">
 
-      {/* Choose section */}
-      <div className="py-12 sm:py-16">
-        <Choose />
-      </div>
+       <Banner />
 
-      {/* Our Products */}
-      <div className="py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ProductsGrid />
-        </div>
-      </div>
+      <Choose />
 
-      {/* How it works */}
-      <div className="py-12 sm:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <HowItWorks />
-        </div>
-      </div>
+      <ProductsGrid />
 
-      {/* Feed Back */}
-      <div className="py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Feedback />
-        </div>
-      </div>
+      <HowItWorks />
 
-      {/* Stats Section */}
       <Stats />
 
-      {/* Newsletter Section */}
+      <Feedback />
+
       <Newsletter />
 
-      {/* FAQ Section */}
       <FAQ />
 
-      {/* Ready sections */}
-      <div className="py-12 sm:py-16 bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Ready />
-        </div>
-      </div>
-    </div>
+      <Ready />
+
+    </main>
   )
 }
 

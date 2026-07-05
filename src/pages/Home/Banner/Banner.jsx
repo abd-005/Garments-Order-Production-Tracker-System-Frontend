@@ -1,78 +1,315 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import banner1 from '../../../assets/img/Image-5.jpg'
-import banner2 from '../../../assets/img/Image-3.jpg'
-import banner3 from '../../../assets/img/Image-2.jpg'
-import banner4 from '../../../assets/img/Image-4.jpg'
-import banner5 from '../../../assets/img/Image-1.jpg'
-import { useNavigate } from 'react-router';
+import React, { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, EffectFade, Pagination } from 'swiper/modules'
 
-const banners = [banner1, banner2, banner3, banner4, banner5];
+import { gsap } from 'gsap'
+import { useGSAP } from '@gsap/react'
+
+import {
+  ArrowRight,
+  Package,
+  ShieldCheck,
+  Truck,
+  Star
+} from 'lucide-react'
+
+import 'swiper/css'
+import 'swiper/css/effect-fade'
+import 'swiper/css/pagination'
+
+import img1 from '../../../assets/img/Image-1.jpg'
+import img2 from '../../../assets/img/Image-2.jpg'
+import img3 from '../../../assets/img/Image-3.jpg'
+import img4 from '../../../assets/img/Image-4.jpg'
+import img5 from '../../../assets/img/Image-5.jpg'
+
+gsap.registerPlugin(useGSAP)
+
+const slides = [
+  img1,
+  img2,
+  img3,
+  img4,
+  img5
+]
+
+const stats = [
+  {
+    title: '500+',
+    subtitle: 'Successful Orders'
+  },
+  {
+    title: '98%',
+    subtitle: 'On-Time Delivery'
+  },
+  {
+    title: '50+',
+    subtitle: 'Manufacturing Partners'
+  }
+]
+
+const features = [
+  {
+    icon: ShieldCheck,
+    text: 'Verified Manufacturers'
+  },
+  {
+    icon: Truck,
+    text: 'Live Order Tracking'
+  },
+  {
+    icon: Package,
+    text: 'Premium Quality Products'
+  }
+]
 
 const Banner = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
-    return (
+  const container = useRef()
 
+  useGSAP(
+    () => {
+      const tl = gsap.timeline()
 
-        <div className='overflow-hidden rounded-3xl my-6 shadow-2xl'>
-            <Swiper className="mySwiper"
-                spaceBetween={30}
-                centeredSlides={true}
-                autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                }}
-                pagination={{
-                    clickable: false,
-                }}
-                // navigation={true}
-                modules={[Autoplay, Pagination, Navigation]}
+      tl.from('.hero-badge', {
+        y: 30,
+        opacity: 0,
+        duration: .6
+      })
+
+      tl.from('.hero-title', {
+        y: 60,
+        opacity: 0,
+        duration: .8
+      }, '-=.2')
+
+      tl.from('.hero-desc', {
+        y: 30,
+        opacity: 0,
+        duration: .6
+      }, '-=.4')
+
+      tl.from('.hero-buttons', {
+        y: 20,
+        opacity: 0,
+        duration: .5
+      }, '-=.3')
+
+      tl.from('.stat-card', {
+        y: 40,
+        opacity: 0,
+        stagger: .15,
+        duration: .6
+      }, '-=.2')
+
+      tl.from('.floating-card', {
+        scale: .8,
+        opacity: 0,
+        stagger: .2,
+        duration: .7
+      }, '-=.5')
+
+    },
+    {
+      scope: container
+    }
+  )
+
+  return (
+    <section
+      ref={container}
+      className="relative overflow-hidden min-h-screen flex items-center bg-base-100"
+    >
+      {/* Background */}
+
+      <div className="absolute inset-0 bg-gradient-to-br from-base-100 via-secondary/20 to-base-100" />
+
+      <div className="absolute -top-52 -left-52 w-[500px] h-[500px] rounded-full bg-primary/10 blur-[120px]" />
+
+      <div className="absolute bottom-0 right-0 w-[450px] h-[450px] rounded-full bg-accent/20 blur-[120px]" />
+
+      <div className="relative max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-20 items-center">
+
+        {/* LEFT */}
+
+        <div>
+
+          <div className="hero-badge inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-5 py-2 font-semibold">
+
+            <Star className="fill-current w-4 h-4" />
+
+            Trusted by Manufacturers Worldwide
+
+          </div>
+
+          <h1 className="hero-title mt-8 text-5xl lg:text-7xl font-black leading-tight text-base-content">
+
+            Modern Garment
+
+            <span className="block text-primary">
+
+              Manufacturing.
+
+            </span>
+
+            Built Smarter.
+
+          </h1>
+
+          <p className="hero-desc mt-8 text-lg text-base-content/70 leading-8 max-w-xl">
+
+            Manage products, manufacturers, production and deliveries from one beautifully crafted platform.
+
+          </p>
+
+          <div className="hero-buttons mt-10 flex flex-wrap gap-5">
+
+            <button
+              onClick={() => navigate('/products')}
+              className="btn btn-primary rounded-xl px-8"
             >
-                {
-                    banners.map((img, index) => <SwiperSlide key={index}>
-                        <figure className="max-h-[65vh] relative overflow-hidden">
-                            <img
-                                src={img}
-                                alt={`Hero banner ${index + 1}`}
-                                className="w-full h-full object-cover"
-                                loading="lazy"
-                            />
-                            <div className="absolute inset-0 bg-black/60 dark:bg-black/40" aria-hidden="true"></div>
+              Explore Products
+              <ArrowRight size={18} />
+            </button>
 
-                            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-                                <h1 className="text-white text-3xl sm:text-4xl font-bold drop-shadow-md">
-                                    Tailored Craftsmanship
-                                </h1>
-                                <p className="text-white/90 mt-2 max-w-xl">
-                                    Handmade garments with sustainable materials — book a fitting or view products.
-                                </p>
-                                <div className="mt-4">
-                                    <button
-                                        type="button"
-                                        aria-label="View products"
-                                        onClick={() => navigate('/products')}
-                                        className="px-5 py-2 bg-primary text-white rounded-md shadow"
-                                    >
-                                        View Products
-                                    </button>
-                                </div>
-                            </div>
-                        </figure>
+            <button
+              onClick={() => navigate('/dashboard')}
+              className="btn btn-secondary rounded-xl px-8"
+            >
+              Dashboard
+            </button>
 
-                    </SwiperSlide>
-                    )
-                }
-            </Swiper>
+          </div>
+
+          <div className="mt-14 grid md:grid-cols-3 gap-5">
+
+            {stats.map(item => (
+
+              <div
+                key={item.title}
+                className="stat-card bg-base-100 border border-base-300 rounded-2xl shadow-lg p-6"
+              >
+
+                <h2 className="text-3xl font-black text-primary">
+
+                  {item.title}
+
+                </h2>
+
+                <p className="text-base-content/60 mt-2">
+
+                  {item.subtitle}
+
+                </p>
+
+              </div>
+
+            ))}
+
+          </div>
+
         </div>
 
+        {/* RIGHT */}
 
-    );
-};
+        <div className="relative">
 
-export default Banner;
+          <div className="overflow-hidden rounded-[36px] shadow-2xl border border-base-300">
+
+            <Swiper
+              modules={[Autoplay, EffectFade, Pagination]}
+              effect="fade"
+              loop
+              speed={1200}
+              autoplay={{
+                delay: 3500,
+                disableOnInteraction: false
+              }}
+              pagination={{
+                clickable: true
+              }}
+            >
+              {slides.map((image, i) => (
+
+                <SwiperSlide key={i}>
+
+                  <img
+                    src={image}
+                    alt=""
+                    className="w-full h-[700px] object-cover"
+                  />
+
+                </SwiperSlide>
+
+              ))}
+
+            </Swiper>
+
+          </div>
+
+          {/* Left Floating */}
+
+          <div className="floating-card z-10 absolute -left-10 top-14 bg-base-100 rounded-3xl shadow-xl p-5 backdrop-blur border border-base-300">
+
+            {features.map(({ icon: Icon, text }) => (
+
+              <div
+                key={text}
+                className="flex items-center gap-3 py-3"
+              >
+
+                <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center">
+
+                  <Icon
+                    className="text-primary"
+                    size={18}
+                  />
+
+                </div>
+
+                <span className="font-semibold">
+
+                  {text}
+
+                </span>
+
+              </div>
+
+            ))}
+
+          </div>
+
+          {/* Bottom Right */}
+
+          <div className="floating-card z-20 absolute -right-8 bottom-10 bg-base-100 rounded-3xl shadow-xl px-8 py-6 border border-base-300">
+
+            <p className="text-base-content/60">
+
+              Production Growth
+
+            </p>
+
+            <h2 className="text-4xl font-black text-primary mt-1">
+
+              +24%
+
+            </h2>
+
+            <p className="text-green-500 font-semibold mt-2">
+
+              This Month
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
+export default Banner
