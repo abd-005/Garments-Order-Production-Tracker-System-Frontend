@@ -11,7 +11,7 @@ const TrackOrder = () => {
   const { data: order = null, isLoading, isError } = useQuery({
     queryKey: ['track-order', orderId],
     queryFn: async () => {
-      const res = await axiosSecure.get(`${import.meta.env.VITE_API_URL}/orders/${orderId}`)
+      const res = await axiosSecure.get(`/orders/${orderId}`)
       return res.data
     },
     enabled: !!orderId,

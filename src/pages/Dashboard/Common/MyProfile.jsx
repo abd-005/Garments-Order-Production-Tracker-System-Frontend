@@ -20,7 +20,7 @@ const MyProfile = () => {
     const { data: profileData, isLoading: profileLoading } = useQuery({
       queryKey: ['user', user?.email],
       queryFn: async () => {
-        const res = await axiosSecure.get(`${import.meta.env.VITE_API_URL}/user`)
+          const res = await axiosSecure.get(`/user`)
         return res.data?.user || res.data
       },
       enabled: !!user?.email,

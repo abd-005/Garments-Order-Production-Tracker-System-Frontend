@@ -11,7 +11,7 @@ const OrderDetailsModal = ({ isOpen, closeModal, order }) => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ['order-tracking', orderId],
     queryFn: async () => {
-      const res = await axiosSecure.get(`${import.meta.env.VITE_API_URL}/orders/${orderId}/tracking`)
+      const res = await axiosSecure.get(`/orders/${orderId}/tracking`)
       // backend may return { logs } or an array
       return res.data
     },

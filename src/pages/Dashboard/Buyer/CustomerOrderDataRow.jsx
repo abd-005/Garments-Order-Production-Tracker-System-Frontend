@@ -14,7 +14,7 @@ const CustomerOrderDataRow = ({ order, refetchOrders }) => {
   
 
   const cancelMutation = useMutation({
-    mutationFn: async (orderId) => await AxiosSecure.patch(`${import.meta.env.VITE_API_URL}/orders/cancel/${orderId}`),
+    mutationFn: async (orderId) => await AxiosSecure.patch(`/orders/cancel/${orderId}`),
     onSuccess: () => {
       toast.success('Order cancelled')
       refetchOrders?.()

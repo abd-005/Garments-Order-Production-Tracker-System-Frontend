@@ -69,6 +69,35 @@ const Banner = () => {
 
   const container = useRef()
 
+
+  useEffect(() => {
+
+    const blobLeft = gsap.to(".blob-left", {
+      x: 40,
+      y: 20,
+      repeat: -1,
+      yoyo: true,
+      duration: 8,
+      ease: "sine.inOut"
+    })
+
+    const blobRight = gsap.to(".blob-right", {
+      x: -30,
+      y: -20,
+      repeat: -1,
+      yoyo: true,
+      duration: 10,
+      ease: "sine.inOut"
+    })
+
+
+    return () => {
+      blobLeft.kill()
+      blobRight.kill()
+    }
+  }, [])
+
+
   useGSAP(
     () => {
       const tl = gsap.timeline()
@@ -104,12 +133,20 @@ const Banner = () => {
         duration: .6
       }, '-=.2')
 
-      tl.from('.floating-card', {
-        scale: .8,
-        opacity: 0,
-        stagger: .2,
-        duration: .7
-      }, '-=.5')
+      tl.fromTo(
+        '.floating-card',
+        {
+          scale: .8,
+          opacity: 0
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: .7,
+          stagger: .2
+        },
+        '-=.5'
+      )
 
     },
     {
@@ -120,28 +157,30 @@ const Banner = () => {
   return (
     <section
       ref={container}
-      className="relative overflow-hidden bg-base-100 flex items-center min-h-[100svh] lg:min-h-screen"
+      className="relative overflow-hidden bg-base-100 flex items-center py-24 lg:py-32 lg:min-h-screen"
     >
       {/* Background */}
 
-      <div className="absolute inset-0 bg-gradient-to-br from-base-100 via-secondary/20 to-base-100" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
-      <div className="absolute -top-52 -left-52 w-[500px] h-[500px] rounded-full bg-primary/10 blur-[120px]" />
+      <div className="absolute blob-right -top-52 -left-52 w-[260px] h-[260px] lg:w-[500px] lg:h-[500px] rounded-full bg-primary/25 blur-[120px]" />
 
-      <div className="absolute bottom-0 right-0 w-[450px] h-[450px] rounded-full bg-accent/20 blur-[120px]" />
+      <div className="absolute blob-left bottom-0 right-0 w-[250px] h-[250px] lg:w-[450px] lg:h-[450px] rounded-full bg-accent/30 blur-[120px]" />
 
       <div className="relative max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-8 py-14 md:py-20 lg:py-28 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
         {/* LEFT */}
 
-        <div>
+        <div className='max-w-xl'>
 
-          <div className="hero-badge inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-2 text-xs sm:text-sm font-semibold">
+          <div className='flex justify-center lg:justify-start'>
+            <div className="hero-badge inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-2 text-xs sm:text-sm font-semibold">
 
             <Star className="fill-current w-4 h-4" />
 
             Trusted by Manufacturers Worldwide
 
+          </div>
           </div>
 
           <h1 className="hero-title mt-6 text-4xl sm:text-5xl lg:text-7xl font-black leading-tight text-base-content text-center lg:text-left">
@@ -168,22 +207,42 @@ const Banner = () => {
 
             <button
               onClick={() => navigate('/products')}
-              className="btn btn-primary rounded-xl w-full sm:w-auto px-8"
+              className="btn
+              group
+              btn-primary
+              btn-lg
+              rounded-2xl
+              shadow-xl
+              hover:scale-105
+              hover:shadow-primary/30
+              transition-all
+              duration-300"
             >
               Explore Products
-              <ArrowRight size={18} />
+              <ArrowRight
+                className="transition-transform group-hover:translate-x-1"
+              />
             </button>
 
             <button
               onClick={() => navigate('/dashboard')}
-              className="btn btn-secondary rounded-xl w-full sm:w-auto px-8"
+              className="btn
+              group
+              btn-secondary
+              btn-lg
+              rounded-2xl
+              shadow-xl
+              hover:scale-105
+              hover:shadow-secondary/30
+              transition-all
+              duration-300"
             >
               Dashboard
             </button>
 
           </div>
 
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
 
             {stats.map(item => (
 
@@ -214,9 +273,9 @@ const Banner = () => {
 
         {/* RIGHT */}
 
-        <div className="relative order-first lg:order-last">
+        <div className="relative">
 
-          <div className="overflow-hidden rounded-3xl lg:rounded-[36px] shadow-2xl border border-base-300">
+          <div className="overflow-hidden rounded-[40px] lg:rounded-[36px] shadow-2xl border border-base-300">
 
             <Swiper
               modules={[Autoplay, EffectFade, Pagination]}
@@ -228,7 +287,45 @@ const Banner = () => {
                 disableOnInteraction: false
               }}
               pagination={{
-                clickable: true
+                clickable: true,
+                dynamicBullets: true
+              }}
+              onSwiper={(swiper) => {
+
+                const current =
+                  swiper.slides[swiper.activeIndex].querySelector("img")
+
+                gsap.fromTo(current, {
+                  scale: 1.15,
+                  opacity: .7
+                }, {
+                  scale: 1,
+                  opacity: 1,
+                  duration: 1.4
+                })
+
+              }}
+              onSlideChange={(swiper) => {
+
+                const currentImage =
+                  swiper.slides[swiper.activeIndex].querySelector("img")
+
+                gsap.fromTo(
+                  currentImage,
+                  {
+                    scale: 1.15,
+                    opacity: .7,
+                    y: 40
+                  },
+                  {
+                    scale: 1,
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.4,
+                    ease: "power3.out"
+                  }
+                )
+
               }}
             >
               {slides.map((image, i) => (
@@ -237,9 +334,10 @@ const Banner = () => {
 
                   <img
                     src={image}
-                    alt=""
-                    className="w-full h-[320px] sm:h-[450px] md:h-[550px] lg:h-[700px] object-cover"
+                    alt={`Garment manufacturing ${i + 1}`}
+                    className="hero-image w-full h-[320px] sm:h-[450px] md:h-[560px] lg:h-[700px] object-cover"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
                 </SwiperSlide>
 
@@ -251,7 +349,7 @@ const Banner = () => {
 
           {/* Left Floating */}
 
-          <div className="floating-card hidden lg:block z-10 absolute -left-10 top-14 bg-base-100 rounded-3xl shadow-xl p-5 backdrop-blur border border-base-300">
+          <div className="floating-card hidden md:block z-10 absolute -left-10 top-14 bg-base-100 rounded-3xl shadow-xl p-5 backdrop-blur border border-base-300">
 
             {features.map(({ icon: Icon, text }) => (
 
@@ -283,7 +381,7 @@ const Banner = () => {
 
           {/* Bottom Right */}
 
-          <div className="floating-card hidden lg:block z-20 absolute -right-8 bottom-10 bg-base-100 rounded-3xl shadow-xl px-8 py-6 border border-base-300">
+          <div className="floating-card hidden md:block z-20 absolute -right-8 bottom-10 bg-base-100 rounded-3xl shadow-xl px-8 py-6 border border-base-300">
 
             <p className="text-base-content/60">
 

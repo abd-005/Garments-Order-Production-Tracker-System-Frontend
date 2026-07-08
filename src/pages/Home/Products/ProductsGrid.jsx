@@ -3,14 +3,14 @@ import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from '../../../hooks/useAxiosSecure'
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
 import ProductCard from './ProductCard'
+import axios from 'axios'
 
 const ProductsGrid = () => {
-  const axiosSecure = useAxiosSecure()
 
-  const { data, isLoading, isError } = useQuery({
+  const { data = [], isLoading, isError, error } = useQuery({
     queryKey: ['home-products'],
     queryFn: async () => {
-      const res = await axiosSecure.get(`${import.meta.env.VITE_API_URL}/products`, { params: { limit: 6 } })
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/products`, { params: { limit: 6 } })
       const all = Array.isArray(res.data) ? res.data : (res.data.products || [])
       const homeProducts = all.filter(p => p?.showOnHome === true).slice(0, 6)
       return homeProducts

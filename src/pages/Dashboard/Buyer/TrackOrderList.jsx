@@ -15,7 +15,7 @@ const TrackOrderList = () => {
   const { data: orders = [], isLoading, refetch } = useQuery({
     queryKey: ['my-orders', user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`${import.meta.env.VITE_API_URL}/my-orders?status=approved`)
+      const res = await axiosSecure.get(`/my-orders?status=approved`)
       return res.data
     },
     enabled: !!user?.email,

@@ -12,7 +12,7 @@ const UserRow = ({ user, refetch }) => {
 
   const updateRoleMutation = useMutation({
     mutationFn: async ({ email, role }) => {
-      return await axiosSecure.patch(`${import.meta.env.VITE_API_URL}/update-role`, { email, role })
+      return await axiosSecure.patch(`/update-role`, { email, role })
     },
     onSuccess: () => {
       toast.success('Role updated')
@@ -24,7 +24,7 @@ const UserRow = ({ user, refetch }) => {
 
   const suspendMutation = useMutation({
     mutationFn: async ({ email, suspended, reason, feedback }) => {
-      return await axiosSecure.patch(`${import.meta.env.VITE_API_URL}/suspend-user`, {
+      return await axiosSecure.patch(`/suspend-user`, {
         email,
         suspended,
         suspendedAt: suspended ? new Date().toISOString() : null,

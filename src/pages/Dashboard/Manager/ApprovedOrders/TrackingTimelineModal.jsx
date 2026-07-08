@@ -25,7 +25,7 @@ const TrackingTimelineModal = ({ isOpen, closeModal, order }) => {
     queryKey: ['order-tracking', orderId],
     queryFn: async () => {
       if (!orderId) return { logs: [] }
-      const res = await axiosSecure.get(`${import.meta.env.VITE_API_URL}/orders/${orderId}/tracking`)
+      const res = await axiosSecure.get(`/orders/${orderId}/tracking`)
       return res.data
     },
     enabled: !!orderId && isOpen,

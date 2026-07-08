@@ -13,7 +13,7 @@ const ApprovedOrders = () => {
   const { data: orders = [], isLoading, refetch } = useQuery({
     queryKey: ['approved-orders', user?.email],
     queryFn: async () => {
-      const res = await axiosSecure(`${import.meta.env.VITE_API_URL}/approved-orders`)
+      const res = await axiosSecure(`/approved-orders`)
       return res.data
     },
     enabled: !!user?.email,

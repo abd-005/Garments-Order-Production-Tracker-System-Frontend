@@ -13,7 +13,7 @@ const PendingOrderDataRow = ({ order, refetch }) => {
 
   const updateStatusMutation = useMutation({
     mutationFn: async ({ id, status }) => {
-      return await axiosSecure.patch(`${import.meta.env.VITE_API_URL}/order/${id}/status`, { status })
+      return await axiosSecure.patch(`/order/${id}/status`, { status })
     },
     onSuccess: (_, variables) => {
       const verb = variables.status === 'approved' ? 'approved' : 'rejected'

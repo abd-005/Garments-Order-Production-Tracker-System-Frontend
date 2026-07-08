@@ -12,7 +12,7 @@ const OrderDetails = () => {
     const { data: order, isLoading: orderLoading, isError: orderError } = useQuery({
         queryKey: ['order-detail', orderId],
         queryFn: async () => {
-            const res = await axiosSecure.get(`${import.meta.env.VITE_API_URL}/orders/${orderId}`)
+            const res = await axiosSecure.get(`/orders/${orderId}`)
             return res.data
         },
         enabled: !!orderId,
@@ -21,7 +21,7 @@ const OrderDetails = () => {
     const { data: trackingData, isLoading: trackingLoading } = useQuery({
         queryKey: ['order-tracking', orderId],
         queryFn: async () => {
-            const res = await axiosSecure.get(`${import.meta.env.VITE_API_URL}/orders/${orderId}/tracking`)
+            const res = await axiosSecure.get(`/orders/${orderId}/tracking`)
             return res.data
         },
         enabled: !!orderId,

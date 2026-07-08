@@ -50,7 +50,7 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
     const orderPrice = Number((orderQuantity * (price || 0)).toFixed(2))
 
     const bookingMutation = useMutation({
-        mutationFn: async (payload) => await AxiosSecure.post(`${import.meta.env.VITE_API_URL}/create-checkout-session`, payload),
+        mutationFn: async (payload) => await AxiosSecure.post(`/create-checkout-session`, payload),
         onSuccess: () => {
             toast.success('Booking saved')
         },
@@ -97,7 +97,7 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
         try {
             if (paymentOption === 'PayFirst') {
                 const { data } = await AxiosSecure.post(
-                    `${import.meta.env.VITE_API_URL}/create-checkout-session`,
+                    `/create-checkout-session`,
                     {
                         ...bookingPayload,
                         returnUrl: `${window.location.origin}/dashboard/my-orders`,
@@ -109,7 +109,7 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
             }
             if (paymentOption === 'Cash on Delivery') {
                 const { data } = await AxiosSecure.post(
-                    `${import.meta.env.VITE_API_URL}/cod-order`,
+                    `/cod-order`,
                     bookingPayload
                 )
 

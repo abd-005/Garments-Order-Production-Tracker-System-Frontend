@@ -16,7 +16,7 @@ const PaymentSuccess = () => {
 
   useEffect(() => {
     if (sessionId) {
-      AxiosSecure.post(`${import.meta.env.VITE_API_URL}/payment-success`, {
+      AxiosSecure.post(`/payment-success`, {
         sessionId,
       }).then(res => {
         console.log(res.data)

@@ -47,7 +47,7 @@ const UpdateProductModal = ({ isOpen, closeModal, product, onUpdated }) => {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, payload }) =>
-      await axiosSecure.patch(`${import.meta.env.VITE_API_URL}/update-product/${id}`, payload),
+      await axiosSecure.patch(`/update-product/${id}`, payload),
     onSuccess: (data) => {
       toast.success('Product updated')
       onUpdated?.(data?.data?.product || data?.data || null)

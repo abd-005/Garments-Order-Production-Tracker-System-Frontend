@@ -15,7 +15,7 @@ const AllOrders = () => {
     const { data: orders = [], isLoading, refetch } = useQuery({
         queryKey: ['all-orders'],
         queryFn: async () => {
-            const res = await AxiosSecure(`${import.meta.env.VITE_API_URL}/all-orders`)
+            const res = await AxiosSecure(`/all-orders`)
             return res.data
         },
         enabled: role === 'admin',

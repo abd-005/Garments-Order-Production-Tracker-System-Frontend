@@ -32,7 +32,7 @@ const ManageUsers = () => {
             if (roleFilter) params.role = roleFilter
             if (statusFilter) params.status = statusFilter
 
-            const res = await axiosSecure.get(`${import.meta.env.VITE_API_URL}/users`, { params })
+            const res = await axiosSecure.get(`/users`, { params })
             return res.data
         },
         placeholderData: (previousData) => previousData,

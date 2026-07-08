@@ -18,7 +18,7 @@ const AllAdminProducts = () => {
   const { data: allProducts = [], isLoading, refetch } = useQuery({
     queryKey: ['all-products', role],
     queryFn: async () => {
-      const res = await axiosSecure.patch(`${import.meta.env.VITE_API_URL}/all-products`)
+      const res = await axiosSecure.patch(`/all-products`)
       return Array.isArray(res.data) ? res.data : res.data.products || []
     },
     enabled: role === 'admin',

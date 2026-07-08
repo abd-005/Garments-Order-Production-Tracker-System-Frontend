@@ -19,7 +19,7 @@ const AddProductForm = () => {
         reset: mutationReset,
     } = useMutation({
         mutationFn: async payload =>
-            await AxiosSecure.post(`${import.meta.env.VITE_API_URL}/products`, payload),
+            await AxiosSecure.post(`/products`, payload),
 
         onSuccess: data => {
             console.log('Product added successfully:', data);

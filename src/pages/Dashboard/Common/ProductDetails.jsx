@@ -31,7 +31,7 @@ const ProductDetails = () => {
     } = useQuery({
         queryKey: ['product', id],
         queryFn: async () => {
-            const result = await AxiosSecure(`${import.meta.env.VITE_API_URL}/product/${id}`)
+            const result = await AxiosSecure(`/product/${id}`)
             return result.data
         },
     })

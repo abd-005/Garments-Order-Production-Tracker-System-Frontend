@@ -16,7 +16,7 @@ const ManageProducts = () => {
   const { data: products = [], isLoading, refetch } = useQuery({
     queryKey: ['manager-products', user?.email],
     queryFn: async () => {
-      const res = await axiosSecure(`${import.meta.env.VITE_API_URL}/manage-products`)
+      const res = await axiosSecure(`/manage-products`)
       return res.data
     },
     enabled: !!user?.email,

@@ -12,7 +12,7 @@ const ManagerProductsDataRow = ({ product, refetchProducts }) => {
   const axiosSecure = useAxiosSecure()
 
   const deleteMutation = useMutation({
-    mutationFn: async (id) => await axiosSecure.delete(`${import.meta.env.VITE_API_URL}/delete-product/${id}`),
+    mutationFn: async (id) => await axiosSecure.delete(`/delete-product/${id}`),
     onSuccess: () => {
       toast.success('Product deleted')
       refetchProducts?.()

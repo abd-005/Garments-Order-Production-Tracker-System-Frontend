@@ -12,7 +12,7 @@ const ProductRow = ({ product, refetch }) => {
   const AxiosSecure = useAxiosSecure()
 
   const toggleMutation = useMutation({
-    mutationFn: async ({ id, payload }) => await AxiosSecure.patch(`${import.meta.env.VITE_API_URL}/update-product/${id}`, payload),
+    mutationFn: async ({ id, payload }) => await AxiosSecure.patch(`/update-product/${id}`, payload),
     onSuccess: () => {
       toast.success('Updated')
       refetch?.()
@@ -21,7 +21,7 @@ const ProductRow = ({ product, refetch }) => {
   })
 
   const deleteMutation = useMutation({
-    mutationFn: async (id) => await AxiosSecure.delete(`${import.meta.env.VITE_API_URL}/delete-product/${id}`),
+    mutationFn: async (id) => await AxiosSecure.delete(`/delete-product/${id}`),
     onSuccess: () => {
       toast.success('Product deleted')
       refetch?.()
