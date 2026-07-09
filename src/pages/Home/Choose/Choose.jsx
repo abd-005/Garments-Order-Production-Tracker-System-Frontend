@@ -11,7 +11,6 @@ import svg3 from "../../../assets/svg/03.png";
 import svg4 from "../../../assets/svg/04.png";
 import svg5 from "../../../assets/svg/05.png";
 import svg6 from "../../../assets/svg/06.png";
-import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -188,7 +187,7 @@ const Choose = () => {
             sustainable production and an uncompromising commitment
             to quality.
           </p>
-          
+
         </div>
 
         <div className="cards-wrapper grid gap-8 lg:grid-cols-2">
