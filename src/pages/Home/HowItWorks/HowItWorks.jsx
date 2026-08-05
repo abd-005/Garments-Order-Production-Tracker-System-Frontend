@@ -1,5 +1,10 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import { ShoppingBag, ClipboardList, Factory, PackageCheck, ArrowRight } from 'lucide-react'
+
+gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 const steps = [
   {
@@ -25,8 +30,87 @@ const steps = [
 ]
 
 const HowItWorks = () => {
+  const container = useRef(null)
+
+  useGSAP(() => {
+    gsap.to('.hiw-blob-left', {
+      x: 30,
+      y: 20,
+      duration: 9,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut',
+    })
+
+    gsap.to('.hiw-blob-right', {
+      x: -25,
+      y: -18,
+      duration: 11,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut',
+    })
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top 75%',
+        end: 'bottom top',
+        toggleActions: 'play none none none',
+      },
+    })
+
+    tl.fromTo(
+      '.hiw-badge',
+      { y: 25, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5 }
+    )
+      .fromTo(
+        '.hiw-title',
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
+        '-=0.3'
+      )
+      .fromTo(
+        '.hiw-desc',
+        { y: 25, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6 },
+        '-=0.45'
+      )
+      .fromTo(
+        '.hiw-divider',
+        { scaleX: 0, opacity: 0 },
+        { scaleX: 1, opacity: 1, duration: 0.6, ease: 'power2.out' },
+        '-=0.3'
+      )
+      .fromTo(
+        '.hiw-line',
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.9, ease: 'power3.out' },
+        '-=0.3'
+      )
+      .fromTo(
+        '.hiw-card',
+        { y: 45, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.14, duration: 0.6, ease: 'power2.out' },
+        '-=0.6'
+      )
+      .fromTo(
+        '.hiw-step',
+        { scale: 0.5, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          stagger: 0.14,
+          duration: 0.5,
+          ease: 'back.out(2)',
+        },
+        '-=0.8'
+      )
+  }, { scope: container })
+
   return (
-    <section className="relative overflow-hidden py-24">
+    <section ref={container} className="relative overflow-hidden py-24">
       <div className="absolute inset-0 bg-gradient-to-b from-base-200 via-base-100 to-base-200" />
 
       <div className="hiw-blob-left absolute -left-40 top-0 h-96 w-96 rounded-full bg-primary/15 blur-[120px]" />
