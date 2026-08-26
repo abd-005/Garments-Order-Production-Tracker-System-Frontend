@@ -123,7 +123,7 @@ const Feedback = () => {
             Real words from real customers who trust our craft.
           </p>
 
-          <div className="fb-divider h-1 w-16 origin-center rounded-full bg-linear-to-r from-[#4c4452] to-[#dcd3e4] mx-auto mt-6" />
+          <div className="fb-divider h-1 w-16 origin-center rounded-full bg-linear-to-r from-primary to-secondary mx-auto mt-6" />
         </div>
 
         <div className="fb-card mx-auto max-w-3xl">

@@ -5,9 +5,9 @@ const Hero = () => {
   const navigate = useNavigate()
   return (
     <section className="relative min-h-[60vh] max-h-[70vh] flex items-center">
-      <div className="absolute inset-0 bg-linear-to-br from-white via-[#f9f7fc] to-white dark:from-base-200 dark:via-base-200 dark:to-base-300" />
+      <div className="absolute inset-0 bg-linear-to-br from-white via-neutral to-white dark:from-base-200 dark:via-base-200 dark:to-base-300" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight" style={{ color: '#4c4452' }}>
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-primary">
           Crafted garments, built for real life
         </h1>
         <p className="mt-3 text-gray-600 max-w-2xl">

@@ -133,7 +133,7 @@ const HowItWorks = () => {
             built around your garment.
           </p>
 
-          <div className="hiw-divider h-1 w-16 origin-center rounded-full bg-linear-to-r from-[#4c4452] to-[#dcd3e4] mx-auto mt-6" />
+          <div className="hiw-divider h-1 w-16 origin-center rounded-full bg-linear-to-r from-primary to-secondary mx-auto mt-6" />
         </div>
 
         <div className="relative">

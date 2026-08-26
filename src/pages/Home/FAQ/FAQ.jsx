@@ -121,7 +121,7 @@ const FAQ = () => {
             Find answers to common questions about our services and process.
           </p>
 
-          <div className="faq-divider h-1 w-16 origin-center rounded-full bg-linear-to-r from-[#4c4452] to-[#dcd3e4] mx-auto mt-6" />
+          <div className="faq-divider h-1 w-16 origin-center rounded-full bg-linear-to-r from-primary to-secondary mx-auto mt-6" />
         </div>
 
         <div className="space-y-4">

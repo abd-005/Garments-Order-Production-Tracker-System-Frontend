@@ -111,7 +111,7 @@ select,
 
 .btn-primary {
 
-  background-color: #4c4452;
+  background-color: var(--color-primary);
   color: #fff;
 
   border: none;
@@ -124,19 +124,19 @@ select,
 
 .btn-primary:hover {
 
-  background-color: #3d3642;
+  background-color: color-mix(in srgb, var(--color-primary) 80%, black);
 
   box-shadow:
-    0 4px 12px rgba(76, 68, 82, 0.3);
+    0 4px 12px color-mix(in srgb, var(--color-primary) 30%, transparent);
 }
 
 
 
 .btn-secondary {
 
-  background-color: #dcd3e4;
+  background-color: var(--color-secondary);
 
-  color: #4c4452;
+  color: var(--color-primary);
 
   border: none;
 
@@ -149,10 +149,10 @@ select,
 
 .btn-secondary:hover {
 
-  background-color: #cfc3d6;
+  background-color: color-mix(in srgb, var(--color-secondary) 85%, black);
 
   box-shadow:
-    0 4px 12px rgba(220, 211, 228, 0.3);
+    0 4px 12px color-mix(in srgb, var(--color-secondary) 30%, transparent);
 }
 
 
@@ -212,7 +212,7 @@ select,
 ::-webkit-scrollbar-track {
 
   background:
-    rgba(220, 211, 228, 0.1);
+    color-mix(in srgb, var(--color-secondary) 10%, transparent);
 }
 
 
@@ -220,7 +220,7 @@ select,
 ::-webkit-scrollbar-thumb {
 
   background:
-    #4c4452;
+    var(--color-primary);
 
   border-radius:
     4px;
@@ -231,7 +231,7 @@ select,
 ::-webkit-scrollbar-thumb:hover {
 
   background:
-    #3d3642;
+    color-mix(in srgb, var(--color-primary) 80%, black);
 }
 
 

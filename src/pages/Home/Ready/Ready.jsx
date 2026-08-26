@@ -105,10 +105,10 @@ const Ready = () => {
             through every step.
           </p>
 
-          <div className="ready-divider h-1 w-16 origin-center rounded-full bg-linear-to-r from-[#4c4452] to-[#dcd3e4] mx-auto mt-6" />
+          <div className="ready-divider h-1 w-16 origin-center rounded-full bg-linear-to-r from-primary to-secondary mx-auto mt-6" />
         </div>
 
-        <div className="ready-card relative overflow-hidden rounded-[2.5rem] bg-linear-to-br from-primary via-[#57505d] to-accent/90 p-8 shadow-2xl shadow-primary/20 sm:p-12 lg:p-16">
+        <div className="ready-card relative overflow-hidden rounded-[2.5rem] bg-linear-to-br from-primary via-primary/80 to-accent/90 p-8 shadow-2xl shadow-primary/20 sm:p-12 lg:p-16">
           <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-[100px]" />
 
           <div className="absolute -bottom-24 -right-20 h-72 w-72 rounded-full bg-accent/40 blur-[110px]" />

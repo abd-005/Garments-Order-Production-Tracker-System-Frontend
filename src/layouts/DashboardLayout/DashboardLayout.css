@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f9f7fc;
+  background-color: var(--color-neutral);
 }
 
 .dashboard-body {
@@ -34,7 +34,7 @@
 
 /* Theme styling for dashboard */
 .dashboard-container {
-  --primary: #4c4452;
-  --secondary: #dcd3e4;
-  --background: #f9f7fc;
+  --primary: var(--color-primary);
+  --secondary: var(--color-secondary);
+  --background: var(--color-neutral);
 }

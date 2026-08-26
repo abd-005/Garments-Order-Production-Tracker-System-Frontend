@@ -91,7 +91,7 @@ const Newsletter = () => {
 
   return (
     <section ref={container} className="relative overflow-hidden py-24">
-      <div className="absolute inset-0 bg-linear-to-br from-primary via-[#57505d] to-accent/80" />
+      <div className="absolute inset-0 bg-linear-to-br from-primary via-primary/80 to-accent/80" />
 
       <div className="news-blob-1 absolute -left-40 top-0 h-96 w-96 rounded-full bg-white/10 blur-[120px]" />
 
