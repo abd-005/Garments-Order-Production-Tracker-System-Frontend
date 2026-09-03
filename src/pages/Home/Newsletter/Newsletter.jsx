@@ -90,25 +90,25 @@ const Newsletter = () => {
   }, { scope: container })
 
   return (
-    <section ref={container} className="relative overflow-hidden py-24">
-      <div className="absolute inset-0 bg-linear-to-br from-primary via-primary/80 to-accent/80" />
+    <section ref={container} className="relative overflow-hidden bg-[var(--app-bg-sectional)] py-24">
+      <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-primary/5 to-accent/15" />
 
-      <div className="news-blob-1 absolute -left-40 top-0 h-96 w-96 rounded-full bg-white/10 blur-[120px]" />
+      <div className="news-blob-1 absolute -left-40 top-0 h-96 w-96 rounded-full bg-base-100/20 blur-[120px]" />
 
-      <div className="news-blob-2 absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-accent/40 blur-[120px]" />
+      <div className="news-blob-2 absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-accent/25 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <div className="news-badge inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-2 text-xs font-semibold tracking-widest text-white uppercase">
+            <div className="news-badge inline-flex rounded-full border border-primary/30 bg-base-100/50 px-5 py-2 text-xs font-semibold tracking-widest text-primary-content uppercase backdrop-blur">
               Newsletter
             </div>
 
-            <h2 className="news-title mt-6 text-4xl font-black text-white lg:text-6xl">
-              Stay <span className="text-accent">Updated.</span>
+            <h2 className="news-title mt-6 text-4xl font-black text-base-content lg:text-6xl">
+              Stay <span className="text-primary">Updated.</span>
             </h2>
 
-            <p className="news-desc mt-6 text-lg leading-8 text-white/70">
+            <p className="news-desc mt-6 text-lg leading-8 text-base-content/70">
               Subscribe to our newsletter for exclusive offers, new collections,
               and style tips delivered directly to your inbox.
             </p>
@@ -119,19 +119,19 @@ const Newsletter = () => {
 
                 return (
                   <div key={item.text} className="news-contact flex items-center gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/15 bg-white/10">
-                      <ContactIcon className="h-5 w-5 text-accent" />
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-primary/20 bg-base-100/50">
+                      <ContactIcon className="h-5 w-5 text-primary" />
                     </div>
 
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="font-medium text-white transition-colors hover:text-accent"
+                        className="font-medium text-base-content transition-colors hover:text-primary"
                       >
                         {item.text}
                       </a>
                     ) : (
-                      <span className="font-medium text-white">{item.text}</span>
+                      <span className="font-medium text-base-content">{item.text}</span>
                     )}
                   </div>
                 )
@@ -139,14 +139,14 @@ const Newsletter = () => {
             </div>
           </div>
 
-          <div className="news-form rounded-3xl border border-white/15 bg-white/10 p-8 backdrop-blur-xl sm:p-10">
-            <h3 className="text-2xl font-bold text-white">Get the latest first</h3>
+          <div className="news-form rounded-3xl border border-primary/15 bg-base-100/60 p-8 backdrop-blur-xl sm:p-10">
+            <h3 className="text-2xl font-bold text-base-content">Get the latest first</h3>
 
-            <p className="mt-2 text-white/60">Join our community and never miss a drop.</p>
+            <p className="mt-2 text-base-content/60">Join our community and never miss a drop.</p>
 
             <form onSubmit={handleSubscribe} className="mt-8 space-y-4">
               <div>
-                <label htmlFor="email" className="mb-2 block text-sm font-medium text-white/80">
+                <label htmlFor="email" className="mb-2 block text-sm font-medium text-base-content/80">
                   Email Address
                 </label>
                 <input
@@ -156,14 +156,14 @@ const Newsletter = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
                   required
-                  className="w-full rounded-2xl border border-white/20 bg-white/10 px-5 py-3.5 text-white placeholder-white/40 outline-none transition-all duration-300 focus:border-accent focus:bg-white/15"
+                  className="w-full rounded-2xl border border-primary/20 bg-base-100 px-5 py-3.5 text-base-content placeholder-base-content/40 outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="group btn w-full rounded-2xl border-none bg-accent px-6 py-3.5 font-semibold text-white shadow-xl shadow-black/20 transition-all duration-300 hover:scale-[1.02] hover:bg-accent/90 disabled:opacity-50"
+                className="group btn w-full rounded-2xl border-none bg-primary px-6 py-3.5 font-semibold text-primary-content shadow-xl shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:bg-primary/90 disabled:opacity-50"
               >
                 {loading ? (
                   'Subscribing...'
@@ -176,14 +176,14 @@ const Newsletter = () => {
               </button>
 
               {submitted && (
-                <p className="flex items-center justify-center gap-2 text-sm font-medium text-accent">
+                <p className="flex items-center justify-center gap-2 text-sm font-medium text-primary">
                   <CheckCircle2 className="h-4 w-4" />
                   Thanks for subscribing!
                 </p>
               )}
             </form>
 
-            <p className="mt-6 text-center text-sm text-white/50">
+            <p className="mt-6 text-center text-sm text-base-content/50">
               We respect your privacy. Unsubscribe at any time.
             </p>
           </div>

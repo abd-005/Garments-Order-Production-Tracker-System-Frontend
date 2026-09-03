@@ -15,4 +15,16 @@
 
   --app-container:
     1280px;
+
+
+  /* Brand section colors */
+
+  --app-bg-sectional: #DAD3C8;
+
+  --app-bg-footer: #5A5A5A;
+}
+
+:root[data-theme="dark"] {
+
+  --app-bg-sectional: #2A2621;
 }

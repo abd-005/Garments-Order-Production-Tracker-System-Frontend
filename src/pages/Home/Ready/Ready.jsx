@@ -108,18 +108,20 @@ const Ready = () => {
           <div className="ready-divider h-1 w-16 origin-center rounded-full bg-linear-to-r from-primary to-secondary mx-auto mt-6" />
         </div>
 
-        <div className="ready-card relative overflow-hidden rounded-[2.5rem] bg-linear-to-br from-primary via-primary/80 to-accent/90 p-8 shadow-2xl shadow-primary/20 sm:p-12 lg:p-16">
-          <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-[100px]" />
+        <div className="ready-card relative overflow-hidden rounded-[2.5rem] bg-[var(--app-bg-sectional)] p-8 shadow-2xl shadow-primary/10 sm:p-12 lg:p-16">
+          <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-transparent to-accent/20" />
 
-          <div className="absolute -bottom-24 -right-20 h-72 w-72 rounded-full bg-accent/40 blur-[110px]" />
+          <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-base-100/30 blur-[100px]" />
+
+          <div className="absolute -bottom-24 -right-20 h-72 w-72 rounded-full bg-primary/25 blur-[110px]" />
 
           <div className="relative flex flex-col items-center justify-between gap-8 text-center lg:flex-row lg:text-left">
             <div className="max-w-xl">
-              <h3 className="text-3xl font-black text-white sm:text-4xl lg:text-5xl">
+              <h3 className="text-3xl font-black text-base-content sm:text-4xl lg:text-5xl">
                 Ready to get measured?
               </h3>
 
-              <p className="mt-4 text-lg leading-8 text-white/70">
+              <p className="mt-4 text-lg leading-8 text-base-content/70">
                 Book a product or request a custom fitting — we&rsquo;ll guide
                 you through the process from start to finish.
               </p>
@@ -129,7 +131,7 @@ const Ready = () => {
               <button
                 type="button"
                 onClick={() => navigate('/products')}
-                className="group btn rounded-2xl border-none bg-white px-7 py-3.5 font-bold text-primary shadow-xl shadow-black/20 transition-all duration-300 hover:scale-105 hover:bg-white/90"
+                className="group btn rounded-2xl border-none bg-primary px-7 py-3.5 font-bold text-primary-content shadow-xl shadow-black/10 transition-all duration-300 hover:scale-105 hover:bg-primary/90"
               >
                 View Products
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -138,7 +140,7 @@ const Ready = () => {
               <button
                 type="button"
                 onClick={() => navigate('/dashboard')}
-                className="btn rounded-2xl border-2 border-white/30 bg-transparent px-7 py-3.5 font-bold text-white transition-all duration-300 hover:scale-105 hover:border-white/60 hover:bg-white/10"
+                className="btn rounded-2xl border-2 border-primary/40 bg-transparent px-7 py-3.5 font-bold text-base-content transition-all duration-300 hover:scale-105 hover:border-primary/70 hover:bg-primary/10"
               >
                 Get Started
               </button>

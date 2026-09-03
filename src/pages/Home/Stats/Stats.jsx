@@ -97,25 +97,25 @@ const Stats = () => {
   }, { scope: container })
 
   return (
-    <section ref={container} className="relative overflow-hidden bg-primary py-24">
-      <div className="absolute inset-0 bg-linear-to-br from-primary via-primary/80 to-accent/80" />
+    <section ref={container} className="relative overflow-hidden bg-[var(--app-bg-sectional)] py-24">
+      <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-primary/5 to-accent/15" />
 
-      <div className="stats-blob-1 absolute -left-40 top-0 h-96 w-96 rounded-full bg-white/10 blur-[120px]" />
+      <div className="stats-blob-1 absolute -left-40 top-0 h-96 w-96 rounded-full bg-base-100/20 blur-[120px]" />
 
-      <div className="stats-blob-2 absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-accent/40 blur-[120px]" />
+      <div className="stats-blob-2 absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-primary/20 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <div className="stats-badge inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-2 text-xs font-semibold tracking-widest text-white uppercase">
+          <div className="stats-badge inline-flex rounded-full border border-primary/30 bg-base-100/50 px-5 py-2 text-xs font-semibold tracking-widest text-primary-content uppercase backdrop-blur">
             Our Achievements
           </div>
 
-          <h2 className="stats-title mt-6 text-4xl font-black text-white lg:text-6xl">
+          <h2 className="stats-title mt-6 text-4xl font-black text-base-content lg:text-6xl">
             Numbers that
-            <span className="block text-accent">speak for themselves.</span>
+            <span className="block text-primary">speak for themselves.</span>
           </h2>
 
-          <p className="stats-desc mt-6 text-lg leading-8 text-white/70">
+          <p className="stats-desc mt-6 text-lg leading-8 text-base-content/70">
             Trusted by thousands of customers worldwide for premium garments.
           </p>
         </div>
@@ -127,25 +127,25 @@ const Stats = () => {
             return (
               <div
                 key={stat.label}
-                className="stats-card group relative overflow-hidden rounded-3xl border border-white/15 bg-white/10 p-8 text-center backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-white/30 hover:bg-white/15 hover:shadow-2xl hover:shadow-black/20"
+                className="stats-card group relative overflow-hidden rounded-3xl border border-base-300 bg-base-100/70 p-8 text-center backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-primary/30 hover:bg-base-100 hover:shadow-2xl hover:shadow-black/10"
               >
-                <div className="stats-icon mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-white/20">
-                  <StatIcon className="h-8 w-8 text-white" />
+                <div className="stats-icon mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-primary/20">
+                  <StatIcon className="h-8 w-8 text-primary" />
                 </div>
 
                 <div className="mt-6 flex items-baseline justify-center gap-1">
                   <span
-                    className="stats-value text-4xl font-black text-white"
+                    className="stats-value text-4xl font-black text-base-content"
                     data-value={stat.value}
                   >
                     0
                   </span>
-                  <span className="text-2xl font-black text-accent">
+                  <span className="text-2xl font-black text-primary">
                     {stat.suffix}
                   </span>
                 </div>
 
-                <p className="mt-2 font-semibold text-white/70">{stat.label}</p>
+                <p className="mt-2 font-semibold text-base-content/70">{stat.label}</p>
               </div>
             )
           })}
