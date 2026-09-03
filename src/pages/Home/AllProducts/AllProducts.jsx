@@ -52,13 +52,13 @@ const AllProducts = () => {
     <div className='bg-linear-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-slate-800 pb-12 min-h-screen'>
       <Container>
         <div className='text-center py-12 sm:py-16'>
-          <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 text-primary dark:text-blue-300'>
+          <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 text-primary'>
             All Products
           </h2>
           <p className='text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto'>
             Discover our curated collection of premium garments
           </p>
-          <div className='w-16 h-1 bg-linear-to-r from-primary dark:from-blue-400 to-secondary dark:to-purple-400 mx-auto mt-4 rounded-full'></div>
+          <div className='w-16 h-1 bg-linear-to-r from-primary to-secondary mx-auto mt-4 rounded-full'></div>
         </div>
 
         {/* Controls */}
@@ -75,7 +75,7 @@ const AllProducts = () => {
                   setSearchTerm(e.target.value)
                   setPage(1)
                 }}
-                className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-blue-400"
+                className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary"
               />
             </div>
             <button
@@ -100,7 +100,7 @@ const AllProducts = () => {
                   setCategory(e.target.value)
                   setPage(1)
                 }}
-                className="w-full px-3 py-2.5 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-blue-400"
+                className="w-full px-3 py-2.5 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary"
               >
                 <option value="">All Categories</option>
                 <option value="shirts">Shirts</option>
@@ -126,7 +126,7 @@ const AllProducts = () => {
                     setPriceRange(newRange)
                     setPage(1)
                   }}
-                  className="w-1/2 px-2 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-blue-400"
+                  className="w-1/2 px-2 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary"
                   placeholder="Min"
                 />
                 <span className="text-gray-600 dark:text-gray-400">-</span>
@@ -139,7 +139,7 @@ const AllProducts = () => {
                     setPriceRange(newRange)
                     setPage(1)
                   }}
-                  className="w-1/2 px-2 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-blue-400"
+                  className="w-1/2 px-2 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary"
                   placeholder="Max"
                 />
               </div>
@@ -157,7 +157,7 @@ const AllProducts = () => {
                   setSortBy(e.target.value)
                   setPage(1)
                 }}
-                className="w-full px-3 py-2.5 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-blue-400"
+                className="w-full px-3 py-2.5 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary"
               >
                 <option value="newest">Newest</option>
                 <option value="oldest">Oldest</option>
@@ -184,7 +184,7 @@ const AllProducts = () => {
             <select
               value={limit}
               onChange={(e) => { setLimit(Number(e.target.value)); setPage(1) }}
-              className="px-2 py-1 border border-gray-300 dark:border-slate-600 rounded bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-blue-400"
+              className="px-2 py-1 border border-gray-300 dark:border-slate-600 rounded bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary"
             >
               <option value={8}>8</option>
               <option value={12}>12</option>
@@ -249,7 +249,7 @@ const AllProducts = () => {
                   <button
                     key={pageNum}
                     onClick={() => setPage(pageNum)}
-                    className={`px-3 py-2 rounded-lg transition ${pageNum === page ? 'bg-primary dark:bg-blue-600 text-white' : 'border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-slate-700'}`}
+                    className={`px-3 py-2 rounded-lg transition ${pageNum === page ? 'bg-primary text-white' : 'border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-slate-700'}`}
                   >
                     {pageNum}
                   </button>

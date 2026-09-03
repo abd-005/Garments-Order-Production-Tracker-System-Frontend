@@ -6,10 +6,10 @@
 
 /* 
   Color Palette:
-  Primary: #4c4452 (Deep Purple-Brown)
-  Secondary: #dcd3e4 (Light Lavender)
-  Accent: #8B5A8F (Rich Purple)
-  Neutral: #1a1a2e, #f5f3f7
+  Primary: #CBA655 (Warm Gold)
+  Secondary: #F4F1EC (Light Warm Gray)
+  Accent: #A67C52 (Rich Tan)
+  Neutral: #F8F9FB
 */
 
 @plugin "daisyui" {
@@ -21,7 +21,7 @@
   name: "light";
   default: true;
 
-  --color-primary: #4c4452;      
+  --color-primary: #CBA655;      
 --color-secondary: #F4F1EC;      
 --color-accent: #A67C52;         
 --color-neutral: #F8F9FB;
@@ -39,7 +39,7 @@
 @plugin "daisyui/theme" {
   name: "dark";
 
-  --color-primary: #4c4452;
+  --color-primary: #CBA655;
   --color-secondary: #1F2937;
   --color-accent: #C89B63;
   --color-neutral: #0F172A;
@@ -76,19 +76,19 @@ body {
 
 :root[data-theme="dark"] {
 
-  --color-primary: #c9a7ff;
-  --color-secondary: #43385a;
-  --color-accent: #d8b4fe;
+  --color-primary: #CBA655;
+  --color-secondary: #1F2937;
+  --color-accent: #C89B63;
 
-  --color-neutral: #18151f;
+  --color-neutral: #0F172A;
 
-  --color-base-100: #18151f;
-  --color-base-200: #211d2b;
-  --color-base-300: #332d42;
+  --color-base-100: #111827;
+  --color-base-200: #1E293B;
+  --color-base-300: #334155;
 
-  --color-text-primary: #f8f7ff;
-  --color-text-secondary: #b8b2cc;
-  --color-border: #3f3655;
+  --color-text-primary: #F9FAFB;
+  --color-text-secondary: #CBD5E1;
+  --color-border: #374151;
 }
 
 
@@ -161,7 +161,7 @@ select,
 
 :root[data-theme="dark"] .btn-primary {
 
-  background-color: #8B5A8F;
+  background-color: #CBA655;
 
   color: #1a1620;
 }
@@ -169,32 +169,32 @@ select,
 
 :root[data-theme="dark"] .btn-primary:hover {
 
-  background-color: #9d6da3;
+  background-color: #b8954d;
 
   box-shadow:
-    0 4px 12px rgba(139, 90, 143, 0.4);
+    0 4px 12px rgba(203, 166, 85, 0.4);
 }
 
 
 
 :root[data-theme="dark"] .btn-secondary {
 
-  background-color: #3a3240;
+  background-color: #334155;
 
-  color: #e8e0f0;
+  color: #E2E8F0;
 
   border:
-    1px solid #4a4050;
+    1px solid #475569;
 }
 
 
 
 :root[data-theme="dark"] .btn-secondary:hover {
 
-  background-color: #4a4050;
+  background-color: #475569;
 
   border-color:
-    #5a5060;
+    #64748B;
 }
 
 
@@ -241,7 +241,7 @@ select,
 :root[data-theme="dark"] ::-webkit-scrollbar-track {
 
   background:
-    rgba(139, 90, 143, 0.1);
+    rgba(203, 166, 85, 0.1);
 }
 
 
@@ -249,7 +249,7 @@ select,
 :root[data-theme="dark"] ::-webkit-scrollbar-thumb {
 
   background:
-    #8B5A8F;
+    #CBA655;
 }
 
 
@@ -257,5 +257,5 @@ select,
 :root[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
 
   background:
-    #9d6da3;
+    #d8bb7a;
 }
