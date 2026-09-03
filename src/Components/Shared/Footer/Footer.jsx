@@ -55,8 +55,8 @@ const Footer = () => {
   }, { scope: container })
 
   return (
-    <footer ref={container} className="relative overflow-hidden bg-[#211c29] text-white">
-      <div className="absolute inset-0 bg-linear-to-br from-[#2b2433]/80 via-transparent to-[#3d2a3a]/60" />
+    <footer ref={container} className="relative overflow-hidden bg-[var(--app-bg-footer)] text-white">
+      <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-[#2f2f2f]/40" />
 
       <div className="absolute -left-40 top-0 h-96 w-96 rounded-full bg-white/10 blur-[120px]" />
 
