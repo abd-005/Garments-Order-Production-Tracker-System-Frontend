@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "tailorflow-f0731",
     "public": "dist",
     "ignore": [
       "firebase.json",
