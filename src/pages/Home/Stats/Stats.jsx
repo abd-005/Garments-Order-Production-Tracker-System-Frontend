@@ -35,6 +35,28 @@ const Stats = () => {
       ease: 'sine.inOut',
     })
 
+    gsap.to('.stats-blob-1, .stats-blob-2', {
+      yPercent: 22,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1.2,
+      },
+    })
+
+    gsap.to('.stats-heading', {
+      yPercent: -12,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    })
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
@@ -105,7 +127,7 @@ const Stats = () => {
       <div className="stats-blob-2 absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-primary/20 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="mx-auto mb-16 max-w-3xl text-center">
+        <div className="stats-heading mx-auto mb-16 max-w-3xl text-center">
           <div className="stats-badge inline-flex rounded-full border border-primary/30 bg-base-100/50 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase backdrop-blur">
             Our Achievements
           </div>
