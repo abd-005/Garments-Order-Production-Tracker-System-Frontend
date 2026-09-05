@@ -49,6 +49,17 @@ const Newsletter = () => {
       ease: 'sine.inOut',
     })
 
+    gsap.to('.news-blob-1, .news-blob-2', {
+      yPercent: 25,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1.2,
+      },
+    })
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
