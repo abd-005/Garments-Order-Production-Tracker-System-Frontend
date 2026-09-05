@@ -2,8 +2,10 @@ const Feature = ({ item }) => (
   <div className="
     choose-item
     group
+    relative
     flex
     gap-5
+    overflow-hidden
     rounded-3xl
     border
     border-base-300
@@ -12,11 +14,28 @@ const Feature = ({ item }) => (
     p-6
     transition-all
     duration-500
-    hover:-translate-y-1.5
+    hover:-translate-y-2
     hover:shadow-2xl
     hover:border-primary/30
     hover:shadow-primary/5
   ">
+    <span className="
+      absolute
+      left-0
+      top-0
+      h-full
+      w-1
+      origin-bottom
+      scale-y-0
+      rounded-full
+      bg-linear-to-b
+      from-primary
+      to-secondary
+      transition-transform
+      duration-500
+      group-hover:scale-y-100
+    " />
+
     <div className="
       choose-icon
       flex
@@ -36,16 +55,16 @@ const Feature = ({ item }) => (
       <img
         src={item.image}
         alt={item.title}
-        className="h-12 w-12 object-contain"
+        className="h-12 w-12 object-contain transition-transform duration-500 group-hover:scale-110"
       />
     </div>
 
     <div className="flex-1">
-      <h3 className="text-xl font-bold text-primary">
+      <h3 className="text-xl font-bold text-primary transition-colors duration-500 group-hover:text-base-content">
         {item.title}
       </h3>
 
-      <p className="mt-2 leading-7 text-base-content/70">
+      <p className="mt-2 leading-7 text-base-content/70 transition-colors duration-500 group-hover:text-base-content/90">
         {item.description}
       </p>
     </div>
