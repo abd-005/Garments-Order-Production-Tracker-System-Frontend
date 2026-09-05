@@ -106,7 +106,7 @@ const Stats = () => {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <div className="stats-badge inline-flex rounded-full border border-primary/30 bg-base-100/50 px-5 py-2 text-xs font-semibold tracking-widest text-primary-content uppercase backdrop-blur">
+          <div className="stats-badge inline-flex rounded-full border border-primary/30 bg-base-100/50 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase backdrop-blur">
             Our Achievements
           </div>
 

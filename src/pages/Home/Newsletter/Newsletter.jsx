@@ -100,7 +100,7 @@ const Newsletter = () => {
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <div className="news-badge inline-flex rounded-full border border-primary/30 bg-base-100/50 px-5 py-2 text-xs font-semibold tracking-widest text-primary-content uppercase backdrop-blur">
+            <div className="news-badge inline-flex rounded-full border border-primary/30 bg-base-100/50 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase backdrop-blur">
               Newsletter
             </div>
 
