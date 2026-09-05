@@ -1,12 +1,25 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
+import { gsap } from 'gsap'
 import { ArrowUpRight, Heart } from 'lucide-react'
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate()
+  const heartRef = useRef(null)
   const [imgLoaded, setImgLoaded] = useState(false)
   const [liked, setLiked] = useState(false)
   const { _id, title, description, price, images, category } = product || {}
+
+  const toggleLike = (e) => {
+    e.stopPropagation()
+    setLiked(l => !l)
+    if (heartRef.current) {
+      gsap.fromTo(heartRef.current,
+        { scale: 0.5 },
+        { scale: 1, duration: 0.45, ease: 'back.out(4)' }
+      )
+    }
+  }
 
   return (
     <div className="group bg-base-100 border border-base-200/80 rounded-3xl overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/25">
@@ -35,10 +48,10 @@ const ProductCard = ({ product }) => {
         {/* Heart button */}
         <button
           type="button"
-          onClick={(e) => { e.stopPropagation(); setLiked(l => !l) }}
-          className="absolute top-4 right-4 flex size-9 items-center justify-center rounded-full bg-white/80 backdrop-blur-sm opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 hover:scale-110 cursor-pointer"
+          onClick={toggleLike}
+          className="absolute top-4 right-4 flex size-9 items-center justify-center rounded-full bg-base-100/80 backdrop-blur-sm opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 hover:scale-110 cursor-pointer"
         >
-          <Heart size={16} className={liked ? 'fill-red-500 text-red-500' : 'text-base-content/50'} />
+          <Heart ref={heartRef} size={16} className={`transition-colors duration-300 ${liked ? 'fill-red-500 text-red-500' : 'text-base-content/50'}`} />
         </button>
 
         {/* Category badge */}
@@ -53,7 +66,7 @@ const ProductCard = ({ product }) => {
           <button
             type="button"
             onClick={() => navigate(`/product/${_id}`)}
-            className="w-full rounded-xl bg-white/90 backdrop-blur-sm py-3 text-sm font-bold text-base-content shadow-lg transition-all hover:bg-white active:scale-[0.97] cursor-pointer"
+            className="w-full rounded-xl bg-base-100/90 backdrop-blur-sm py-3 text-sm font-bold text-base-content shadow-lg transition-all hover:bg-base-100 active:scale-[0.97] cursor-pointer"
           >
             Quick View
           </button>
@@ -71,9 +84,9 @@ const ProductCard = ({ product }) => {
           <button
             type="button"
             onClick={() => navigate(`/product/${_id}`)}
-            className="flex size-10 items-center justify-center rounded-full bg-base-200/70 text-base-content/40 transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20 active:scale-90 cursor-pointer"
+            className="group/btn flex size-10 items-center justify-center rounded-full bg-base-200/70 text-base-content/40 transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20 active:scale-90 cursor-pointer"
           >
-            <ArrowUpRight size={18} strokeWidth={2.5} />
+            <ArrowUpRight size={18} strokeWidth={2.5} className="transition-transform duration-300 group-hover/btn:rotate-45" />
           </button>
         </div>
       </div>
