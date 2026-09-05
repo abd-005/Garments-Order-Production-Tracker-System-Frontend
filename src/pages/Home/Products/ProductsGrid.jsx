@@ -23,16 +23,15 @@ const ProductsGrid = () => {
   })
 
   useGSAP(() => {
-    gsap.fromTo(".product-item",
-      { y: 60, opacity: 0, scale: 0.95 },
-      { y: 0, opacity: 1, scale: 1, stagger: 0.1, duration: 0.7, ease: "power3.out",
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 78%",
-          toggleActions: "play none none none",
-        },
+    ScrollTrigger.batch(".product-item", {
+      start: "top 88%",
+      onEnter: (batch) => {
+        gsap.fromTo(batch,
+          { y: 60, opacity: 0, scale: 0.95 },
+          { y: 0, opacity: 1, scale: 1, stagger: 0.15, duration: 0.7, ease: "power3.out" }
+        )
       },
-    )
+    })
   }, { scope: container })
 
   if (isLoading) return <LoadingSpinner />
