@@ -36,6 +36,17 @@ const Ready = () => {
       ease: 'sine.inOut',
     })
 
+    gsap.to('.ready-blob-1, .ready-blob-2', {
+      yPercent: 25,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1.2,
+      },
+    })
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
