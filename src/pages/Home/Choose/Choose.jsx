@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 import Feature from "./Feature";
+import useTilt from "../../../hooks/useTilt";
 
 import svg1 from "../../../assets/svg/01.png";
 import svg2 from "../../../assets/svg/02.png";
@@ -157,8 +158,10 @@ const Choose = () => {
   }, "<");
 
 }, {
-  scope: container,
-});
+    scope: container,
+  });
+
+  useTilt(container);
 
   return (
     <section

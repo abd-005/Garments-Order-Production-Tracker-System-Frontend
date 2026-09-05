@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { Users, Shirt, Clock, BadgeCheck } from 'lucide-react'
+import useTilt from '../../../hooks/useTilt'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -118,6 +119,8 @@ const Stats = () => {
       })
   }, { scope: container })
 
+  useTilt(container)
+
   return (
     <section ref={container} className="relative overflow-hidden bg-[var(--app-bg-sectional)] py-24">
       <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-primary/5 to-accent/15" />
@@ -149,7 +152,7 @@ const Stats = () => {
             return (
               <div
                 key={stat.label}
-                className="stats-card group relative overflow-hidden rounded-3xl border border-base-300 bg-base-100/70 p-8 text-center backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-primary/30 hover:bg-base-100 hover:shadow-2xl hover:shadow-black/10"
+                className="stats-card tilt-card group relative overflow-hidden rounded-3xl border border-base-300 bg-base-100 p-8 text-center transition-colors duration-500 hover:border-primary/30"
               >
                 <div className="stats-icon mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-primary/20">
                   <StatIcon className="h-8 w-8 text-primary" />

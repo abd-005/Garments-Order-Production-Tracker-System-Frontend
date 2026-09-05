@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { useNavigate } from 'react-router'
 import { ArrowRight } from 'lucide-react'
+import useTilt from '../../../hooks/useTilt'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -93,6 +94,8 @@ const Ready = () => {
       )
   }, { scope: container })
 
+  useTilt(container)
+
   return (
     <section ref={container} className="relative overflow-hidden py-24">
       <div className="absolute inset-0 bg-linear-to-b from-base-200 via-base-100 to-base-200" />
@@ -163,7 +166,7 @@ const Ready = () => {
           {readyStats.map((stat) => (
             <div
               key={stat.label}
-              className="ready-stat rounded-3xl border border-base-300 bg-base-100/70 p-8 text-center backdrop-blur-xl transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
+              className="ready-stat tilt-card rounded-3xl border border-base-300 bg-base-100 p-8 text-center transition-colors duration-500 hover:border-primary/30"
             >
               <div className="text-3xl font-black text-primary">{stat.value}</div>
 

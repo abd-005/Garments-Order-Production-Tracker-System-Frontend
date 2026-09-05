@@ -1,6 +1,7 @@
 const Feature = ({ item }) => (
   <div className="
     choose-item
+    tilt-card
     group
     relative
     flex
@@ -9,15 +10,11 @@ const Feature = ({ item }) => (
     rounded-3xl
     border
     border-base-300
-    bg-base-100/80
-    backdrop-blur-xl
+    bg-base-100
     p-6
-    transition-all
+    transition-colors
     duration-500
-    hover:-translate-y-2
-    hover:shadow-2xl
     hover:border-primary/30
-    hover:shadow-primary/5
   ">
     <span className="
       absolute
