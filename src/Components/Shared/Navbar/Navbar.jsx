@@ -190,7 +190,7 @@ const Navbar = () => {
 
         {/* Mobile Dropdown Menu List */}
         {isOpen && (
-          <div className="fixed right-4 top-16 z-50 w-64 rounded-xl shadow-2xl border border-base-300 bg-base-100 lg:hidden p-2">
+          <div className="absolute right-4 top-16 z-50 w-64 rounded-xl shadow-2xl border border-base-300 bg-base-100 lg:hidden p-2">
             <nav className="space-y-0.5">
               <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-base-content hover:bg-base-200">
                 <Home size={16} /><span className="text-sm font-medium">Home</span>
