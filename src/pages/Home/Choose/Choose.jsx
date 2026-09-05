@@ -81,6 +81,28 @@ const Choose = () => {
     ease: "sine.inOut"
   });
 
+  gsap.to(".blob-left, .blob-right", {
+    yPercent: 25,
+    ease: "none",
+    scrollTrigger: {
+      trigger: container.current,
+      start: "top bottom",
+      end: "bottom top",
+      scrub: 1.2
+    }
+  });
+
+  gsap.to(".choose-heading", {
+    yPercent: -12,
+    ease: "none",
+    scrollTrigger: {
+      trigger: container.current,
+      start: "top bottom",
+      end: "bottom top",
+      scrub: 1
+    }
+  });
+
   // Main reveal timeline
 
   const tl = gsap.timeline({
