@@ -139,27 +139,9 @@ const Choose = () => {
     duration: 0.6
   }, "-=0.45")
 
-  .fromTo(".choose-column-left", {
-    x: -80,
-    opacity: 0,},
-    {x: 0,
-    opacity: 1,
-    duration: 0.9,
-    ease: "power3.out"
-  }, "-=0.2")
-
-  .fromTo(".choose-column-right", {
-    x: 80,
-    opacity: 0,},
-    {x: 0,
-    opacity: 1,
-    duration: 0.9,
-    ease: "power3.out"
-  }, "<")
-
   .fromTo(".choose-item",
-  { y: 35, opacity: 0 },
-  { y: 0, opacity: 1, stagger: 0.12, duration: 0.55, ease: "power2.out" }
+  { x: 90, opacity: 0 },
+  { x: 0, opacity: 1, stagger: 0.15, duration: 0.7, ease: "power3.out" }
 )
 
   .fromTo(".choose-icon", {
