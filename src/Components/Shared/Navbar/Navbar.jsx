@@ -91,7 +91,9 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar flex justify-between items-center px-4 md:px-8 py-3 sticky top-0 z-50 bg-base-100/70 backdrop-blur-md border-b border-base-300 transition-colors duration-300">
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div className="relative border-b border-base-300/50 bg-base-100/60 backdrop-blur-2xl backdrop-saturate-150 transition-colors duration-300">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-8">
       
       {/* Brand Section */}
       <div className="navbar-start">
@@ -244,7 +246,10 @@ const Navbar = () => {
           </div>
         )}
       </div>
-    </div>
+      </div>
+      </div>
+      <div aria-hidden="true" className="navbar-grain pointer-events-none absolute inset-0" />
+    </header>
   );
 };
 
