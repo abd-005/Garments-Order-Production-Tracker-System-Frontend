@@ -59,6 +59,28 @@ const Feedback = () => {
       ease: 'sine.inOut',
     })
 
+    gsap.to('.fb-blob-left, .fb-blob-right', {
+      yPercent: 25,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1.2,
+      },
+    })
+
+    gsap.to('.fb-heading', {
+      yPercent: -12,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    })
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
@@ -110,7 +132,7 @@ const Feedback = () => {
       <div className="fb-blob-right absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-accent/15 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="mx-auto mb-16 max-w-3xl text-center">
+        <div className="fb-heading mx-auto mb-16 max-w-3xl text-center">
           <div className="fb-badge inline-flex rounded-full bg-primary/10 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase">
             Testimonials
           </div>
