@@ -129,6 +129,48 @@ const HowItWorks = () => {
         },
         '-=0.8'
       )
+
+    // Card 3D tilt / rotation on hover
+    const cards = gsap.utils.toArray('.hiw-card')
+    cards.forEach((card) => {
+      const cardProxy = gsap.quickTo(card, 'rotationX', { duration: 0.6, ease: 'power3.out' })
+      const innerProxy = gsap.quickTo(card.querySelector('.hiw-step'), 'rotation', { duration: 0.6, ease: 'power3.out' })
+
+      const enter = () => {
+        gsap.to(card, {
+          scale: 1.02,
+          boxShadow: '0 30px 60px -15px rgba(203,166,85,0.25)',
+          duration: 0.5,
+          ease: 'power3.out',
+          overwrite: 'auto',
+        })
+      }
+      const move = (e) => {
+        const rect = card.getBoundingClientRect()
+        const relX = (e.clientX - rect.left) / rect.width
+        const relY = (e.clientY - rect.top) / rect.height
+        cardProxy((0.5 - relY) * 18)
+        innerProxy((relX - 0.5) * 22)
+      }
+      const leave = () => {
+        cardProxy(0)
+        innerProxy(0)
+        gsap.to(card, {
+          scale: 1,
+          boxShadow: '0 0 0 0 rgba(203,166,85,0)',
+          duration: 0.6,
+          ease: 'power3.out',
+          overwrite: 'auto',
+        })
+      }
+
+      card.style.willChange = 'transform'
+      card.style.transformStyle = 'preserve-3d'
+
+      card.addEventListener('mouseenter', enter)
+      card.addEventListener('mousemove', move)
+      card.addEventListener('mouseleave', leave)
+    })
   }, { scope: container })
 
   return (
@@ -167,9 +209,9 @@ const HowItWorks = () => {
 
               return (
               <div key={step.title} className="relative">
-                <div className="hiw-card group relative flex h-full flex-col items-center rounded-3xl border border-base-300 bg-base-100/80 p-8 text-center backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-primary/30 hover:bg-base-100 hover:shadow-2xl hover:shadow-primary/5">
+                <div className="hiw-card group relative flex h-full flex-col items-center rounded-3xl border border-base-300 bg-base-100 p-8 text-center transition-colors duration-500 hover:border-primary/30 hover:bg-base-100 hover:shadow-primary/5 hover:shadow-2xl">
                   <div className="relative mb-6">
-                    <div className="hiw-step flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-primary/15">
+                    <div className="hiw-step flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 transition-colors duration-500 group-hover:bg-primary/15">
                       <Icon className="h-9 w-9 text-primary" strokeWidth={1.8} />
                     </div>
 
