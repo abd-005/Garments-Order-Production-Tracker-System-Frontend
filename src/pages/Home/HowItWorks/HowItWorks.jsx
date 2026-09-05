@@ -51,6 +51,28 @@ const HowItWorks = () => {
       ease: 'sine.inOut',
     })
 
+    gsap.to('.hiw-blob-left, .hiw-blob-right', {
+      yPercent: 25,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1.2,
+      },
+    })
+
+    gsap.to('.hiw-heading', {
+      yPercent: -12,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    })
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
