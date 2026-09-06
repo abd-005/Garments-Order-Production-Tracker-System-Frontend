@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { Users, Shirt, Clock, BadgeCheck } from 'lucide-react'
 import useTilt from '../../../hooks/useTilt'
+import countUp from '../../../utils/countUp'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -102,21 +103,7 @@ const Stats = () => {
         },
         '<'
       )
-      .add(() => {
-        container.current.querySelectorAll('.stats-value').forEach((el) => {
-          const target = Number(el.dataset.value)
-          const obj = { val: 0 }
-
-          gsap.to(obj, {
-            val: target,
-            duration: 1.8,
-            ease: 'power2.out',
-            onUpdate: () => {
-              el.textContent = Math.floor(obj.val).toLocaleString('en-US')
-            },
-          })
-        })
-      })
+      .add(() => countUp(container.current, '.stats-value'))
   }, { scope: container })
 
   useTilt(container)
@@ -154,7 +141,7 @@ const Stats = () => {
                 key={stat.label}
                 className="stats-card tilt-card group relative overflow-hidden rounded-3xl border border-base-300 bg-base-100 p-8 text-center transition-colors duration-500 hover:border-primary/30"
               >
-                <div className="stats-icon mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-primary/20">
+                <div className="stats-icon tilt-inner mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition-colors duration-500 group-hover:bg-primary/20">
                   <StatIcon className="h-8 w-8 text-primary" />
                 </div>
 
