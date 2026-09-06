@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { ChevronDown } from 'lucide-react'
+import useTilt from '../../../hooks/useTilt'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -99,8 +100,10 @@ const FAQ = () => {
       )
   }, { scope: container })
 
+  useTilt(container)
+
   return (
-    <section ref={container} className="relative overflow-hidden py-24">
+    <section ref={container} className="relative overflow-hidden pt-24 pb-40">
       <div className="absolute inset-0 bg-linear-to-b from-base-200 via-base-100 to-base-200" />
 
       <div className="faq-blob-left absolute -left-40 top-0 h-96 w-96 rounded-full bg-primary/15 blur-[120px]" />
@@ -131,7 +134,7 @@ const FAQ = () => {
             return (
               <div
                 key={faq.question}
-                className={`faq-item overflow-hidden rounded-2xl border transition-all duration-300 ${
+                className={`faq-item tilt-card overflow-hidden rounded-2xl border transition-all duration-300 ${
                   isOpen
                     ? 'border-primary/30 bg-base-100 shadow-xl shadow-primary/5'
                     : 'border-base-300 bg-base-100/70 hover:border-primary/25 hover:bg-base-100'

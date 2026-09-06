@@ -5,13 +5,14 @@ import { useGSAP } from '@gsap/react'
 import { useNavigate } from 'react-router'
 import { ArrowRight } from 'lucide-react'
 import useTilt from '../../../hooks/useTilt'
+import countUp from '../../../utils/countUp'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 const readyStats = [
-  { value: '10k+', label: 'Happy Customers' },
-  { value: '500+', label: 'Products Crafted' },
-  { value: '99%', label: 'On-Time Delivery' },
+  { value: 10, suffix: 'k+', label: 'Happy Customers' },
+  { value: 500, suffix: '+', label: 'Products Crafted' },
+  { value: 99, suffix: '%', label: 'On-Time Delivery' },
 ]
 
 const Ready = () => {
@@ -58,10 +59,16 @@ const Ready = () => {
     })
 
     tl.fromTo(
-      '.ready-badge',
-      { y: 25, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.5 }
+      '.ready-card',
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out' }
     )
+      .fromTo(
+        '.ready-badge',
+        { y: 25, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5 },
+        '-=0.4'
+      )
       .fromTo(
         '.ready-title',
         { y: 50, opacity: 0 },
@@ -81,23 +88,18 @@ const Ready = () => {
         '-=0.3'
       )
       .fromTo(
-        '.ready-card',
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out' },
-        '-=0.3'
-      )
-      .fromTo(
         '.ready-stat',
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, stagger: 0.1, duration: 0.5, ease: 'power2.out' },
         '-=0.4'
       )
+      .add(() => countUp(container.current, '.ready-stat-value', { duration: 1.6 }))
   }, { scope: container })
 
   useTilt(container)
 
   return (
-    <section ref={container} className="relative overflow-hidden py-24">
+    <section ref={container} className="relative overflow-x-clip py-24">
       <div className="absolute inset-0 bg-linear-to-b from-base-200 via-base-100 to-base-200" />
 
       <div className="ready-blob-1 absolute -left-40 top-0 h-96 w-96 rounded-full bg-primary/15 blur-[120px]" />
@@ -105,24 +107,7 @@ const Ready = () => {
       <div className="ready-blob-2 absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-accent/15 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <div className="ready-badge inline-flex rounded-full bg-primary/10 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase">
-            Get Started
-          </div>
-
-          <h2 className="ready-title mt-6 text-4xl font-black lg:text-6xl text-base-content">
-            Ready to get <span className="text-primary">measured?</span>
-          </h2>
-
-          <p className="ready-desc mt-6 text-lg leading-8 text-base-content/70">
-            Book a product or request a custom fitting — we&rsquo;ll guide you
-            through every step.
-          </p>
-
-          <div className="ready-divider h-1 w-16 origin-center rounded-full bg-linear-to-r from-primary to-secondary mx-auto mt-6" />
-        </div>
-
-        <div className="ready-card relative overflow-hidden rounded-[2.5rem] bg-[var(--app-bg-sectional)] p-8 shadow-2xl shadow-primary/10 sm:p-12 lg:p-16">
+        <div className="ready-card relative z-10 -mt-36 overflow-hidden rounded-[2.5rem] bg-[var(--app-bg-sectional)] p-8 shadow-2xl shadow-primary/10 sm:p-12 lg:p-16">
           <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-transparent to-accent/20" />
 
           <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-base-100/30 blur-[100px]" />
@@ -162,13 +147,38 @@ const Ready = () => {
           </div>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <div className="mx-auto mt-20 mb-16 max-w-3xl text-center">
+          <div className="ready-badge inline-flex rounded-full bg-primary/10 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase">
+            Get Started
+          </div>
+
+          <h2 className="ready-title mt-6 text-4xl font-black lg:text-6xl text-base-content">
+            Ready to get <span className="text-primary">measured?</span>
+          </h2>
+
+          <p className="ready-desc mt-6 text-lg leading-8 text-base-content/70">
+            Book a product or request a custom fitting — we&rsquo;ll guide you
+            through every step.
+          </p>
+
+          <div className="ready-divider h-1 w-16 origin-center rounded-full bg-linear-to-r from-primary to-secondary mx-auto mt-6" />
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           {readyStats.map((stat) => (
             <div
               key={stat.label}
               className="ready-stat tilt-card rounded-3xl border border-base-300 bg-base-100 p-8 text-center transition-colors duration-500 hover:border-primary/30"
             >
-              <div className="text-3xl font-black text-primary">{stat.value}</div>
+              <div className="flex items-baseline justify-center gap-1">
+                <span
+                  className="ready-stat-value text-3xl font-black text-primary"
+                  data-value={stat.value}
+                >
+                  0
+                </span>
+                <span className="text-3xl font-black text-primary">{stat.suffix}</span>
+              </div>
 
               <div className="mt-2 text-base-content/60">{stat.label}</div>
             </div>
