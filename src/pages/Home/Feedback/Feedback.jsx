@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { Quote, Star } from 'lucide-react'
+import useTilt from '../../../hooks/useTilt'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -121,6 +122,8 @@ const Feedback = () => {
       )
   }, { scope: container })
 
+  useTilt(container)
+
   const current = feedbacks[index]
 
   return (
@@ -149,44 +152,46 @@ const Feedback = () => {
         </div>
 
         <div className="fb-card mx-auto max-w-3xl">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.45 }}
-              className="rounded-3xl border border-base-300 bg-base-100/80 p-8 text-center shadow-xl backdrop-blur-xl shadow-primary/5 sm:p-12"
-            >
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
-                <Quote className="h-7 w-7 text-primary" />
-              </div>
-
-              <div className="mt-6 flex items-center justify-center gap-1">
-                {Array.from({ length: current.rating }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-5 w-5 fill-accent text-accent"
-                  />
-                ))}
-              </div>
-
-              <p className="mt-6 text-lg font-medium leading-9 text-base-content/80 sm:text-2xl">
-                &ldquo;{current.text}&rdquo;
-              </p>
-
-              <div className="mt-8 flex items-center justify-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-base font-bold text-primary">
-                  {current.name.charAt(0)}
+          <div className="tilt-card">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.45 }}
+                className="rounded-3xl border border-base-300 bg-base-100/80 p-8 text-center shadow-xl backdrop-blur-xl shadow-primary/5 sm:p-12"
+              >
+                <div className="fb-quote-icon tilt-inner mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
+                  <Quote className="h-7 w-7 text-primary" />
                 </div>
 
-                <div className="text-left">
-                  <p className="font-bold text-base-content">{current.name}</p>
-                  <p className="text-sm text-base-content/60">{current.role}</p>
+                <div className="mt-6 flex items-center justify-center gap-1">
+                  {Array.from({ length: current.rating }).map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-5 w-5 fill-accent text-accent"
+                    />
+                  ))}
                 </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+
+                <p className="mt-6 text-lg font-medium leading-9 text-base-content/80 sm:text-2xl">
+                  &ldquo;{current.text}&rdquo;
+                </p>
+
+                <div className="mt-8 flex items-center justify-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-base font-bold text-primary">
+                    {current.name.charAt(0)}
+                  </div>
+
+                  <div className="text-left">
+                    <p className="font-bold text-base-content">{current.name}</p>
+                    <p className="text-sm text-base-content/60">{current.role}</p>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
           <div className="mt-8 flex items-center justify-center gap-3">
             {feedbacks.map((f, i) => (

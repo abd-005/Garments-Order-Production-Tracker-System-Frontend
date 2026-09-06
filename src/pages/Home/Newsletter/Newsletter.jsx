@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react'
+import useTilt from '../../../hooks/useTilt'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -100,6 +101,8 @@ const Newsletter = () => {
       )
   }, { scope: container })
 
+  useTilt(container)
+
   return (
     <section ref={container} className="relative overflow-hidden bg-[var(--app-bg-sectional)] py-24">
       <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-primary/5 to-accent/15" />
@@ -130,7 +133,7 @@ const Newsletter = () => {
 
                 return (
                   <div key={item.text} className="news-contact flex items-center gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-primary/20 bg-base-100/50">
+                    <div className="tilt-card flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-primary/20 bg-base-100/50">
                       <ContactIcon className="h-5 w-5 text-primary" />
                     </div>
 
@@ -150,7 +153,7 @@ const Newsletter = () => {
             </div>
           </div>
 
-          <div className="news-form rounded-3xl border border-primary/15 bg-base-100/60 p-8 backdrop-blur-xl sm:p-10">
+          <div className="tilt-card news-form rounded-3xl border border-primary/15 bg-base-100/60 p-8 backdrop-blur-xl sm:p-10">
             <h3 className="text-2xl font-bold text-base-content">Get the latest first</h3>
 
             <p className="mt-2 text-base-content/60">Join our community and never miss a drop.</p>

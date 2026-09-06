@@ -35,6 +35,7 @@ const Feature = ({ item }) => (
 
     <div className="
       choose-icon
+      tilt-inner
       flex
       h-18
       w-18
@@ -43,10 +44,8 @@ const Feature = ({ item }) => (
       justify-center
       rounded-2xl
       bg-primary/10
-      transition-all
+      transition-colors
       duration-500
-      group-hover:rotate-6
-      group-hover:scale-110
       group-hover:bg-primary/15
     ">
       <img

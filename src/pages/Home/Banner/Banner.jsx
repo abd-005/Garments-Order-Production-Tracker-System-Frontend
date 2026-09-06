@@ -5,6 +5,8 @@ import { Autoplay, EffectFade, Pagination } from 'swiper/modules'
 
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
+import countUp from '../../../utils/countUp'
+import useTilt from '../../../hooks/useTilt'
 
 import {
   ArrowRight,
@@ -36,15 +38,18 @@ const slides = [
 
 const stats = [
   {
-    title: '500+',
+    value: 500,
+    suffix: '+',
     subtitle: 'Successful Orders'
   },
   {
-    title: '98%',
+    value: 98,
+    suffix: '%',
     subtitle: 'On-Time Delivery'
   },
   {
-    title: '50+',
+    value: 50,
+    suffix: '+',
     subtitle: 'Manufacturing Partners'
   }
 ]
@@ -148,11 +153,18 @@ const Banner = () => {
         '-=.5'
       )
 
+      tl.add(() => {
+        countUp(container.current, '.hero-stat-value')
+        countUp(container.current, '.hero-growth', { duration: 2 })
+      })
+
     },
     {
       scope: container
     }
   )
+
+  useTilt(container, '.hero-feature-icon')
 
   return (
     <section
@@ -247,13 +259,20 @@ const Banner = () => {
             {stats.map(item => (
 
               <div
-                key={item.title}
+                key={item.subtitle}
                 className="stat-card bg-base-100 border border-base-300 rounded-2xl shadow-lg p-5 text-center"
               >
 
                 <h2 className="text-2xl sm:text-3xl font-black text-primary">
 
-                  {item.title}
+                  <span
+                    className="hero-stat-value"
+                    data-value={item.value}
+                  >
+                    0
+                  </span>
+
+                  {item.suffix}
 
                 </h2>
 
@@ -358,7 +377,7 @@ const Banner = () => {
                 className="flex items-center gap-3 py-3"
               >
 
-                <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center">
+                <div className="tilt-card hero-feature-icon w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center">
 
                   <Icon
                     className="text-primary"
@@ -381,7 +400,7 @@ const Banner = () => {
 
           {/* Bottom Right */}
 
-          <div className="floating-card hidden md:block z-20 absolute -right-8 bottom-10 bg-base-100 rounded-3xl shadow-xl px-8 py-6 border border-base-300">
+          <div className="hero-growth-card floating-card hidden md:block z-20 absolute -right-8 bottom-10 bg-base-100 rounded-3xl shadow-xl px-8 py-6 border border-base-300">
 
             <p className="text-base-content/60">
 
@@ -391,7 +410,10 @@ const Banner = () => {
 
             <h2 className="text-4xl font-black text-primary mt-1">
 
-              +24%
+              +<span
+                className="hero-growth"
+                data-value="24"
+              >0</span>%
 
             </h2>
 
@@ -412,7 +434,7 @@ const Banner = () => {
                   key={text}
                   className="flex items-center gap-3 py-2"
                 >
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="tilt-card hero-feature-icon w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <Icon
                       size={18}
                       className="text-primary"
@@ -432,7 +454,10 @@ const Banner = () => {
               </p>
 
               <h2 className="text-3xl font-black text-primary mt-2">
-                +24%
+                +<span
+                  className="hero-growth"
+                  data-value="24"
+                >0</span>%
               </h2>
 
               <p className="text-green-500 font-semibold">

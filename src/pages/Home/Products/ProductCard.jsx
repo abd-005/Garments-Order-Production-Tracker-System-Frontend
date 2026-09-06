@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <div className="group bg-base-100 border border-base-200/80 rounded-3xl overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/25">
+    <div className="group tilt-card bg-base-100 border border-base-200/80 rounded-3xl overflow-hidden transition-colors duration-500 hover:border-primary/25">
       {/* Image wrapper */}
       <div
         className="relative aspect-[4/5] overflow-hidden bg-base-200 cursor-pointer"

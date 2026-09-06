@@ -1,29 +1,38 @@
 import { useLayoutEffect } from 'react'
 import { gsap } from 'gsap'
 
-const useTilt = (containerRef, selector = '.tilt-card', max = 16) => {
+const useTilt = (
+  containerRef,
+  selector = '.tilt-card',
+  innerSelector = '.tilt-inner',
+  deps = []
+) => {
   useLayoutEffect(() => {
     if (!containerRef.current) return
+    if (typeof window !== 'undefined' && !window.matchMedia('(hover: hover)').matches) return
 
     const cards = gsap.utils.toArray(selector, containerRef.current)
 
-    const disposers = cards.map((card) => {
-      const rotateX = gsap.quickTo(card, 'rotationX', {
-        duration: 0.6,
-        ease: 'power3.out',
-      })
-      const rotateY = gsap.quickTo(card, 'rotationY', {
-        duration: 0.6,
-        ease: 'power3.out',
-      })
+    const glow = '0 30px 60px -15px rgba(203, 166, 85, 0.25)'
+    const emptyGlow = '0 0 0 0 rgba(203, 166, 85, 0)'
 
-      card.style.transformStyle = 'preserve-3d'
+    const disposers = cards.map((card) => {
       card.style.willChange = 'transform'
+      card.style.transformStyle = 'preserve-3d'
+
+      const cardProxy = gsap.quickTo(card, 'rotationX', {
+        duration: 0.6,
+        ease: 'power3.out',
+      })
+      const inner = card.querySelector(innerSelector)
+      const innerProxy = inner
+        ? gsap.quickTo(inner, 'rotation', { duration: 0.6, ease: 'power3.out' })
+        : null
 
       const onEnter = () => {
         gsap.to(card, {
           scale: 1.02,
-          boxShadow: '0 30px 60px -15px rgba(203, 166, 85, 0.25)',
+          boxShadow: glow,
           duration: 0.5,
           ease: 'power3.out',
           overwrite: 'auto',
@@ -32,16 +41,18 @@ const useTilt = (containerRef, selector = '.tilt-card', max = 16) => {
 
       const onMove = (e) => {
         const rect = card.getBoundingClientRect()
-        rotateY(((e.clientX - rect.left) / rect.width - 0.5) * max)
-        rotateX(((rect.top - e.clientY) / rect.height + 0.5) * max)
+        const relX = (e.clientX - rect.left) / rect.width
+        const relY = (e.clientY - rect.top) / rect.height
+        cardProxy((0.5 - relY) * 18)
+        if (innerProxy) innerProxy((relX - 0.5) * 22)
       }
 
       const onLeave = () => {
-        rotateX(0)
-        rotateY(0)
+        cardProxy(0)
+        if (innerProxy) innerProxy(0)
         gsap.to(card, {
           scale: 1,
-          boxShadow: '0 0 0 0 rgba(203, 166, 85, 0)',
+          boxShadow: emptyGlow,
           duration: 0.6,
           ease: 'power3.out',
           overwrite: 'auto',
@@ -60,7 +71,7 @@ const useTilt = (containerRef, selector = '.tilt-card', max = 16) => {
     })
 
     return () => disposers.forEach((dispose) => dispose())
-  }, [containerRef])
+  }, [containerRef, ...deps])
 }
 
 export default useTilt

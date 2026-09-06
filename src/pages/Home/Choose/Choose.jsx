@@ -147,19 +147,17 @@ const Choose = () => {
 
   .fromTo(".choose-icon", {
     scale: 0.6,
-    rotate: -20,},
+    },
     {
     scale: 1,
-    delay: .5,
-    rotate: 0,
     stagger: 0.08,
     duration: 0.45,
     ease: "back.out(2)"
   }, "<");
 
 }, {
-    scope: container,
-  });
+scope: container,
+    });
 
   useTilt(container);
 

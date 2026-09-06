@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
 import ProductCard from './ProductCard'
+import useTilt from '../../../hooks/useTilt'
 import axios from 'axios'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
@@ -33,6 +34,8 @@ const ProductsGrid = () => {
       },
     })
   }, { scope: container })
+
+  useTilt(container, '.tilt-card', '.tilt-inner', [data])
 
   if (isLoading) return <LoadingSpinner />
   if (isError) return <div className="text-center py-8 text-base-content/60">Failed to load products.</div>
