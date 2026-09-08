@@ -3,9 +3,11 @@ import { useQuery } from '@tanstack/react-query'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
-import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
 import ProductCard from './ProductCard'
 import useTilt from '../../../hooks/useTilt'
+import { Badge } from '@/components/ui/badge'
+import { Card } from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
 import axios from 'axios'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
@@ -37,7 +39,26 @@ const ProductsGrid = () => {
 
   useTilt(container, '.tilt-card', '.tilt-inner', [data])
 
-  if (isLoading) return <LoadingSpinner />
+  if (isLoading) {
+    return (
+      <section className="relative overflow-hidden py-28">
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <Card key={i} className="gap-0 overflow-hidden rounded-3xl p-0">
+                <Skeleton className="aspect-[4/5] w-full rounded-none" />
+                <div className="space-y-3 p-5">
+                  <Skeleton className="h-4 w-2/3" />
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-8 w-20" />
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
   if (isError) return <div className="text-center py-8 text-base-content/60">Failed to load products.</div>
 
   return (
@@ -49,10 +70,10 @@ const ProductsGrid = () => {
       <div className="relative mx-auto max-w-7xl px-6">
         {/* Heading */}
         <div className="mx-auto mb-20 max-w-3xl text-center space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-base-300 bg-base-100/60 backdrop-blur-sm px-5 py-1.5 text-[11px] font-semibold tracking-[0.2em] text-primary uppercase">
+          <Badge variant="outline" className="gap-2 rounded-full border-border bg-background/60 px-5 py-1.5 text-[11px] font-semibold tracking-[0.2em] text-primary uppercase backdrop-blur-sm">
             <span className="size-1.5 rounded-full bg-primary" />
             Featured Collection
-          </div>
+          </Badge>
 
           <h2 className="text-4xl font-black tracking-tight lg:text-6xl text-base-content">
             Our Products

@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router'
 import { ArrowRight } from 'lucide-react'
 import useTilt from '../../../hooks/useTilt'
 import countUp from '../../../utils/countUp'
+import { Badge } from '@/components/ui/badge'
+import { Card } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -107,7 +110,7 @@ const Ready = () => {
       <div className="ready-blob-2 absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-accent/15 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="ready-card relative z-10 -mt-36 overflow-hidden rounded-[2.5rem] bg-[var(--app-bg-sectional)] p-8 shadow-2xl shadow-primary/10 sm:p-12 lg:p-16">
+        <Card className="ready-card relative z-10 -mt-36 gap-0 overflow-hidden rounded-[2.5rem] border-0 bg-[var(--app-bg-sectional)] p-8 shadow-2xl shadow-primary/10 sm:p-12 lg:p-16">
           <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-transparent to-accent/20" />
 
           <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-base-100/30 blur-[100px]" />
@@ -127,30 +130,31 @@ const Ready = () => {
             </div>
 
             <div className="flex flex-col gap-4 sm:flex-row">
-              <button
+              <Button
                 type="button"
                 onClick={() => navigate('/products')}
-                className="group btn rounded-2xl border-none bg-primary px-7 py-3.5 font-bold text-primary-content shadow-xl shadow-black/10 transition-all duration-300 hover:scale-105 hover:bg-primary/90"
+                className="group rounded-2xl px-7 py-3.5 font-bold shadow-xl shadow-black/10 transition-all duration-300 hover:scale-105"
               >
                 View Products
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </button>
+              </Button>
 
-              <button
+              <Button
+                variant="outline"
                 type="button"
                 onClick={() => navigate('/dashboard')}
-                className="btn rounded-2xl border-2 border-primary/40 bg-transparent px-7 py-3.5 font-bold text-base-content transition-all duration-300 hover:scale-105 hover:border-primary/70 hover:bg-primary/10"
+                className="rounded-2xl border-2 border-primary/40 bg-transparent px-7 py-3.5 font-bold text-base-content transition-all duration-300 hover:scale-105 hover:border-primary/70 hover:bg-primary/10"
               >
                 Get Started
-              </button>
+              </Button>
             </div>
           </div>
-        </div>
+        </Card>
 
         <div className="mx-auto mt-20 mb-16 max-w-3xl text-center">
-          <div className="ready-badge inline-flex rounded-full bg-primary/10 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase">
+          <Badge variant="secondary" className="ready-badge rounded-full bg-primary/10 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase">
             Get Started
-          </div>
+          </Badge>
 
           <h2 className="ready-title mt-6 text-4xl font-black lg:text-6xl text-base-content">
             Ready to get <span className="text-primary">measured?</span>
@@ -166,9 +170,9 @@ const Ready = () => {
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           {readyStats.map((stat) => (
-            <div
+            <Card
               key={stat.label}
-              className="ready-stat tilt-card rounded-3xl border border-base-300 bg-base-100 p-8 text-center transition-colors duration-500 hover:border-primary/30"
+              className="ready-stat tilt-card flex-col items-center gap-0 rounded-3xl border-base-300 bg-card p-8 text-center transition-colors duration-500 hover:border-primary/30"
             >
               <div className="flex items-baseline justify-center gap-1">
                 <span
@@ -181,7 +185,7 @@ const Ready = () => {
               </div>
 
               <div className="mt-2 text-base-content/60">{stat.label}</div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

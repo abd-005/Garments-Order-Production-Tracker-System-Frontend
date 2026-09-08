@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 
 import Feature from "./Feature";
 import useTilt from "../../../hooks/useTilt";
+import { Badge } from "@/components/ui/badge";
 
 import svg1 from "../../../assets/svg/01.png";
 import svg2 from "../../../assets/svg/02.png";
@@ -176,9 +177,7 @@ scope: container,
 
         <div className="choose-heading mx-auto mb-20 max-w-3xl text-center">
 
-          <div className="choose-badge inline-flex rounded-full bg-primary/10 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase">
-            Why Choose Us
-          </div>
+          <Badge variant="secondary" className="choose-badge rounded-full bg-primary/10 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase">Why Choose Us</Badge>
 
           <h2 className="choose-title mt-6 text-4xl font-black lg:text-6xl text-base-content">
             Crafted for Excellence.

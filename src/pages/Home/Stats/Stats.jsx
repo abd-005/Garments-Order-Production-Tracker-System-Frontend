@@ -5,6 +5,8 @@ import { useGSAP } from '@gsap/react'
 import { Users, Shirt, Clock, BadgeCheck } from 'lucide-react'
 import useTilt from '../../../hooks/useTilt'
 import countUp from '../../../utils/countUp'
+import { Badge } from '@/components/ui/badge'
+import { Card } from '@/components/ui/card'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -118,9 +120,9 @@ const Stats = () => {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="stats-heading mx-auto mb-16 max-w-3xl text-center">
-          <div className="stats-badge inline-flex rounded-full border border-primary/30 bg-base-100/50 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase backdrop-blur">
+          <Badge variant="outline" className="stats-badge rounded-full border-primary/30 bg-base-100/50 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase backdrop-blur">
             Our Achievements
-          </div>
+          </Badge>
 
           <h2 className="stats-title mt-6 text-4xl font-black text-base-content lg:text-6xl">
             Numbers that
@@ -137,9 +139,9 @@ const Stats = () => {
             const StatIcon = stat.icon
 
             return (
-              <div
+              <Card
                 key={stat.label}
-                className="stats-card tilt-card group relative overflow-hidden rounded-3xl border border-base-300 bg-base-100 p-8 text-center transition-colors duration-500 hover:border-primary/30"
+                className="stats-card tilt-card group relative flex-col overflow-hidden rounded-3xl border-base-300 bg-card p-8 text-center transition-colors duration-500 hover:border-primary/30"
               >
                 <div className="stats-icon tilt-inner mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition-colors duration-500 group-hover:bg-primary/20">
                   <StatIcon className="h-8 w-8 text-primary" />
@@ -158,7 +160,7 @@ const Stats = () => {
                 </div>
 
                 <p className="mt-2 font-semibold text-base-content/70">{stat.label}</p>
-              </div>
+              </Card>
             )
           })}
         </div>

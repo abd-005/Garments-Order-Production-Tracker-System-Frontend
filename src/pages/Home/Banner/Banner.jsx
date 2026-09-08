@@ -7,6 +7,9 @@ import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import countUp from '../../../utils/countUp'
 import useTilt from '../../../hooks/useTilt'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { Card } from '@/components/ui/card'
 
 import {
   ArrowRight,
@@ -186,13 +189,14 @@ const Banner = () => {
         <div className='max-w-xl'>
 
           <div className='flex justify-center lg:justify-start'>
-            <div className="hero-badge inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-2 text-xs sm:text-sm font-semibold">
+            <Badge
+              variant="secondary"
+              className="hero-badge gap-1.5 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary sm:text-sm"
 
-            <Star className="fill-current w-4 h-4" />
-
-            Trusted by Manufacturers Worldwide
-
-          </div>
+            >
+              <Star className="size-4 fill-current" />
+              Trusted by Manufacturers Worldwide
+            </Badge>
           </div>
 
           <h1 className="hero-title mt-6 text-4xl sm:text-5xl lg:text-7xl font-black leading-tight text-base-content text-center lg:text-left">
@@ -217,40 +221,23 @@ const Banner = () => {
 
           <div className="hero-buttons mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
 
-            <button
+            <Button
+              size="lg"
               onClick={() => navigate('/products')}
-              className="btn
-              group
-              btn-primary
-              btn-lg
-              rounded-2xl
-              shadow-xl
-              hover:scale-105
-              hover:shadow-primary/30
-              transition-all
-              duration-300"
+              className="group rounded-2xl shadow-xl transition-all duration-300 hover:scale-105"
             >
               Explore Products
-              <ArrowRight
-                className="transition-transform group-hover:translate-x-1"
-              />
-            </button>
+              <ArrowRight className="transition-transform group-hover:translate-x-1" />
+            </Button>
 
-            <button
+            <Button
+              size="lg"
+              variant="secondary"
               onClick={() => navigate('/dashboard')}
-              className="btn
-              group
-              btn-secondary
-              btn-lg
-              rounded-2xl
-              shadow-xl
-              hover:scale-105
-              hover:shadow-secondary/30
-              transition-all
-              duration-300"
+              className="group rounded-2xl shadow-xl transition-all duration-300 hover:scale-105"
             >
               Dashboard
-            </button>
+            </Button>
 
           </div>
 
@@ -258,9 +245,9 @@ const Banner = () => {
 
             {stats.map(item => (
 
-              <div
+              <Card
                 key={item.subtitle}
-                className="stat-card bg-base-100 border border-base-300 rounded-2xl shadow-lg p-5 text-center"
+                className="stat-card items-center justify-center gap-1 rounded-2xl p-5 text-center shadow-lg"
               >
 
                 <h2 className="text-2xl sm:text-3xl font-black text-primary">
@@ -282,7 +269,7 @@ const Banner = () => {
 
                 </p>
 
-              </div>
+              </Card>
 
             ))}
 
@@ -368,7 +355,7 @@ const Banner = () => {
 
           {/* Left Floating */}
 
-          <div className="floating-card hidden md:block z-10 absolute -left-10 top-14 bg-base-100 rounded-3xl shadow-xl p-5 backdrop-blur border border-base-300">
+          <Card className="floating-card absolute -left-10 top-14 z-10 hidden gap-0 rounded-3xl border-base-300 bg-background/80 p-5 shadow-xl backdrop-blur-sm md:block">
 
             {features.map(({ icon: Icon, text }) => (
 
@@ -396,11 +383,11 @@ const Banner = () => {
 
             ))}
 
-          </div>
+          </Card>
 
           {/* Bottom Right */}
 
-          <div className="hero-growth-card floating-card hidden md:block z-20 absolute -right-8 bottom-10 bg-base-100 rounded-3xl shadow-xl px-8 py-6 border border-base-300">
+          <Card className="hero-growth-card floating-card absolute -right-8 bottom-10 z-20 hidden gap-1 rounded-3xl border-base-300 bg-background px-8 py-6 shadow-xl md:block">
 
             <p className="text-base-content/60">
 
@@ -423,12 +410,12 @@ const Banner = () => {
 
             </p>
 
-          </div>
+          </Card>
           <div className="lg:hidden mt-6 space-y-4">
 
             {/* Moblie Card */}
 
-            <div className="bg-base-100 border border-base-300 rounded-2xl p-5 shadow-lg">
+            <Card className="gap-0 rounded-2xl bg-background p-5 shadow-lg">
               {features.map(({ icon: Icon, text }) => (
                 <div
                   key={text}
@@ -446,9 +433,9 @@ const Banner = () => {
                   </span>
                 </div>
               ))}
-            </div>
+            </Card>
 
-            <div className="bg-base-100 border border-base-300 rounded-2xl p-5 shadow-lg text-center">
+            <Card className="gap-0 rounded-2xl bg-background p-5 text-center shadow-lg">
               <p className="text-base-content/60">
                 Production Growth
               </p>
@@ -463,7 +450,7 @@ const Banner = () => {
               <p className="text-green-500 font-semibold">
                 This Month
               </p>
-            </div>
+            </Card>
 
           </div>
         </div>

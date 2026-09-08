@@ -5,6 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { Quote, Star } from 'lucide-react'
 import useTilt from '../../../hooks/useTilt'
+import { Badge } from '@/components/ui/badge'
+import { Card } from '@/components/ui/card'
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -136,9 +139,9 @@ const Feedback = () => {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="fb-heading mx-auto mb-16 max-w-3xl text-center">
-          <div className="fb-badge inline-flex rounded-full bg-primary/10 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase">
+          <Badge variant="secondary" className="fb-badge rounded-full bg-primary/10 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase">
             Testimonials
-          </div>
+          </Badge>
 
           <h2 className="fb-title mt-6 text-4xl font-black lg:text-6xl text-base-content">
             Customer <span className="text-primary">Feedback</span>
@@ -152,7 +155,7 @@ const Feedback = () => {
         </div>
 
         <div className="fb-card mx-auto max-w-3xl">
-          <div className="tilt-card">
+          <Card className="tilt-card gap-0 rounded-3xl border-base-300 bg-card/80 p-8 text-center shadow-xl shadow-primary/5 backdrop-blur-xl sm:p-12">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.id}
@@ -160,7 +163,7 @@ const Feedback = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.45 }}
-                className="rounded-3xl border border-base-300 bg-base-100/80 p-8 text-center shadow-xl backdrop-blur-xl shadow-primary/5 sm:p-12"
+                className="flex flex-col items-center"
               >
                 <div className="fb-quote-icon tilt-inner mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
                   <Quote className="h-7 w-7 text-primary" />
@@ -180,9 +183,9 @@ const Feedback = () => {
                 </p>
 
                 <div className="mt-8 flex items-center justify-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-base font-bold text-primary">
-                    {current.name.charAt(0)}
-                  </div>
+                  <Avatar className="size-12 bg-primary/10 font-bold text-primary">
+                    <AvatarFallback>{current.name.charAt(0)}</AvatarFallback>
+                  </Avatar>
 
                   <div className="text-left">
                     <p className="font-bold text-base-content">{current.name}</p>
@@ -191,7 +194,7 @@ const Feedback = () => {
                 </div>
               </motion.div>
             </AnimatePresence>
-          </div>
+          </Card>
 
           <div className="mt-8 flex items-center justify-center gap-3">
             {feedbacks.map((f, i) => (

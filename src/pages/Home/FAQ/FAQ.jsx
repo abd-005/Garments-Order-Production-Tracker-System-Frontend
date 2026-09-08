@@ -2,8 +2,14 @@ import React, { useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
-import { ChevronDown } from 'lucide-react'
 import useTilt from '../../../hooks/useTilt'
+import { Badge } from '@/components/ui/badge'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/components/ui/accordion'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -36,10 +42,7 @@ const faqs = [
 
 const FAQ = () => {
   const container = useRef(null)
-  const [expandedIndex, setExpandedIndex] = useState(null)
-
-  const toggle = (index) =>
-    setExpandedIndex(expandedIndex === index ? null : index)
+  const [openIndex, setOpenIndex] = useState(null)
 
   useGSAP(() => {
     gsap.to('.faq-blob-left', {
@@ -112,9 +115,9 @@ const FAQ = () => {
 
       <div className="relative mx-auto max-w-4xl px-6">
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <div className="faq-badge inline-flex rounded-full bg-primary/10 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase">
+          <Badge variant="secondary" className="faq-badge rounded-full bg-primary/10 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase">
             Support
-          </div>
+          </Badge>
 
           <h2 className="faq-title mt-6 text-4xl font-black lg:text-6xl text-base-content">
             Frequently Asked <span className="text-primary">Questions</span>
@@ -127,59 +130,31 @@ const FAQ = () => {
           <div className="faq-divider h-1 w-16 origin-center rounded-full bg-linear-to-r from-primary to-secondary mx-auto mt-6" />
         </div>
 
-        <div className="space-y-4">
-          {faqs.map((faq, index) => {
-            const isOpen = expandedIndex === index
+        <Accordion
+          type="single"
+          collapsible
+          value={openIndex}
+          onValueChange={setOpenIndex}
+          className="space-y-4"
+        >
+          {faqs.map((faq, index) => (
+            <AccordionItem
+              key={faq.question}
+              value={String(index)}
+              className="faq-item tilt-card overflow-hidden rounded-2xl border border-base-300 bg-card/70 transition-all duration-300 hover:border-primary/25 hover:bg-card data-[state=open]:border-primary/30 data-[state=open]:bg-card data-[state=open]:shadow-xl data-[state=open]:shadow-primary/5"
+            >
+              <AccordionTrigger className="flex-1 gap-4 px-6 py-5 text-left focus-visible:ring-primary/20 sm:px-8 [&[data-state=open]]:text-base-content [&_svg]:size-6 [&_svg]:text-primary">
+                {faq.question}
+              </AccordionTrigger>
 
-            return (
-              <div
-                key={faq.question}
-                className={`faq-item tilt-card overflow-hidden rounded-2xl border transition-all duration-300 ${
-                  isOpen
-                    ? 'border-primary/30 bg-base-100 shadow-xl shadow-primary/5'
-                    : 'border-base-300 bg-base-100/70 hover:border-primary/25 hover:bg-base-100'
-                }`}
-              >
-                <button
-                  type="button"
-                  aria-expanded={isOpen}
-                  onClick={() => toggle(index)}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left sm:px-8"
-                >
-                  <h3 className="font-bold text-base-content">
-                    {faq.question}
-                  </h3>
-
-                  <span
-                    className={`flex size-9 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
-                      isOpen ? 'rotate-180 bg-primary' : 'bg-primary/10'
-                    }`}
-                  >
-                    <ChevronDown
-                      className={`h-5 w-5 transition-colors ${
-                        isOpen ? 'text-primary-content' : 'text-primary'
-                      }`}
-                    />
-                  </span>
-                </button>
-
-                <div
-                  className={`grid transition-all duration-300 ${
-                    isOpen
-                      ? 'grid-rows-[1fr] opacity-100'
-                      : 'grid-rows-[0fr] opacity-0'
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <p className="border-t border-base-300 px-6 py-5 leading-7 text-base-content/70 sm:px-8">
-                      {faq.answer}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
+              <AccordionContent className="animate-none pb-0">
+                <p className="border-t border-base-300 px-6 py-5 leading-7 text-base-content/70 sm:px-8">
+                  {faq.answer}
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </section>
   )

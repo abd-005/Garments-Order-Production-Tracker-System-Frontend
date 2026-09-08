@@ -1,16 +1,16 @@
+import { Card } from '@/components/ui/card'
+
 const Feature = ({ item }) => (
-  <div className="
+  <Card className="
     choose-item
     tilt-card
     group
     relative
-    flex
+    flex-row
     gap-5
     overflow-hidden
     rounded-3xl
-    border
     border-base-300
-    bg-base-100
     p-6
     transition-colors
     duration-500
@@ -64,7 +64,7 @@ const Feature = ({ item }) => (
         {item.description}
       </p>
     </div>
-  </div>
+  </Card>
 );
 
 export default Feature;

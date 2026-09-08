@@ -4,6 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { ShoppingBag, ClipboardList, Factory, PackageCheck, ArrowRight } from 'lucide-react'
 import useTilt from '../../../hooks/useTilt'
+import { Badge } from '@/components/ui/badge'
+import { Card } from '@/components/ui/card'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -144,9 +146,9 @@ const HowItWorks = () => {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="hiw-heading mx-auto mb-20 max-w-3xl text-center">
-          <div className="hiw-badge inline-flex rounded-full bg-primary/10 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase">
+          <Badge variant="secondary" className="hiw-badge rounded-full bg-primary/10 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase">
             How It Works
-          </div>
+          </Badge>
 
           <h2 className="hiw-title mt-6 text-4xl font-black lg:text-6xl text-base-content">
             Simple steps,
@@ -170,7 +172,7 @@ const HowItWorks = () => {
 
               return (
               <div key={step.title} className="relative">
-                <div className="hiw-card tilt-card group relative flex h-full flex-col items-center rounded-3xl border border-base-300 bg-base-100 p-8 text-center transition-colors duration-500 hover:border-primary/30 hover:bg-base-100">
+                <Card className="hiw-card tilt-card group relative flex h-full flex-col items-center gap-0 rounded-3xl border-base-300 bg-card p-8 text-center transition-colors duration-500 hover:border-primary/30">
                   <div className="relative mb-6">
                     <div className="hiw-step tilt-inner flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 transition-colors duration-500 group-hover:bg-primary/15">
                       <Icon className="h-9 w-9 text-primary" strokeWidth={1.8} />
@@ -186,7 +188,7 @@ const HowItWorks = () => {
                   </h4>
 
                   <p className="leading-7 text-base-content/70">{step.desc}</p>
-                </div>
+                </Card>
 
                 {i < steps.length - 1 && (
                   <div className="absolute top-1/2 -right-5 z-10 hidden -translate-y-1/2 lg:flex">

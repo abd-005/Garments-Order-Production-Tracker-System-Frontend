@@ -2,6 +2,8 @@ import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { gsap } from 'gsap'
 import { ArrowUpRight, Heart } from 'lucide-react'
+import { Card } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate()
@@ -22,7 +24,7 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <div className="group tilt-card bg-base-100 border border-base-200/80 rounded-3xl overflow-hidden transition-colors duration-500 hover:border-primary/25">
+    <Card className="group tilt-card gap-0 overflow-hidden rounded-3xl border-base-300 bg-card p-0 transition-colors duration-500 hover:border-primary/25">
       {/* Image wrapper */}
       <div
         className="relative aspect-[4/5] overflow-hidden bg-base-200 cursor-pointer"
@@ -90,7 +92,7 @@ const ProductCard = ({ product }) => {
           </button>
         </div>
       </div>
-    </div>
+    </Card>
   )
 }
 

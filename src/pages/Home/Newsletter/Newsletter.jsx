@@ -4,6 +4,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react'
 import useTilt from '../../../hooks/useTilt'
+import { Badge } from '@/components/ui/badge'
+import { Card } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -114,9 +119,9 @@ const Newsletter = () => {
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <div className="news-badge inline-flex rounded-full border border-primary/30 bg-base-100/50 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase backdrop-blur">
+            <Badge variant="outline" className="news-badge rounded-full border-primary/30 bg-base-100/50 px-5 py-2 text-xs font-semibold tracking-widest text-primary uppercase backdrop-blur">
               Newsletter
-            </div>
+            </Badge>
 
             <h2 className="news-title mt-6 text-4xl font-black text-base-content lg:text-6xl">
               Stay <span className="text-primary">Updated.</span>
@@ -153,31 +158,29 @@ const Newsletter = () => {
             </div>
           </div>
 
-          <div className="tilt-card news-form rounded-3xl border border-primary/15 bg-base-100/60 p-8 backdrop-blur-xl sm:p-10">
+          <Card className="tilt-card news-form gap-0 rounded-3xl border-primary/15 bg-card/60 p-8 backdrop-blur-xl sm:p-10">
             <h3 className="text-2xl font-bold text-base-content">Get the latest first</h3>
 
             <p className="mt-2 text-base-content/60">Join our community and never miss a drop.</p>
 
-            <form onSubmit={handleSubscribe} className="mt-8 space-y-4">
-              <div>
-                <label htmlFor="email" className="mb-2 block text-sm font-medium text-base-content/80">
-                  Email Address
-                </label>
-                <input
+            <form onSubmit={handleSubscribe} className="mt-8 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="email">Email Address</Label>
+                <Input
                   type="email"
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
                   required
-                  className="w-full rounded-2xl border border-primary/20 bg-base-100 px-5 py-3.5 text-base-content placeholder-base-content/40 outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  className="h-12 rounded-2xl border-primary/20 bg-card px-5 placeholder:text-base-content/40 focus-visible:ring-primary/20"
                 />
               </div>
 
-              <button
+              <Button
                 type="submit"
                 disabled={loading}
-                className="group btn w-full rounded-2xl border-none bg-primary px-6 py-3.5 font-semibold text-primary-content shadow-xl shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:bg-primary/90 disabled:opacity-50"
+                className="group mt-6 w-full rounded-2xl px-6 py-3.5 font-semibold shadow-xl shadow-black/10 transition-all duration-300 hover:scale-[1.02] disabled:opacity-50"
               >
                 {loading ? (
                   'Subscribing...'
@@ -187,10 +190,10 @@ const Newsletter = () => {
                     <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </>
                 )}
-              </button>
+              </Button>
 
               {submitted && (
-                <p className="flex items-center justify-center gap-2 text-sm font-medium text-primary">
+                <p className="mt-4 flex items-center justify-center gap-2 text-sm font-medium text-primary">
                   <CheckCircle2 className="h-4 w-4" />
                   Thanks for subscribing!
                 </p>
@@ -200,7 +203,7 @@ const Newsletter = () => {
             <p className="mt-6 text-center text-sm text-base-content/50">
               We respect your privacy. Unsubscribe at any time.
             </p>
-          </div>
+          </Card>
         </div>
       </div>
     </section>
