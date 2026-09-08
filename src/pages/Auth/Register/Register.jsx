@@ -7,6 +7,10 @@ import { imageUpload, saveOrUpdateUser } from '../../../utils'
 import Logo from '../../../components/Logo/Logo'
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
 import { TbFidgetSpinner } from 'react-icons/tb'
+import { Card } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 const Register = () => {
   const { createUser, updateUserProfile, signInWithGoogle, loading, user } = useAuth()
@@ -92,7 +96,7 @@ const Register = () => {
       <div className='mx-auto w-5/12 flex items-center gap-2'>
         <h2 className='font-bold text-2xl text-primary'>Register to</h2> <Logo></Logo>
       </div>
-      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-white text-gray-900'>
+      <Card className='flex-col max-w-md gap-0 rounded-md p-6 text-base-content sm:p-10'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Register</h1>
           <p className='text-sm text-gray-400'>Welcome to TailorFlow</p>
@@ -105,14 +109,14 @@ const Register = () => {
         >
           <div className='space-y-4'>
             <div>
-              <label htmlFor='email' className='block mb-2 text-sm'>
+              <Label htmlFor='name' className='mb-2 block'>
                 Name
-              </label>
-              <input
+              </Label>
+              <Input
                 type='text'
                 id='name'
                 placeholder='Enter Your Name Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-primary bg-gray-200 text-gray-900'
+                className='h-12 rounded-md bg-base-100'
                 data-temp-mail-org='0'
                 {...register('name', {
                   required: 'Name is required',
@@ -126,14 +130,14 @@ const Register = () => {
               </div>)}
             </div>
             <div>
-              <label htmlFor='email' className='block mb-2 text-sm'>
+              <Label htmlFor='email' className='mb-2 block'>
                 Email address
-              </label>
-              <input
+              </Label>
+              <Input
                 type='email'
                 id='email'
                 placeholder='Enter Your Email Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-primary bg-gray-200 text-gray-900'
+                className='h-12 rounded-md bg-base-100'
                 data-temp-mail-org='0'
                 {...register('email', {
                   required: 'Email is required',
@@ -194,16 +198,16 @@ const Register = () => {
 
             <div>
               <div className='flex justify-between'>
-                <label htmlFor='password' className='text-sm mb-2'>
+                <Label htmlFor='password' className='mb-2'>
                   Password
-                </label>
+                </Label>
               </div>
-              <input
+              <Input
                 type='password'
                 autoComplete='new-password'
                 id='password'
                 placeholder='*******'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-primary bg-gray-200 text-gray-900'
+                className='h-12 rounded-md bg-base-100'
                 {...register('password', {
                   required: 'Password is required', minLength: {
                     value: 6,
@@ -225,17 +229,16 @@ const Register = () => {
           </div>
 
           <div>
-            <button
+            <Button
               type='submit'
-              className='btn btn-primary w-full rounded-md py-6 text-white'
-            >
+              className='h-14 w-full rounded-md'>
               {loading ? (
                 <TbFidgetSpinner className='animate-spin m-auto' />
               ) :
                 (
                   'Register'
                 )}
-            </button>
+            </Button>
           </div>
         </form>
         <div className='flex items-center pt-4 space-x-1'>
@@ -245,14 +248,14 @@ const Register = () => {
           </p>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
         </div>
-        <div
+        <Button
           onClick={handleGoogleSignIn}
-          className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 rounded-md cursor-pointer'
+          variant='outline'
+          className='flex h-auto w-full gap-2 rounded-md p-2'
         >
           <FcGoogle size={32} />
-
           <p>Continue with Google</p>
-        </div>
+        </Button>
         <p className='px-6 text-sm text-center text-gray-400'>
           Already have an account?{' '}
           <Link
@@ -263,7 +266,7 @@ const Register = () => {
           </Link>
           .
         </p>
-      </div>
+      </Card>
     </div>
   )
 }

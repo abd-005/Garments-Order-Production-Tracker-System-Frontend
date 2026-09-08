@@ -5,6 +5,8 @@ import Card from './Card'
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
 import Container from '../../../components/Shared/Container'
 import { Search, Sliders, ArrowUpDown } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 const AllProducts = () => {
   const [page, setPage] = useState(1)
@@ -49,7 +51,7 @@ const AllProducts = () => {
   const totalPages = Math.max(1, Math.ceil(total / limit))
 
   return (
-    <div className='bg-linear-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-slate-800 pb-12 min-h-screen'>
+    <div className='bg-background min-h-screen pb-12'>
       <Container>
         <div className='text-center py-12 sm:py-16'>
           <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 text-primary'>
@@ -66,8 +68,8 @@ const AllProducts = () => {
           {/* Search Bar */}
           <div className="flex gap-2">
             <div className="relative flex-1">
-              <Search size={18} className="absolute left-3 top-3 text-gray-400 dark:text-gray-500" />
-              <input
+              <Search size={18} className="absolute left-3 top-3 z-10 text-muted-foreground" />
+              <Input
                 type="text"
                 placeholder="Search products by name..."
                 value={searchTerm}
@@ -75,15 +77,16 @@ const AllProducts = () => {
                   setSearchTerm(e.target.value)
                   setPage(1)
                 }}
-                className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary"
+                className="bg-card pl-10"
               />
             </div>
-            <button
+            <Button
+              variant="secondary"
               onClick={handleReset}
-              className="px-4 py-2.5 bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-slate-600 transition-colors font-medium"
+              className="h-10"
             >
               Reset
-            </button>
+            </Button>
           </div>
 
           {/* Filters */}
@@ -100,7 +103,7 @@ const AllProducts = () => {
                   setCategory(e.target.value)
                   setPage(1)
                 }}
-                className="w-full px-3 py-2.5 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary"
+                className="w-full rounded-lg border border-input bg-card px-3 py-2.5 text-sm text-foreground outline-none transition focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
               >
                 <option value="">All Categories</option>
                 <option value="shirts">Shirts</option>
@@ -117,7 +120,7 @@ const AllProducts = () => {
                 Price Range
               </label>
               <div className="flex gap-2 items-center">
-                <input
+                <Input
                   type="number"
                   min="0"
                   value={priceRange[0]}
@@ -126,11 +129,11 @@ const AllProducts = () => {
                     setPriceRange(newRange)
                     setPage(1)
                   }}
-                  className="w-1/2 px-2 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary"
+                  className="w-1/2 bg-card px-2"
                   placeholder="Min"
                 />
-                <span className="text-gray-600 dark:text-gray-400">-</span>
-                <input
+                <span className="text-muted-foreground">-</span>
+                <Input
                   type="number"
                   max="10000"
                   value={priceRange[1]}
@@ -139,7 +142,7 @@ const AllProducts = () => {
                     setPriceRange(newRange)
                     setPage(1)
                   }}
-                  className="w-1/2 px-2 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary"
+                  className="w-1/2 bg-card px-2"
                   placeholder="Max"
                 />
               </div>
@@ -157,7 +160,7 @@ const AllProducts = () => {
                   setSortBy(e.target.value)
                   setPage(1)
                 }}
-                className="w-full px-3 py-2.5 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary"
+                className="w-full rounded-lg border border-input bg-card px-3 py-2.5 text-sm text-foreground outline-none transition focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
               >
                 <option value="newest">Newest</option>
                 <option value="oldest">Oldest</option>
@@ -180,11 +183,11 @@ const AllProducts = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <label className="text-sm text-gray-600 dark:text-gray-400">Per page</label>
+            <label className="text-sm text-muted-foreground">Per page</label>
             <select
               value={limit}
               onChange={(e) => { setLimit(Number(e.target.value)); setPage(1) }}
-              className="px-2 py-1 border border-gray-300 dark:border-slate-600 rounded bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary"
+              className="rounded-md border border-input bg-card px-2 py-1.5 text-sm text-foreground outline-none transition focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
             >
               <option value={8}>8</option>
               <option value={12}>12</option>
@@ -202,14 +205,9 @@ const AllProducts = () => {
             ))}
           </div>
         ) : (
-          <div className="py-12 text-center text-gray-600">
+          <div className="py-12 text-center text-muted-foreground">
             <p className="mb-4">No products found matching your criteria.</p>
-            <button
-              onClick={handleReset}
-              className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
-            >
-              Clear Filters
-            </button>
+            <Button onClick={handleReset}>Clear Filters</Button>
           </div>
         )}
 
@@ -218,23 +216,25 @@ const AllProducts = () => {
           <div className="text-sm text-gray-600 dark:text-gray-400">Page {page} of {totalPages}</div>
 
           <div className="flex items-center gap-2 flex-wrap">
-            <button
+            <Button
+              variant="outline"
+              size="sm"
               type="button"
               onClick={() => setPage(1)}
               disabled={page === 1}
-              className="px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-slate-700 transition"
             >
               First
-            </button>
+            </Button>
 
-            <button
+            <Button
+              variant="outline"
+              size="sm"
               type="button"
               onClick={() => setPage(p => Math.max(1, p - 1))}
               disabled={page <= 1}
-              className="px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-slate-700 transition"
             >
               Prev
-            </button>
+            </Button>
 
             {/* simple page numbers (show up to 5 centered) */}
             <div className="flex items-center gap-1 px-2">
@@ -246,34 +246,37 @@ const AllProducts = () => {
                 const pageNum = start + i
                 if (pageNum > totalPages) return null
                 return (
-                  <button
+                  <Button
                     key={pageNum}
+                    variant={pageNum === page ? 'default' : 'outline'}
+                    size="icon"
                     onClick={() => setPage(pageNum)}
-                    className={`px-3 py-2 rounded-lg transition ${pageNum === page ? 'bg-primary text-white' : 'border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-slate-700'}`}
                   >
                     {pageNum}
-                  </button>
+                  </Button>
                 )
               })}
             </div>
 
-            <button
+            <Button
+              variant="outline"
+              size="sm"
               type="button"
               onClick={() => setPage(p => Math.min(totalPages, p + 1))}
               disabled={page >= totalPages}
-              className="px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-slate-700 transition"
             >
               Next
-            </button>
+            </Button>
 
-            <button
+            <Button
+              variant="outline"
+              size="sm"
               type="button"
               onClick={() => setPage(totalPages)}
               disabled={page === totalPages}
-              className="px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50 disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-slate-700 transition"
             >
               Last
-            </button>
+            </Button>
           </div>
         </div>
       </Container>

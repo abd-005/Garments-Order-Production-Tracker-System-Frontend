@@ -24,6 +24,7 @@ import Logo from "../../Logo/Logo";
 import useAuth from "../../../hooks/useAuth";
 import avatarImg from "../../../assets/img/User-Avatar.png";
 import AnimatedNavLink from "./AnimatedNavLink";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -133,27 +134,30 @@ const Navbar = () => {
       {/* Utilities Console */}
       <div className="navbar-end flex items-center gap-4">
         
-        <button
+        <Button
+          variant="ghost"
+          size="icon"
           onClick={toggleTheme}
           aria-label="Toggle dark mode"
-          className="p-2 rounded-xl text-base-content hover:bg-base-200 border border-transparent hover:border-base-300 transition-all duration-200"
+          className="size-10 rounded-xl border border-transparent text-base-content hover:border-base-300 hover:bg-base-200"
         >
           {isDarkMode ? <Sun size={18} className="text-accent" /> : <Moon size={18} />}
-        </button>
+        </Button>
 
         {user && (
           <div className="relative">
-            <button
+            <Button
+              variant="ghost"
               onClick={() => setIsOpen(!isOpen)}
-              className="flex items-center gap-2 rounded-full border border-base-300 p-1 bg-base-200 hover:ring-2 hover:ring-accent transition duration-200"
+              className="size-9 rounded-full border border-base-300 bg-base-200 p-0 hover:ring-2 hover:ring-accent"
             >
               <img
                 src={user.photoURL || avatarImg}
                 alt="Profile"
                 referrerPolicy="no-referrer"
-                className="w-7 h-7 rounded-full object-cover"
+                className="size-7 rounded-full object-cover"
               />
-            </button>
+            </Button>
 
             {isOpen && (
               <div className="absolute right-0 mt-3 w-64 bg-base-100 rounded-xl shadow-xl border border-base-300 z-50 p-1.5">
@@ -183,12 +187,14 @@ const Navbar = () => {
           </div>
         )}
 
-        <button
+        <Button
+          variant="ghost"
+          size="icon"
           onClick={() => setIsOpen(!isOpen)}
-          className="p-2 rounded-xl text-base-content hover:bg-base-200 lg:hidden border border-base-300 transition"
+          className="rounded-xl border border-base-300 text-base-content hover:bg-base-200 lg:hidden"
         >
           {isOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        </Button>
 
         {/* Mobile Dropdown Menu List */}
         {isOpen && (

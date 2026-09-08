@@ -1,39 +1,18 @@
-const Button = ({ label, onClick, disabled, outline, small, icon: Icon }) => {
+import { Button as ShadcnButton } from '@/components/ui/button'
+
+const Button = ({ label, onClick, disabled, outline, small, icon: Icon, className, ...props }) => {
     return (
-        <button
+        <ShadcnButton
             disabled={disabled}
             onClick={onClick}
-            className={`
-          relative
-          disabled:opacity-70
-          disabled:cursor-not-allowed
-          rounded-lg
-          hover:opacity-70
-          transition
-          cursor-pointer
-          px-4
-          w-full
-          ${outline ? 'bg-white' : 'bg-primary'}
-          ${outline ? 'border-black' : 'border-primary'}
-          ${outline ? 'text-black' : 'text-white'}
-          ${small ? 'text-sm' : 'text-md'}
-          ${small ? 'py-1' : 'py-3'}
-          ${small ? 'font-light' : 'font-semibold'}
-          ${small ? 'border' : 'border-2'}
-        `}
+            variant={outline ? 'outline' : 'default'}
+            size={small ? 'sm' : 'default'}
+            className={`w-full cursor-pointer ${small ? '' : 'py-3'} ${className || ''}`}
+            {...props}
         >
-            {Icon && (
-                <Icon
-                    size={24}
-                    className='
-              absolute
-              left-4
-              top-3
-            '
-                />
-            )}
+            {Icon && <Icon size={small ? 14 : 24} />}
             {label}
-        </button>
+        </ShadcnButton>
     )
 }
 

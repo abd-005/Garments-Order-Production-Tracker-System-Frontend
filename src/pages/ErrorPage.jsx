@@ -1,21 +1,21 @@
-import Button from '../components/Shared/Button/Button'
 import { useNavigate } from 'react-router'
+import { Button } from '@/components/ui/button'
 
 const ErrorPage = () => {
   const navigate = useNavigate()
 
   return (
-    <section className='bg-gradient-to-b from-gray-50 to-gray-100'>
+    <section className='bg-background'>
       <div className='container flex items-center min-h-screen px-6 py-12 mx-auto'>
         <div className='flex flex-col items-center max-w-sm mx-auto text-center'>
-          <div className='px-5 py-3 rounded-full bg-red-50'>
+          <div className='px-5 py-3 rounded-full bg-destructive/10'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               fill='none'
               viewBox='0 0 24 24'
               strokeWidth='2'
               stroke='currentColor'
-              className='w-16 h-16 text-red-600'
+              className='size-16 text-destructive'
             >
               <path
                 strokeLinecap='round'
@@ -34,9 +34,9 @@ const ErrorPage = () => {
             Sorry, the page you're looking for doesn't exist.
           </p>
           <div className='flex items-center w-full mt-8 gap-x-3 shrink-0 sm:w-auto'>
-            <button
+            <Button
+              variant="outline"
               onClick={() => navigate(-1)}
-              className='flex items-center justify-center px-6 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 bg-white border border-gray-300 rounded-lg hover:bg-gray-50'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -44,7 +44,7 @@ const ErrorPage = () => {
                 viewBox='0 0 24 24'
                 strokeWidth='1.5'
                 stroke='currentColor'
-                className='w-5 h-5 rtl:rotate-180'
+                className='size-5'
               >
                 <path
                   strokeLinecap='round'
@@ -52,9 +52,9 @@ const ErrorPage = () => {
                   d='M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18'
                 />
               </svg>
-              <span className='ml-2'>Go Back</span>
-            </button>
-            <Button label='Go Home' onClick={() => navigate('/')} />
+              Go Back
+            </Button>
+            <Button onClick={() => navigate('/')}>Go Home</Button>
           </div>
         </div>
       </div>

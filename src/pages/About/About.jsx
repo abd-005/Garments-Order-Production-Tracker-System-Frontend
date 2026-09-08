@@ -1,9 +1,11 @@
 import React from 'react'
 import Logo from '../../components/Logo/Logo'
+import { Card } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 
 const About = () => {
   return (
-    <main className="min-h-screen bg-white text-gray-800">
+    <main className="min-h-screen bg-background text-foreground">
       <header className="bg-secondary py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-6">
           <div className="flex-shrink-0">
@@ -20,12 +22,9 @@ const About = () => {
               manufacturing so every piece you buy is an investment.
             </p>
             <div className="mt-6">
-              <a
-                href="/products"
-                className="inline-block px-5 py-2 bg-primary text-white rounded-md shadow"
-              >
-                View Products
-              </a>
+              <Button asChild>
+                <a href="/products">View Products</a>
+              </Button>
             </div>
           </div>
         </div>
@@ -33,29 +32,29 @@ const About = () => {
 
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white rounded-2xl p-6 shadow border border-gray-100">
+          <Card className="gap-0 rounded-2xl p-6">
             <h3 className="text-lg font-semibold mb-2 text-primary">Our Mission</h3>
             <p className="text-sm text-gray-600">
               To make premium, responsibly produced garments accessible through transparent pricing,
               thoughtful design, and exceptional craftsmanship.
             </p>
-          </div>
+          </Card>
 
-          <div className="bg-white rounded-2xl p-6 shadow border border-gray-100">
+          <Card className="gap-0 rounded-2xl p-6">
             <h3 className="text-lg font-semibold mb-2 text-primary">Our Process</h3>
             <p className="text-sm text-gray-600">
               We source durable fabrics, cut with precision, and hand-finish details. Each order
               goes through quality checks before shipping to ensure consistent results.
             </p>
-          </div>
+          </Card>
 
-          <div className="bg-white rounded-2xl p-6 shadow border border-gray-100">
+          <Card className="gap-0 rounded-2xl p-6">
             <h3 className="text-lg font-semibold mb-2 text-primary">Sustainability</h3>
             <p className="text-sm text-gray-600">
               We minimize waste, favor local suppliers, and choose low-impact materials whenever
               possible to reduce our environmental footprint.
             </p>
-          </div>
+          </Card>
         </div>
       </section>
 
@@ -71,20 +70,20 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-2xl p-6 shadow border border-gray-100">
+            <Card className="gap-0 rounded-2xl p-6">
               <h4 className="text-xl font-semibold text-primary">10k+</h4>
               <p className="text-sm text-gray-600 mt-1">Happy customers</p>
-            </div>
+            </Card>
 
-            <div className="bg-white rounded-2xl p-6 shadow border border-gray-100">
+            <Card className="gap-0 rounded-2xl p-6">
               <h4 className="text-xl font-semibold text-primary">500+</h4>
               <p className="text-sm text-gray-600 mt-1">Products crafted</p>
-            </div>
+            </Card>
 
-            <div className="bg-white rounded-2xl p-6 shadow border border-gray-100">
+            <Card className="gap-0 rounded-2xl p-6">
               <h4 className="text-xl font-semibold text-primary">99%</h4>
               <p className="text-sm text-gray-600 mt-1">On-time delivery</p>
-            </div>
+            </Card>
           </div>
         </div>
       </section>
@@ -95,23 +94,23 @@ const About = () => {
           <p className="text-gray-600 mb-6">A small team of designers, tailors, and product specialists focused on quality.</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="bg-white rounded-2xl p-6 shadow border border-gray-100">
+            <Card className="gap-0 rounded-2xl p-6">
               <div className="text-lg font-semibold">Amina Rahman</div>
               <div className="text-sm text-gray-500">Head of Design</div>
               <p className="text-sm text-gray-600 mt-3">Leads product direction and fit standards.</p>
-            </div>
+            </Card>
 
-            <div className="bg-white rounded-2xl p-6 shadow border border-gray-100">
+            <Card className="gap-0 rounded-2xl p-6">
               <div className="text-lg font-semibold">Karim Hossain</div>
               <div className="text-sm text-gray-500">Production Manager</div>
               <p className="text-sm text-gray-600 mt-3">Oversees manufacturing and quality control.</p>
-            </div>
+            </Card>
 
-            <div className="bg-white rounded-2xl p-6 shadow border border-gray-100">
+            <Card className="gap-0 rounded-2xl p-6">
               <div className="text-lg font-semibold">Sadia Noor</div>
               <div className="text-sm text-gray-500">Customer Experience</div>
               <p className="text-sm text-gray-600 mt-3">Ensures smooth communication and support.</p>
-            </div>
+            </Card>
           </div>
         </div>
       </section>

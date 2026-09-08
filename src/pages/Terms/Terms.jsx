@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Card } from '@/components/ui/card';
 
 const TermsAndConditions = () => {
   const sections = [
@@ -85,14 +86,15 @@ const TermsAndConditions = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-lg p-6 shadow-sm"
               >
-                <h2 className="text-2xl font-bold text-primary mb-3">
-                  {section.title}
-                </h2>
-                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                  {section.content}
-                </p>
+                <Card className="gap-0 p-6 shadow-sm">
+                  <h2 className="mb-3 text-2xl font-bold text-primary">
+                    {section.title}
+                  </h2>
+                  <p className="whitespace-pre-line leading-relaxed text-base-content/70">
+                    {section.content}
+                  </p>
+                </Card>
               </motion.div>
             ))}
           </div>
@@ -102,19 +104,20 @@ const TermsAndConditions = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-12 bg-secondary rounded-lg p-8"
           >
-            <h2 className="text-2xl font-bold text-primary mb-4">
-              Questions About These Terms?
-            </h2>
-            <p className="text-gray-700 mb-4">
-              If you have any questions about these Terms and Conditions, please contact us:
-            </p>
-            <div className="space-y-2 text-gray-700">
-              <p><strong>Email:</strong> legal@tailorflow.com</p>
-              <p><strong>Phone:</strong> +1 (234) 567-890</p>
-              <p><strong>Address:</strong> 123 Tailor Street, Fashion City, FC 12345</p>
-            </div>
+            <Card className="mt-12 gap-0 rounded-lg bg-secondary p-8">
+              <h2 className="mb-4 text-2xl font-bold text-primary">
+                Questions About These Terms?
+              </h2>
+              <p className="mb-4 text-base-content/70">
+                If you have any questions about these Terms and Conditions, please contact us:
+              </p>
+              <div className="space-y-2 text-base-content/70">
+                <p><strong>Email:</strong> legal@tailorflow.com</p>
+                <p><strong>Phone:</strong> +1 (234) 567-890</p>
+                <p><strong>Address:</strong> 123 Tailor Street, Fashion City, FC 12345</p>
+              </div>
+            </Card>
           </motion.div>
         </motion.div>
       </div>

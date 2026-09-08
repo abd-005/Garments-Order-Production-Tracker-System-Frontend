@@ -1,10 +1,11 @@
 import React from 'react'
 import ContactForm from './ContactForm'
 import Logo from '../../components/Logo/Logo'
+import { Card } from '@/components/ui/card'
 
 const Contact = () => {
   return (
-    <main className="min-h-screen bg-white text-gray-800">
+    <main className="min-h-screen bg-background text-foreground">
       <header className="bg-secondary py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-6">
           <div className="flex-shrink-0">
@@ -25,28 +26,28 @@ const Contact = () => {
 
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="bg-white rounded-2xl p-6 shadow border border-gray-100">
+          <Card className="gap-0 rounded-2xl p-6">
             <h3 className="text-xl font-semibold mb-4 text-primary">Contact Information</h3>
 
-            <div className="space-y-4 text-sm text-gray-700">
+            <div className="space-y-4 text-sm text-base-content/80">
               <div>
                 <div className="font-medium">Email</div>
-                <div className="text-gray-600">support@tailorflow.example</div>
+                <div className="text-base-content/60">support@tailorflow.example</div>
               </div>
 
               <div>
                 <div className="font-medium">Phone</div>
-                <div className="text-gray-600">+880 1X-XXXX-XXXX</div>
+                <div className="text-base-content/60">+880 1X-XXXX-XXXX</div>
               </div>
 
               <div>
                 <div className="font-medium">Address</div>
-                <div className="text-gray-600">House 12, Road 8, Gulshan, Dhaka, Bangladesh</div>
+                <div className="text-base-content/60">House 12, Road 8, Gulshan, Dhaka, Bangladesh</div>
               </div>
 
               <div>
                 <div className="font-medium">Business hours</div>
-                <div className="text-gray-600">Mon–Fri 9:00–18:00 (BST)</div>
+                <div className="text-base-content/60">Mon–Fri 9:00–18:00 (BST)</div>
               </div>
             </div>
 
@@ -58,7 +59,7 @@ const Contact = () => {
                 <a href="#" className="text-primary underline">LinkedIn</a>
               </div>
             </div>
-          </div>
+          </Card>
 
           <div>
             <ContactForm />

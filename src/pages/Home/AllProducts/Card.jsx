@@ -1,14 +1,16 @@
 import { Link } from 'react-router'
 import { Star, ShoppingCart } from 'lucide-react'
+import { Card } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 
-const Card = ({ product }) => {
+const ProductCard = ({ product }) => {
   const { _id, title, images, quantity, category, price, rating = 4.5, reviews = 12 } = product || {}
   const imageSrc = images && images.length > 0 ? images[0] : ''
 
   const inStock = quantity > 0
 
   return (
-    <div className="col-span-1 group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-700 shadow-md hover:shadow-2xl dark:hover:shadow-lg transition-all duration-300 flex flex-col h-full">
+    <Card className="group flex-col gap-0 overflow-hidden rounded-2xl border-border bg-card shadow-md transition-all duration-300 hover:shadow-2xl md:h-full">
       {/* Image Container */}
       <div className="relative aspect-square w-full overflow-hidden bg-gray-100 dark:bg-slate-900">
         {!inStock && (
@@ -66,22 +68,20 @@ const Card = ({ product }) => {
           </div>
           
           <div className="flex gap-2">
-            <Link
-              to={`/product/${_id}`}
-              className={`flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 ${
-                inStock
-                  ? 'bg-primary text-white hover:bg-primary/90 shadow-sm hover:shadow-md'
-                  : 'bg-gray-200 dark:bg-slate-700 text-gray-500 dark:text-gray-400 cursor-not-allowed'
-              }`}
+            <Button asChild
+              variant={inStock ? 'default' : 'secondary'}
+              className={`flex-1 ${inStock ? '' : 'cursor-not-allowed text-gray-500'}`}
               onClick={(e) => !inStock && e.preventDefault()}
             >
-              <ShoppingCart size={16} />
-              View Details
-            </Link>
+              <Link to={`/product/${_id}`}>
+                <ShoppingCart size={16} />
+                View Details
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   )
 }
 

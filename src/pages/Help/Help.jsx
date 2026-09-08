@@ -1,6 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle, Mail, Phone, Clock } from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 const Help = () => {
   return (
@@ -35,11 +39,12 @@ const Help = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-shadow"
             >
-              <item.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
-              <p className="text-gray-600 text-sm">{item.desc}</p>
+              <Card className="gap-0 p-6 text-center shadow-sm transition-shadow hover:shadow-md">
+                <item.icon className="mx-auto mb-3 size-8 text-primary" />
+                <h3 className="mb-1 text-lg font-semibold">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
+              </Card>
             </motion.div>
           ))}
         </div>
@@ -95,19 +100,20 @@ const Help = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-lg p-6 shadow-sm"
               >
-                <h3 className="text-xl font-semibold text-primary mb-4">
-                  {category.title}
-                </h3>
-                <ul className="space-y-3">
-                  {category.items.map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-gray-700">
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <Card className="gap-0 p-6 shadow-sm">
+                  <h3 className="mb-4 text-xl font-semibold text-primary">
+                    {category.title}
+                  </h3>
+                  <ul className="space-y-3">
+                    {category.items.map((item, i) => (
+                      <li key={i} className="flex items-center gap-3 text-base-content/80">
+                        <span className="size-1.5 shrink-0 rounded-full bg-primary"></span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </Card>
               </motion.div>
             ))}
           </div>
@@ -118,40 +124,35 @@ const Help = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white rounded-lg p-8 shadow-md"
         >
-          <h2 className="text-2xl font-bold text-primary mb-6">Can't Find What You're Looking For?</h2>
-          <p className="text-gray-600 mb-6">
-            Contact our support team directly and we'll get back to you within 2 hours.
-          </p>
-          <form className="space-y-4 max-w-2xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+          <Card className="gap-0 p-8 shadow-md">
+            <h2 className="mb-6 text-2xl font-bold text-primary">Can't Find What You're Looking For?</h2>
+            <p className="mb-6 text-muted-foreground">
+              Contact our support team directly and we'll get back to you within 2 hours.
+            </p>
+            <form className="max-w-2xl space-y-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <Input
+                  type="text"
+                  placeholder="Your Name"
+                  required
+                />
+                <Input
+                  type="email"
+                  placeholder="Your Email"
+                  required
+                />
+              </div>
+              <Textarea
+                placeholder="Your Message"
+                rows={6}
                 required
               />
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-            </div>
-            <textarea
-              placeholder="Your Message"
-              rows="6"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-              required
-            ></textarea>
-            <button
-              type="submit"
-              className="px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors"
-            >
-              Send Message
-            </button>
-          </form>
+              <Button type="submit">
+                Send Message
+              </Button>
+            </form>
+          </Card>
         </motion.div>
       </div>
     </div>

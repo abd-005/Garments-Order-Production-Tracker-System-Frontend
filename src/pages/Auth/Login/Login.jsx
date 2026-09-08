@@ -8,6 +8,10 @@ import useAuth from '../../../hooks/useAuth';
 import { saveOrUpdateUser } from '../../../utils';
 import Logo from '../../../components/Logo/Logo';
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 const Login = () => {
   const { signIn, signInWithGoogle, user ,loading } = useAuth();
@@ -86,19 +90,19 @@ const Login = () => {
       <div className='mx-auto w-5/12 flex items-center gap-2'>
             <h2 className='font-bold text-2xl text-primary'>Login to</h2> <Logo></Logo>
         </div>
-      <div className="w-full max-w-lg bg-white shadow-xl rounded-lg p-8">
+      <Card className="w-full max-w-lg gap-0 rounded-lg p-8 shadow-xl">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-primary">Login</h1>
           <p className="text-sm text-gray-500 mt-2">Welcome back to TailorFlow</p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email address</label>
-            <input
+            <Label htmlFor="email" className="mb-2 block text-base-content/80">Email address</Label>
+            <Input
               type="email"
               id="email"
               placeholder="Enter Your Email Here"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-gray-50 text-gray-900"
+              className="h-12 rounded-lg bg-base-100"
               {...register('email', {
                 required: 'Email is required',
                 pattern: {
@@ -110,64 +114,71 @@ const Login = () => {
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">Password</label>
-            <input
+            <Label htmlFor="password" className="mb-2 block text-base-content/80">Password</Label>
+            <Input
               type="password"
               id="password"
               placeholder="*******"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-gray-50 text-gray-900"
+              className="h-12 rounded-lg bg-base-100"
               {...register('password', { required: 'Password is required' })}
             />
             {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
           </div>
-          <button
+          <Button
             type="submit"
-            className="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/80 transition duration-200 flex items-center justify-center"
+            className="h-12 w-full rounded-lg"
           >
             {loading ? <TbFidgetSpinner className="animate-spin" /> : 'Login'}
-          </button>
+          </Button>
         </form>
         <div className="flex items-center my-6">
           <div className="flex-1 h-px bg-gray-300"></div>
           <p className="px-3 text-sm text-gray-500">Login with social accounts</p>
           <div className="flex-1 h-px bg-gray-300"></div>
         </div>
-        <button
+        <Button
           onClick={handleGoogleSignIn}
-          className="w-full flex items-center justify-center gap-3 border border-gray-300 py-3 rounded-lg hover:bg-gray-50 transition duration-200"
+          variant="outline"
+          className="h-12 w-full rounded-lg"
         >
           <FcGoogle size={24} />
           <span>Continue with Google</span>
-        </button>
+        </Button>
 
         {/* Demo Login Section */}
         <div className="mt-6 border-t pt-6">
           <p className="text-sm text-gray-500 mb-3">Quick Demo Access:</p>
           <div className="grid grid-cols-3 gap-2">
-            <button
+            <Button
               type="button"
+              variant="secondary"
+              size="sm"
               onClick={() => handleDemoLogin('user')}
               disabled={demoLoading}
-              className="px-3 py-2 bg-blue-100 text-blue-700 rounded-lg text-xs font-medium hover:bg-blue-200 transition disabled:opacity-50"
+              className="bg-blue-100 text-blue-700 hover:bg-blue-200 disabled:opacity-50"
             >
               Demo User
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="secondary"
+              size="sm"
               onClick={() => handleDemoLogin('admin')}
               disabled={demoLoading}
-              className="px-3 py-2 bg-purple-100 text-purple-700 rounded-lg text-xs font-medium hover:bg-purple-200 transition disabled:opacity-50"
+              className="bg-purple-100 text-purple-700 hover:bg-purple-200 disabled:opacity-50"
             >
               Demo Admin
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="secondary"
+              size="sm"
               onClick={() => handleDemoLogin('manager')}
               disabled={demoLoading}
-              className="px-3 py-2 bg-green-100 text-green-700 rounded-lg text-xs font-medium hover:bg-green-200 transition disabled:opacity-50"
+              className="bg-green-100 text-green-700 hover:bg-green-200 disabled:opacity-50"
             >
               Demo Manager
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -175,7 +186,7 @@ const Login = () => {
           Don't have an account?{' '}
           <Link to="auth/register" className="text-primary hover:underline">Register</Link>
         </p>
-      </div>
+      </Card>
     </div>
   );
 };

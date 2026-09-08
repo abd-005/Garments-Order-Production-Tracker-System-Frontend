@@ -1,4 +1,9 @@
 import React, { useState } from 'react'
+import { Card } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
 
 const ContactForm = ({ onSubmit }) => {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
@@ -41,49 +46,49 @@ const ContactForm = ({ onSubmit }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 shadow border border-gray-100">
-      <div className="grid grid-cols-1 gap-4">
+    <Card className="gap-0 rounded-2xl p-6">
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
         <div>
-          <label className="text-sm font-medium text-gray-700">Name</label>
-          <input
+          <Label className="text-base-content/80">Name</Label>
+          <Input
             name="name"
             value={form.name}
             onChange={handleChange}
-            className="mt-1 w-full px-3 py-2 border rounded"
+            className="mt-1 h-11 rounded-md"
             required
           />
         </div>
 
         <div>
-          <label className="text-sm font-medium text-gray-700">Email</label>
-          <input
+          <Label className="text-base-content/80">Email</Label>
+          <Input
             name="email"
             type="email"
             value={form.email}
             onChange={handleChange}
-            className="mt-1 w-full px-3 py-2 border rounded"
+            className="mt-1 h-11 rounded-md"
             required
           />
         </div>
 
         <div>
-          <label className="text-sm font-medium text-gray-700">Subject</label>
-          <input
+          <Label className="text-base-content/80">Subject</Label>
+          <Input
             name="subject"
             value={form.subject}
             onChange={handleChange}
-            className="mt-1 w-full px-3 py-2 border rounded"
+            className="mt-1 h-11 rounded-md"
           />
         </div>
 
         <div>
-          <label className="text-sm font-medium text-gray-700">Message</label>
-          <textarea
+          <Label className="text-base-content/80">Message</Label>
+          <Textarea
             name="message"
             value={form.message}
             onChange={handleChange}
             rows={6}
-            className="mt-1 w-full px-3 py-2 border rounded"
+            className="mt-1 min-h-32 rounded-md"
             required
           />
         </div>
@@ -91,18 +96,18 @@ const ContactForm = ({ onSubmit }) => {
         {status.error && <div className="text-sm text-red-600">{status.error}</div>}
         {status.success && <div className="text-sm text-green-600">{status.success}</div>}
 
-        <div className="flex items-center justify-between">
-          <div className="text-xs text-gray-500">We respect your privacy. We will never share your details.</div>
-          <button
+        <div className="flex items-center justify-between gap-3">
+          <div className="text-xs text-base-content/50">We respect your privacy. We will never share your details.</div>
+          <Button
             type="submit"
             disabled={status.loading}
-            className="px-4 py-2 bg-primary text-white rounded-md"
+            className="shrink-0"
           >
             {status.loading ? 'Sending…' : 'Send Message'}
-          </button>
+          </Button>
         </div>
-      </div>
-    </form>
+      </form>
+    </Card>
   )
 }
 
