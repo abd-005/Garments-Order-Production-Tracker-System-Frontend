@@ -79,12 +79,6 @@ const Ready = () => {
         '-=0.3'
       )
       .fromTo(
-        '.ready-desc',
-        { y: 25, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6 },
-        '-=0.45'
-      )
-      .fromTo(
         '.ready-divider',
         { scaleX: 0, opacity: 0 },
         { scaleX: 1, opacity: 1, duration: 0.6, ease: 'power2.out' },
@@ -159,11 +153,6 @@ const Ready = () => {
           <h2 className="ready-title mt-6 text-4xl font-black lg:text-6xl text-base-content">
             Ready to get <span className="text-primary">measured?</span>
           </h2>
-
-          <p className="ready-desc mt-6 text-lg leading-8 text-base-content/70">
-            Book a product or request a custom fitting — we&rsquo;ll guide you
-            through every step.
-          </p>
 
           <div className="ready-divider h-1 w-16 origin-center rounded-full bg-linear-to-r from-primary to-secondary mx-auto mt-6" />
         </div>

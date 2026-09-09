@@ -387,7 +387,7 @@ const Banner = () => {
 
           {/* Bottom Right */}
 
-          <Card className="hero-growth-card floating-card absolute -right-8 bottom-10 z-20 hidden gap-1 rounded-3xl border-base-300 bg-background px-8 py-6 shadow-xl md:block">
+          <Card className="hero-growth-card floating-card absolute -right-8 bottom-10 z-20 hidden gap-1 rounded-3xl border-base-300 bg-background/80 px-8 py-6 shadow-xl backdrop-blur-sm md:block">
 
             <p className="text-base-content/60">
 
@@ -435,7 +435,7 @@ const Banner = () => {
               ))}
             </Card>
 
-            <Card className="gap-0 rounded-2xl bg-background p-5 text-center shadow-lg">
+            <Card className="gap-0 rounded-2xl bg-background/80 p-5 text-center shadow-lg backdrop-blur-sm">
               <p className="text-base-content/60">
                 Production Growth
               </p>
