@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
   const inStock = quantity > 0
 
   return (
-    <Card className="group flex-col gap-0 overflow-hidden rounded-2xl border-border bg-card shadow-md transition-all duration-300 hover:shadow-2xl md:h-full">
+    <Card className="group flex-col gap-0 overflow-hidden rounded-2xl border-0 bg-card shadow-md transition-all duration-300 hover:shadow-2xl md:h-full">
       {/* Image Container */}
       <div className="relative aspect-square w-full overflow-hidden bg-gray-100 dark:bg-slate-900">
         {!inStock && (

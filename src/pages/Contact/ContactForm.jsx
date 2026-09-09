@@ -46,7 +46,7 @@ const ContactForm = ({ onSubmit }) => {
   }
 
   return (
-    <Card className="gap-0 rounded-2xl p-6">
+    <Card className="gap-0 rounded-2xl border-0 p-6">
       <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
         <div>
           <Label className="text-base-content/80">Name</Label>

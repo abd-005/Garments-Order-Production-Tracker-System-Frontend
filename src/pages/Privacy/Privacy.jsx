@@ -74,7 +74,7 @@ const PrivacyPolicy = () => {
                 transition={{ delay: index * 0.05 }}
                 viewport={{ once: true }}
               >
-                <Card className="gap-0 p-6 shadow-sm">
+                <Card className="gap-0 border-0 p-6 shadow-sm">
                   <h2 className="mb-3 text-2xl font-bold text-primary">
                     {section.title}
                   </h2>
@@ -92,7 +92,7 @@ const PrivacyPolicy = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <Card className="mt-12 gap-0 rounded-lg bg-secondary p-8">
+            <Card className="mt-12 gap-0 rounded-lg border-0 bg-secondary p-8">
               <h2 className="mb-4 text-2xl font-bold text-primary">
                 Contact Us
               </h2>

@@ -141,7 +141,7 @@ const Stats = () => {
             return (
               <Card
                 key={stat.label}
-                className="stats-card tilt-card group relative flex-col overflow-hidden rounded-3xl border-base-300 bg-card p-8 text-center transition-colors duration-500 hover:border-primary/30"
+                className="stats-card tilt-card group relative flex-col overflow-hidden rounded-3xl border-0 bg-card p-8 text-center"
               >
                 <div className="stats-icon tilt-inner mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition-colors duration-500 group-hover:bg-primary/20">
                   <StatIcon className="h-8 w-8 text-primary" />

@@ -26,7 +26,7 @@ const Contact = () => {
 
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <Card className="gap-0 rounded-2xl p-6">
+          <Card className="gap-0 rounded-2xl border-0 p-6">
             <h3 className="text-xl font-semibold mb-4 text-primary">Contact Information</h3>
 
             <div className="space-y-4 text-sm text-base-content/80">

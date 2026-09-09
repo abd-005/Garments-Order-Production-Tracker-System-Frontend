@@ -172,7 +172,7 @@ const Ready = () => {
           {readyStats.map((stat) => (
             <Card
               key={stat.label}
-              className="ready-stat tilt-card flex-col items-center gap-0 rounded-3xl border-base-300 bg-card p-8 text-center transition-colors duration-500 hover:border-primary/30"
+              className="ready-stat tilt-card flex-col items-center gap-0 rounded-3xl border-0 bg-card p-8 text-center"
             >
               <div className="flex items-baseline justify-center gap-1">
                 <span

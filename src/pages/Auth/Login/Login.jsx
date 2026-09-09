@@ -90,7 +90,7 @@ const Login = () => {
       <div className='mx-auto w-5/12 flex items-center gap-2'>
             <h2 className='font-bold text-2xl text-primary'>Login to</h2> <Logo></Logo>
         </div>
-      <Card className="w-full max-w-lg gap-0 rounded-lg p-8 shadow-xl">
+      <Card className="w-full max-w-lg gap-0 rounded-lg border-0 p-8 shadow-xl">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-primary">Login</h1>
           <p className="text-sm text-gray-500 mt-2">Welcome back to TailorFlow</p>

@@ -247,7 +247,7 @@ const Banner = () => {
 
               <Card
                 key={item.subtitle}
-                className="stat-card items-center justify-center gap-1 rounded-2xl p-5 text-center shadow-lg"
+                className="stat-card group items-center justify-center gap-1 rounded-2xl border-0 p-5 text-center shadow-lg transition-colors duration-500 hover:bg-primary/10"
               >
 
                 <h2 className="text-2xl sm:text-3xl font-black text-primary">

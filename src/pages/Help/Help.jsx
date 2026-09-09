@@ -40,7 +40,7 @@ const Help = () => {
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="gap-0 p-6 text-center shadow-sm transition-shadow hover:shadow-md">
+              <Card className="gap-0 border-0 p-6 text-center shadow-sm transition-shadow hover:shadow-md">
                 <item.icon className="mx-auto mb-3 size-8 text-primary" />
                 <h3 className="mb-1 text-lg font-semibold">{item.title}</h3>
                 <p className="text-sm text-muted-foreground">{item.desc}</p>
@@ -101,7 +101,7 @@ const Help = () => {
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="gap-0 p-6 shadow-sm">
+                <Card className="gap-0 border-0 p-6 shadow-sm">
                   <h3 className="mb-4 text-xl font-semibold text-primary">
                     {category.title}
                   </h3>
@@ -125,7 +125,7 @@ const Help = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <Card className="gap-0 p-8 shadow-md">
+          <Card className="gap-0 border-0 p-8 shadow-md">
             <h2 className="mb-6 text-2xl font-bold text-primary">Can't Find What You're Looking For?</h2>
             <p className="mb-6 text-muted-foreground">
               Contact our support team directly and we'll get back to you within 2 hours.

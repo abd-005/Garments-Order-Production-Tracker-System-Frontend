@@ -96,7 +96,7 @@ const Register = () => {
       <div className='mx-auto w-5/12 flex items-center gap-2'>
         <h2 className='font-bold text-2xl text-primary'>Register to</h2> <Logo></Logo>
       </div>
-      <Card className='flex-col max-w-md gap-0 rounded-md p-6 text-base-content sm:p-10'>
+      <Card className='flex-col max-w-md gap-0 rounded-md border-0 p-6 text-base-content sm:p-10'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Register</h1>
           <p className='text-sm text-gray-400'>Welcome to TailorFlow</p>

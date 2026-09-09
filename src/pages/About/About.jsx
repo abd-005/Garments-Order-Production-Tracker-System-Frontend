@@ -32,7 +32,7 @@ const About = () => {
 
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Card className="gap-0 rounded-2xl p-6">
+          <Card className="gap-0 rounded-2xl border-0 p-6">
             <h3 className="text-lg font-semibold mb-2 text-primary">Our Mission</h3>
             <p className="text-sm text-gray-600">
               To make premium, responsibly produced garments accessible through transparent pricing,
@@ -40,7 +40,7 @@ const About = () => {
             </p>
           </Card>
 
-          <Card className="gap-0 rounded-2xl p-6">
+          <Card className="gap-0 rounded-2xl border-0 p-6">
             <h3 className="text-lg font-semibold mb-2 text-primary">Our Process</h3>
             <p className="text-sm text-gray-600">
               We source durable fabrics, cut with precision, and hand-finish details. Each order
@@ -48,7 +48,7 @@ const About = () => {
             </p>
           </Card>
 
-          <Card className="gap-0 rounded-2xl p-6">
+          <Card className="gap-0 rounded-2xl border-0 p-6">
             <h3 className="text-lg font-semibold mb-2 text-primary">Sustainability</h3>
             <p className="text-sm text-gray-600">
               We minimize waste, favor local suppliers, and choose low-impact materials whenever
@@ -70,17 +70,17 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="gap-0 rounded-2xl p-6">
+            <Card className="gap-0 rounded-2xl border-0 p-6">
               <h4 className="text-xl font-semibold text-primary">10k+</h4>
               <p className="text-sm text-gray-600 mt-1">Happy customers</p>
             </Card>
 
-            <Card className="gap-0 rounded-2xl p-6">
+            <Card className="gap-0 rounded-2xl border-0 p-6">
               <h4 className="text-xl font-semibold text-primary">500+</h4>
               <p className="text-sm text-gray-600 mt-1">Products crafted</p>
             </Card>
 
-            <Card className="gap-0 rounded-2xl p-6">
+            <Card className="gap-0 rounded-2xl border-0 p-6">
               <h4 className="text-xl font-semibold text-primary">99%</h4>
               <p className="text-sm text-gray-600 mt-1">On-time delivery</p>
             </Card>
@@ -94,19 +94,19 @@ const About = () => {
           <p className="text-gray-600 mb-6">A small team of designers, tailors, and product specialists focused on quality.</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <Card className="gap-0 rounded-2xl p-6">
+            <Card className="gap-0 rounded-2xl border-0 p-6">
               <div className="text-lg font-semibold">Amina Rahman</div>
               <div className="text-sm text-gray-500">Head of Design</div>
               <p className="text-sm text-gray-600 mt-3">Leads product direction and fit standards.</p>
             </Card>
 
-            <Card className="gap-0 rounded-2xl p-6">
+            <Card className="gap-0 rounded-2xl border-0 p-6">
               <div className="text-lg font-semibold">Karim Hossain</div>
               <div className="text-sm text-gray-500">Production Manager</div>
               <p className="text-sm text-gray-600 mt-3">Oversees manufacturing and quality control.</p>
             </Card>
 
-            <Card className="gap-0 rounded-2xl p-6">
+            <Card className="gap-0 rounded-2xl border-0 p-6">
               <div className="text-lg font-semibold">Sadia Noor</div>
               <div className="text-sm text-gray-500">Customer Experience</div>
               <p className="text-sm text-gray-600 mt-3">Ensures smooth communication and support.</p>
